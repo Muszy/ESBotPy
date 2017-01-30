@@ -236,8 +236,13 @@ if (args[0].toLowerCase() == "check") {
 		.addField("Greetings", file[msg.guild.id].greet)
 		.addField("Ban Alerts", file[msg.guild.id].banAlerts)
 		.addField("Tagging", file[msg.guild.id].tags)
-		.addField("Welcome Msg", file[msg.guild.id].welcome)
 		.setThumbnail("http://i.imgur.com/7TL0t99.png");
+		if (file[msg.guild.id].welcome != "") {
+			embed.addField("Welcome Msg", file[msg.guild.id].welcome);
+		}
+		else {
+			embed.addField("Welcome Msg", "None");
+		}
 	msg.channel.sendEmbed(embed).catch(console.error);
 }
 

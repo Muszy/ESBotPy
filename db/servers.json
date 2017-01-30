@@ -9,5 +9,16 @@
         "treats": 0,
         "roles": [],
         "tags": false
+    },
+    "184184427885232128": {
+        "ignore": [],
+        "banAlerts": false,
+        "greet": false,
+        "welcome": "",
+        "notify": false,
+        "notifyChannel": "",
+        "treats": 0,
+        "roles": [],
+        "tags": false
     }
 }
