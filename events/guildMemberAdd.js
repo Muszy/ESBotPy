@@ -9,7 +9,7 @@ exports.run = (bot, member, guild) => {
 
 	//console.log(serverSettings[member.guild.id].notify);
 
-	if(serverSettings[member.guild.id].notify) {
+	if(serverSettings[member.guild.id].greet) {
 		let embed = new discord.RichEmbed();
 
 		embed.setTitle("Welcome " + member.user.username + "!")

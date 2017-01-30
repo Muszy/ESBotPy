@@ -10,24 +10,24 @@
         "roles": [],
         "tags": false
     },
-    "184184427885232128": {
-        "ignore": [],
-        "banAlerts": false,
-        "greet": false,
-        "welcome": "",
-        "notify": false,
-        "notifyChannel": "",
-        "treats": 0,
-        "roles": [],
-        "tags": false
-    },
     "139081294607941633": {
         "ignore": [],
         "banAlerts": false,
         "greet": false,
-        "welcome": "",
+        "welcome": "Welcome $USER$ to $SERVER$!",
         "notify": false,
-        "notifyChannel": "",
+        "notifyChannel": "139081294607941633",
+        "treats": 0,
+        "roles": [],
+        "tags": false
+    },
+    "184184427885232128": {
+        "ignore": [],
+        "banAlerts": false,
+        "greet": false,
+        "welcome": "Welcome $USER$ to $SERVER$!",
+        "notify": true,
+        "notifyChannel": "184184427885232128",
         "treats": 0,
         "roles": [],
         "tags": false

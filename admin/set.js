@@ -26,6 +26,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("**Ban Alerts** set to off.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
@@ -46,6 +47,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("**Ban Alerts** set to on.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 		else {
@@ -56,6 +58,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("Ban Alerts can only be set to on/off.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 	}
@@ -81,6 +84,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("**Notifications** set to off.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
@@ -101,6 +105,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("**Notifications** set to on.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 		else {
@@ -111,6 +116,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("Notifications can only be set to on/off.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 	}
@@ -136,6 +142,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("**Greetings** set to off.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
@@ -156,6 +163,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("**Greetings** set to on.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 		else {
@@ -166,6 +174,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("Greetings can only be set to on/off.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 	}
@@ -191,6 +200,7 @@ exports.run = (bot, msg, args) => {
 				.setDescription("**Self-tagging** set to off.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
@@ -208,9 +218,10 @@ exports.run = (bot, msg, args) => {
 
 			embed.setTitle("Confirmation:")
 				.setColor(0x3399FF)
-				.setDescription("**Self-taggin** set to on.")
+				.setDescription("**Self-tagging** set to on.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
 		else {
@@ -221,9 +232,10 @@ exports.run = (bot, msg, args) => {
 				.setDescription("Self-tagging can only be set to on/off.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
 		}
 
-	}
+	}bot.channels.get(file[msg.guild.id].notificationChannel)
 
 //=========================================================================
 
@@ -233,6 +245,7 @@ if (args[0].toLowerCase() == "check") {
 	embed.setTitle("Server Settings for: " + msg.guild.name)
 		.setColor(0x3399FF)
 		.addField("Notifications", file[msg.guild.id].notify)
+		.addField("Notifications Channel", bot.channels.get(file[msg.guild.id].notifyChannel).name)
 		.addField("Greetings", file[msg.guild.id].greet)
 		.addField("Ban Alerts", file[msg.guild.id].banAlerts)
 		.addField("Tagging", file[msg.guild.id].tags)
@@ -244,11 +257,11 @@ if (args[0].toLowerCase() == "check") {
 			embed.addField("Welcome Msg", "None");
 		}
 	msg.channel.sendEmbed(embed).catch(console.error);
+	return;
 }
 
 //=========================================================================
 
-	else {
 		let embed = new discord.RichEmbed();
 
 		embed.setTitle("Error:")
@@ -256,7 +269,6 @@ if (args[0].toLowerCase() == "check") {
 			.setDescription("Only `banAlerts, notify, greet, tags` are allowed.")
 			.setThumbnail("http://i.imgur.com/7TL0t99.png");
 		msg.channel.sendEmbed(embed).catch(console.error);
-	}
 
 }
 

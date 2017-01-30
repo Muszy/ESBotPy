@@ -248,9 +248,9 @@ bot.on("guildCreate", guild => {
         "ignore": [],
         "banAlerts": false,
         "greet": false,
-        "welcome": "",
+        "welcome": "Welcome $USER$ to $SERVER$!",
         "notify": false,
-        "notifyChannel": "",
+        "notifyChannel": guild.defaultChannel.id,
         "treats": 0,
         "roles": [],
         "tags": false
@@ -331,9 +331,9 @@ function guildChecker(msg) {
 		"ignore": [],
 		"banAlerts": false,
 		"greet": false,
-		"welcome": "",
+		"welcome": "Welcome $USER$ to $SERVER$!",
 		"notify": false,
-		"notifyChannel": "",
+		"notifyChannel": msg.channel.guild.defaultChannel.id,
 		"treats": 0,
 		"roles": [],
 		"tags": false
