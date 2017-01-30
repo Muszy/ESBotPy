@@ -494,7 +494,7 @@ bot.on("message", msg => {
 	        	.setColor(0xFF0040)
 	        	.setDescription("Please set a role to `" + config.mod_role + "` in order to use mod commands!")
 	        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-	        guild.defaultChannel.sendEmbed(embed).catch(console.error);
+	        msg.channel.sendEmbed(embed).catch(console.error);
 		}
 
 		//if ur in the admin role or if ur the admin themself
