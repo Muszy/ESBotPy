@@ -488,6 +488,15 @@ bot.on("message", msg => {
 		//let's define the admin role!
 		let adminRole = msg.guild.roles.find("name", config.mod_role);
 
+		if(typeof adminRole == 'undefined' || adminRole == null) {
+			let embed = new discord.RichEmbed();
+	        embed.setTitle("Error:")
+	        	.setColor(0xFF0040)
+	        	.setDescription("Please set a role to `" + config.mod_role + "` in order to use mod commands!")
+	        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
+	        guild.defaultChannel.sendEmbed(embed).catch(console.error);
+		}
+
 		//if ur in the admin role or if ur the admin themself
 		if(msg.guild.member(msg.author.id).roles.has(adminRole.id) || msg.author.id==config.admin_id) {
 			let mCommand = msg.content.split(" ")[0];
