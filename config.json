@@ -1,0 +1,12 @@
+{
+	"token": "Mjc0Mzk2MjM5NzgzNTI2NDAx.C2xgAw.6B_sZjK0bk2gZEq0LaHn6J4phrk",
+	"prefix": "!",
+	"mod_prefix": "%",
+	"non_essential_event_listeners": true,
+	"log_presence": false,
+	"debug": false,
+	"admin_id": 108752547166031872,
+	"mod_role": "moderator",
+	"banned_server_ids": [""],
+	"whitelist": [""]
+}

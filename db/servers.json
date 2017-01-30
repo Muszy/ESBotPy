@@ -1,0 +1,13 @@
+{
+    "108753685122715648": {
+        "ignore": [],
+        "banAlerts": false,
+        "greet": false,
+        "welcome": "Welcome $USER$ to $SERVER$!",
+        "notify": true,
+        "notifyChannel": "188475104512966657",
+        "treats": 0,
+        "roles": [],
+        "tags": false
+    }
+}
