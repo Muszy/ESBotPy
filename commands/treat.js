@@ -5,7 +5,7 @@ var file = require(fileName);
 
 exports.run = (bot, msg, args) => {
 
-	if (args[0].toLowerCase() == "check") {
+	if (args.length > 0 && args[0].toLowerCase() == "check") {
 		//console.log(file[msg.guild.id]);
 
 		let embed = new discord.RichEmbed();
@@ -14,7 +14,7 @@ exports.run = (bot, msg, args) => {
 			.setThumbnail("http://i.imgur.com/gUWJl0u.png")
 			.setDescription("Daikichi has gotten " + file[msg.guild.id].treats + " treats today! :hearts:");
 
-		msg.channel.sendEmbed(embed).catch(console.error);	
+		msg.channel.sendEmbed(embed).catch(console.error);
 		
 	}
 
@@ -79,5 +79,5 @@ function updateTreats() {
 				}
 			});
 		}
-	})
+	});
 }

@@ -326,10 +326,30 @@ function checkIgnore(bot, msg) {
 	}
 }
 
+function guildChecker(msg) {
+	serverSettings[msg.channel.guild.id] = {
+		"ignore": [],
+		"banAlerts": false,
+		"greet": false,
+		"welcome": "",
+		"notify": false,
+		"notifyChannel": "",
+		"treats": 0,
+		"roles": [],
+		"tags": false
+		 }
+
+	console.log("Added server \'" + msg.channel.guild.name + "\' to the servers list.  ID: " + msg.channel.guild.id);
+	updateServers();
+}
+
 /*=========MSG/CMD HANDLER==============*/
 
 //we put the message event handler in here so we can handle everything thru it idk why i just yeah
 bot.on("message", msg => {
+	if(!serverSettings.hasOwnProperty(msg.channel.guild.id)) {
+		guildChecker(msg);
+	}
 
 	//bot doesn't respond to it's own messages
 	if (msg.author.id == bot.user.id) return;
@@ -546,6 +566,7 @@ bot.on("message", msg => {
 		commandFile.run(bot, msg, args);
 	}
 	catch (e) {
+		console.log(e);
 		console.log("command not found");
 		
         msg.channel.sendEmbed(commError).catch(console.error);

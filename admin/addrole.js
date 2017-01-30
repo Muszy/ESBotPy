@@ -4,6 +4,7 @@ var fileName = "../db/servers.json";
 var file = require(fileName);
 
 exports.run = (bot, msg, args) => {
+
 	if (args.length < 1){
 		console.log(file[msg.guild.id].roles);
 		let embed = new discord.RichEmbed();
