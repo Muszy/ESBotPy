@@ -1,5 +1,5 @@
 {
-	"token": "Mjc0Mzk2MjM5NzgzNTI2NDAx.C2xgAw.6B_sZjK0bk2gZEq0LaHn6J4phrk",
+	"token": "Mjc1NDUyODkxMzExODk4NjI0.C3A3UQ.beN6jrAxgi0LDpU1Ba0EfejbIAc",
 	"prefix": "!",
 	"mod_prefix": "%",
 	"non_essential_event_listeners": true,
@@ -8,5 +8,7 @@
 	"admin_id": 108752547166031872,
 	"mod_role": "moderator",
 	"banned_server_ids": [""],
-	"whitelist": [""]
+	"whitelist": [""],
+	"Client_ID": 275452891311898624,
+	"Client_Secret":"M8sS9lyIwzBiuLFKRdYLaBmK9Yf7NOeP"
 }
