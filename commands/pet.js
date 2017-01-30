@@ -12,7 +12,7 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFFB6C1)
 			.setTitle("Petting")
 			.setImage(pets[Math.floor(Math.random() * (pets.length))])
-			.setDescription(msg.guild.member(id).displayName + " was pet by **" + msg.guild.member(auth).displayName + "**");
+			.setDescription(msg.mentions.users.first()+ " was pet by **" + msg.author + "**");
 
 		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
@@ -21,7 +21,7 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFFB6C1)
 			.setTitle("Petting")
 			.setImage(pets[Math.floor(Math.random() * (pets.length))])
-			.setDescription("DaikichiBot was pet by **" + msg.guild.member(auth).displayName + "**");
+			.setDescription("DaikichiBot was pet by **" + msg.author + "**");
 
 		msg.channel.sendEmbed(embed).catch(console.error);
 	}

@@ -163,7 +163,7 @@ exports.generatePull = function(list, names, count, msg) {
 					let id = msg.author.id;
 
 					let embed = new discord.RichEmbed();
-					embed.setTitle(msg.guild.member(id).displayName + "'s Scouting Results")
+					embed.setTitle(msg.author + "'s Scouting Results")
 						.setColor(0x96F08C)
 						.setDescription("\"" + names.join("\", \"") + "\"");
 					msg.author.sendEmbed(embed).catch(console.error);

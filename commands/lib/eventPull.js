@@ -146,7 +146,7 @@ exports.solo = function(msg) {
 
 					let id = msg.author.id;
 					let embed = new discord.RichEmbed();
-						embed.setTitle(msg.guild.member(id).displayName + "'s Scouting Results")
+						embed.setTitle(msg.author + "'s Scouting Results")
 							.setURL("http://enstars.info/card/" + data.five[0].id)
 				        	.setColor(0x96F08C)
 				        	.setThumbnail(data.five[0].img)
@@ -169,7 +169,7 @@ exports.solo = function(msg) {
 
 						let id = msg.author.id;
 						let embed = new discord.RichEmbed();
-							embed.setTitle(msg.guild.member(id).displayName + "'s Scouting Results")
+							embed.setTitle(msg.author + "'s Scouting Results")
 								.setURL("http://enstars.info/card/" + data.four[num].id)
 					        	.setColor(0x96F08C)
 					        	.setThumbnail(data.four[num].img)
@@ -181,7 +181,7 @@ exports.solo = function(msg) {
 
 						let id = msg.author.id;
 						let embed = new discord.RichEmbed();
-							embed.setTitle(msg.guild.member(id).displayName + "'s Scouting Results")
+							embed.setTitle(msg.author + "'s Scouting Results")
 								.setURL("http://enstars.info/card/" + data.eventFour[num].id)
 					        	.setColor(0x96F08C)
 					        	.setThumbnail(data.eventFour[num].img)
@@ -205,7 +205,7 @@ exports.solo = function(msg) {
 
 						let id = msg.author.id;
 						let embed = new discord.RichEmbed();
-							embed.setTitle(msg.guild.member(id).displayName + "'s Scouting Results")
+							embed.setTitle(msg.author + "'s Scouting Results")
 								.setURL("http://enstars.info/card/" + data.three[num].id)
 					        	.setColor(0x96F08C)
 					        	.setThumbnail(data.three[num].img)
@@ -217,7 +217,7 @@ exports.solo = function(msg) {
 
 						let id = msg.author.id;
 						let embed = new discord.RichEmbed();
-							embed.setTitle(msg.guild.member(id).displayName + "'s Scouting Results")
+							embed.setTitle(msg.author + "'s Scouting Results")
 								.setURL("http://enstars.info/card/" + data.eventThree[num].id)
 					        	.setColor(0x96F08C)
 					        	.setThumbnail(data.eventThree[num].img)

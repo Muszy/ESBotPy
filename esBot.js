@@ -348,15 +348,19 @@ function guildChecker(msg) {
 
 //we put the message event handler in here so we can handle everything thru it idk why i just yeah
 bot.on("message", msg => {
-	if(!serverSettings.hasOwnProperty(msg.channel.guild.id)) {
-		guildChecker(msg);
+	if (msg.channel.type != "dm" && msg.channel.type != "group") {
+		if(!serverSettings.hasOwnProperty(msg.channel.guild.id)) {
+			guildChecker(msg);
+		}
 	}
 
 	//bot doesn't respond to it's own messages
 	if (msg.author.id == bot.user.id) return;
 
 	//if the channel is on the ignore list and ur not an admin
-	if (checkIgnore(bot, msg) && !msg.content.startsWith(config.mod_prefix)) return;
+	if (msg.channel.type != "dm" && msg.channel.type != "group") {
+		if (checkIgnore(bot, msg) && !msg.content.startsWith(config.mod_prefix)) return;
+	}
 
 	//if the msg is a dm
 	if (msg.channel.type == "dm") {
@@ -367,7 +371,7 @@ bot.on("message", msg => {
 				let args = "";
 				help.run(bot,msg,args);
 				//always put a return!!  this way it doesn't just go str8 to the bottom
-				return;
+				
 			}
 			//cleverbot(bot, msg);
 			//if we had cleverbot in this bot, obv
@@ -385,64 +389,6 @@ bot.on("message", msg => {
         	//catch the error in case something goes wrong!
 			return;
 		}
-
-		if (msg.content.toLowerCase().startsWith(config.mod_prefix + "help")) {
-			let command = msg.content.split(" ")[0];
-			//command is whatever you put in like !help
-			command = command.slice(config.mod_prefix.length);
-			//it splits off the prefix so it becomes like help
-			command = command.toLowerCase();
-
-			let args = msg.content.split(" ").slice(1);
-			//this is whatever the following things are stored in an array, useful for multiple searchs
-
-			try {
-				let commandFile = require(`./admin/${command}.js`);
-				commandFile.run(bot, msg, args);
-				return;
-			}
-			catch (e) {
-				console.log("command not found");
-				
-		        msg.channel.sendEmbed(commError).catch(console.error);
-		        return;
-			}
-		}
-
-		if (msg.content.toLowerCase().startsWith(config.prefix + "help")) {
-			let command = msg.content.split(" ")[0];
-			//command is whatever you put in like !help
-			command = command.slice(config.prefix.length);
-			//it splits off the prefix so it becomes like help
-			command = command.toLowerCase();
-			//toLowerCase it incase u type liKE ME
-
-			let args = msg.content.split(" ").slice(1);
-			//this is whatever the following things are stored in an array, useful for multiple searchs
-
-			try {
-				let commandFile = require(`./commands/${command}.js`);
-				commandFile.run(bot, msg, args);
-				return;
-			}
-			catch (e) {
-				console.log("command not found");
-				
-		        msg.channel.sendEmbed(commError).catch(console.error);
-		        return;
-			}
-		}
-
-		else {
-			let embed = new discord.RichEmbed();
-	        embed.setTitle("Error:")
-	        	.setColor(0xFF0040)
-	        	.setDescription("Please use Daikichi commands in a server, not a DM!")
-	        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-	        msg.channel.sendEmbed(embed).catch(console.error);
-	        return;
-		}
-		//if it does start with mod prefix or normal prefix, we'll skip straight to commands
 	}
 
 	//iff the message is in a server and is not a command
@@ -504,7 +450,7 @@ bot.on("message", msg => {
 	}
 
 	//if the message starts w mod prefix
-	if (msg.content.startsWith(config.mod_prefix)) {
+	if (msg.content.startsWith(config.mod_prefix) && msg.channel.type != "dm" && msg.channel.type != "group") {
 
 		//let's define the admin role!
 		let adminRole = msg.guild.roles.find("name", config.mod_role);
@@ -549,6 +495,35 @@ bot.on("message", msg => {
 	        msg.channel.sendEmbed(embed).catch(console.error);
 	        return;
 		}
+	}
+
+	else if ((msg.content.startsWith(config.mod_prefix + "event") || msg.content.startsWith(config.mod_prefix + "gachas")) && msg.author.id==config.admin_id) {
+		let mCommand = msg.content.split(" ")[0];
+			mCommand = mCommand.slice(config.mod_prefix.length);
+			mCommand = mCommand.toLowerCase();
+
+			let mArgs = msg.content.split(" ").slice(1);
+
+			try{
+				let mCommandFile = require(`./admin/${mCommand}.js`)
+				mCommandFile.run(bot, msg, mArgs)
+			}
+			catch (e) {
+				console.log("command not found");
+				
+	        	msg.channel.sendEmbed(commError).catch(console.error);
+			}
+			return;
+	}
+
+	else if (msg.content.startsWith(config.mod_prefix) && (msg.channel.type == "dm" || msg.channel.type == "group")) {
+		let embed = new discord.RichEmbed();
+	        embed.setTitle("Error:")
+	        	.setColor(0xFF0040)
+	        	.setDescription("Please use this command in a server, not a DM!")
+	        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
+	        msg.channel.sendEmbed(embed).catch(console.error);
+	        return;
 	}
 
 //====================================================================================================

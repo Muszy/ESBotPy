@@ -4,6 +4,15 @@ var fileName = "../db/servers.json";
 var file = require(fileName);
 
 exports.run = (bot, msg, args) => {
+	if (msg.channel.type == "dm" || msg.channel.type == "group") {
+		let embed = new discord.RichEmbed();
+	        embed.setTitle("Error:")
+	        	.setColor(0xFF0040)
+	        	.setDescription("Please use this command in a server, not a DM!")
+	        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
+	        msg.channel.sendEmbed(embed).catch(console.error);
+	        return;
+	}
 
 	file[msg.guild.id].notifyChannel = msg.channel.id;
 
