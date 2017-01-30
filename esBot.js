@@ -567,10 +567,10 @@ bot.on("message", msg => {
 		commandFile.run(bot, msg, args);
 	}
 	catch (e) {
-		console.log(e);
-		console.log("command not found");
+		//console.log(e);
+		console.log("COMMAND NOT FOUND : " +command);
 		
-        msg.channel.sendEmbed(commError).catch(console.error);
+        //msg.channel.sendEmbed(commError).catch(console.error);
 	}
 
 });
