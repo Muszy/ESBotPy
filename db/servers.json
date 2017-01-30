@@ -15,8 +15,8 @@
         "banAlerts": false,
         "greet": false,
         "welcome": "Welcome $USER$ to $SERVER$!",
-        "notify": false,
-        "notifyChannel": "139081294607941633",
+        "notify": true,
+        "notifyChannel": "174636983178625035",
         "treats": 0,
         "roles": [],
         "tags": false

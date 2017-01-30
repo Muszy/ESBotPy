@@ -65,6 +65,7 @@ bot.login(config.token, function(err, token) {
 //this is some scheduling stuff, if you want to know how this works ask me l8r
 var ruleTreats = new schedule.RecurrenceRule();
 	ruleTreats.hour = 0;
+	ruleTreats.minute = 0;
 
 var treatReset = schedule.scheduleJob(ruleTreats, function(){
 	let commandFile = require(`./commands/treat.js`);
