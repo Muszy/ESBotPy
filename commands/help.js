@@ -9,7 +9,7 @@ exports.run = (bot, msg, args) => {
 	    embed.setTitle("Help List:")
 	        .setColor(0xB48CF0)
 	        .setDescription("A list of help can be found here!  Or you can use \"!help [command]\" for more specific help!")
-	        .setURL("http://google.com")
+	        .setURL("http://hanifish.github.io/enstars/bot.html")
 	        .setThumbnail("http://i.imgur.com/7TL0t99.png");
 	    msg.channel.sendEmbed(embed).catch(console.error);
 	}

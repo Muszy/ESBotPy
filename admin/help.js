@@ -9,7 +9,7 @@ exports.run = (bot, msg, args) => {
 	    embed.setTitle("Admin Help List:")
 	        .setColor(0xB48CF0)
 	        .setDescription("A list of admin commands can be found here!  Or you can use \"&help [command]\" for more specific help!")
-	        .setURL("http://google.com")
+	        .setURL("http://hanifish.github.io/enstars/mod.html")
 	        .setThumbnail("http://i.imgur.com/7TL0t99.png");
 	    msg.author.sendEmbed(embed).catch(console.error);
 	}
