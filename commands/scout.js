@@ -166,9 +166,9 @@ exports.generatePull = function(list, names, count, msg) {
 					embed.setTitle(msg.guild.member(id).displayName + "'s Scouting Results")
 						.setColor(0x96F08C)
 						.setDescription("\"" + names.join("\", \"") + "\"");
-					msg.channel.sendEmbed(embed).catch(console.error);
+					msg.author.sendEmbed(embed).catch(console.error);
 
-					msg.channel.sendFile(dir+"scout.png", "scout.png");
+					msg.author.sendFile(dir+"scout.png", "scout.png");
 				}
 				else if (err) console.log(err);
 			});
