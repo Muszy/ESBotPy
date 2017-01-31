@@ -165,10 +165,18 @@ exports.generatePull = function(list, names, count, msg) {
 					let embed = new discord.RichEmbed();
 					embed.setTitle(msg.author + "'s Scouting Results")
 						.setColor(0x96F08C)
-						.setDescription("\"" + names.join("\", \"") + "\"");
+						.setDescription(names.join(" ★ "));
+						//.setDescription("•" + names.join("\n•"));
 					msg.author.sendEmbed(embed).catch(console.error);
 
 					msg.author.sendFile(dir+"scout.png", "scout.png");
+
+					let note  = new discord.RichEmbed();
+					note.setTitle("Finished!")
+			        	.setColor(0x96F08C)
+			        	.setDescription("Finished processing " + msg.author + "'s scout!")
+			        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			        msg.channel.sendEmbed(note).catch(console.error);
 				}
 				else if (err) console.log(err);
 			});

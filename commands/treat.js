@@ -12,7 +12,7 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFFB6C1)
 			.setTitle("Today's Daily Treats")
 			.setThumbnail("http://i.imgur.com/gUWJl0u.png")
-			.setDescription("Daikichi has gotten " + file[msg.guild.id].treats + " treats today! :hearts:");
+			.setDescription("Daikichi has gotten " + file[msg.guild.id].treats + " treats today! ❤️️");
 
 		msg.channel.sendEmbed(embed).catch(console.error);
 		

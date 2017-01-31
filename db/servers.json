@@ -1,23 +1,14 @@
 {
-        "210577428815413251": {
-        "ignore": [],
-        "banAlerts": false,
-        "greet": true,
-        "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mods <@193910559433949185> and <@200388175670018048>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
-        "notify": true,
-        "notifyChannel": "210577428815413251",
-        "treats": 0,
-        "roles": [],
-        "tags": false
-    },
     "108753685122715648": {
-        "ignore": [],
+        "ignore": [
+            "275746453706637313"
+        ],
         "banAlerts": false,
         "greet": true,
         "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mods <@193910559433949185> and <@200388175670018048>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
         "notify": true,
         "notifyChannel": "188475104512966657",
-        "treats": 1,
+        "treats": 0,
         "roles": [
             "General"
         ],
@@ -44,5 +35,52 @@
         "treats": 0,
         "roles": [],
         "tags": false
+    },
+    "210577428815413251": {
+        "ignore": [],
+        "banAlerts": false,
+        "greet": true,
+        "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role or use !iam <role>! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mod <@200388175670018048>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
+        "notify": true,
+        "notifyChannel": "210577428815413251",
+        "treats": 32,
+        "roles": [
+            "2wink",
+            "undead",
+            "valkyrie",
+            "fine",
+            "akatsuki",
+            "trickstar",
+            "ra*bits",
+            "switch",
+            "ryuseitai",
+            "knights",
+            "gay as fuck",
+            "buttP"
+        ],
+        "tags": true
+    },
+    "267593821250912256": {
+        "ignore": [],
+        "banAlerts": false,
+        "greet": true,
+        "welcome": "Welcome $USER$ to $SERVER$! Please read <#267593821250912256> and <@&267612211436978195> to be added to a role. Enjoy your stay (^・(I)・^)",
+        "notify": false,
+        "notifyChannel": "267611699949862912",
+        "treats": 0,
+        "roles": [
+            "undead",
+            "trickstar",
+            "knights",
+            "valkyrie",
+            "2wink",
+            "switch",
+            "ryuseitai",
+            "fine",
+            "ra*bits",
+            "akatsuki",
+            "eurobean"
+        ],
+        "tags": true
     }
 }

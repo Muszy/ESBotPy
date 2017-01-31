@@ -1,126 +1,314 @@
 const discord = require("discord.js");
+var http = require("http");
 var request = require("request");
 var trim = require("trim");
+var fs = require("fs");
 
-const url = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/CardList.json";
+const url = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/Boys/";
+// + boy + "/" + rare + ".json"
+
+var errMsg = new discord.RichEmbed();
+errMsg.setTitle("Error:")
+    .setColor(0xFF0040)
+    .setDescription("Please enter in the form of `!card [character first name] (opt rarity/opt alias)`!")
+    .setThumbnail("http://i.imgur.com/7TL0t99.png");
 
 exports.run = (bot, msg, args) => {
 
-	if(args.length < 1) {
-		let embed = new discord.RichEmbed();
-		embed.setTitle("Error:")
-	       	.setColor(0xFF0040)
-	       	.setDescription("Please enter in the form of `!card [character first name] (opt alias)`!")
-	       	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-	    msg.channel.sendEmbed(embed).catch(console.error);
-		return;
-	}
+    if (args.length < 1) {
+        msg.channel.sendEmbed(errMsg).catch(console.error);
+        return;
+    } else if (args.length == 1) {
+        let list = [];
+        searchBoy(args[0].toLowerCase(), list, 0, msg);
+        return;
+    } else {
+        if (args[1].toLowerCase() == "r" || args[1].toLowerCase() == "sr" || args[1].toLowerCase() == "ur") {
+            searchRare(args, msg);
+            return;
+        }
+        else if (args[1] == "3" || args[1].toLowerCase() == "4" || args[1].toLowerCase() == "5") {
+        	if (args[1] == "3") args[1] = "r";
+        	else if (args[1] == "4") args[1] = "sr";
+        	else if (args[1] == "5") args[1] = "ur";
 
-	else if(args.length == 1) {
-		searchBoy(args[0].toLowerCase(), msg);
-		return;
-	}
+            searchRare(args, msg);
+            return;
+        }
 
-	else {
-		lookUp(args[0].toLowerCase(),args[1].toLowerCase(), msg);
-		return;
-
-	}	
+        lookUp(args, msg);
+        return;
+    }
 }
 
 exports.help = (bot, msg, args) => {
-	return "To look up a card, please use the format of `!card [character firstname] (alias)`.";
+    return "To look up a card, please use the format of `!card [character firstname] (opt rarity/opt alias)`.";
 }
 
-function searchBoy(boy, msg) {
-	let list=[];
+//====================================================================================================
 
-	request(url, function(error, response, body) {
-		if (error) { console.log(error); }
-		if (!error) { 
-			data = JSON.parse(body);
-			//console.log(data);
-			for(var id in data.cards){
-				//console.log(data.cards[id].nick);
+function searchBoy(boy, list, count, msg) {
 
-				if (data.cards[id].nick == boy.toLowerCase()) {
-					list.push(data.cards[id].name + " : " + data.cards[id].alias.toUpperCase());
-				}
-			}
+    if (count == 0) {
 
-			if (list.length < 1) {
-				let embed = new discord.RichEmbed();
-				embed.setTitle("Error:")
-			       	.setColor(0xFF0040)
-			       	.setDescription("No such character found!")
-			       	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			    msg.channel.sendEmbed(embed).catch(console.error);
-				return;
-			}
 
-			let str = list.join("\n");
+        request(url + boy + "/three.json", function(error, response, body) {
+            if (error) {
+                console.log(error);
+                return;
+            }
+            if (!(response.statusCode === 200)) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Boy was not found.")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+            if (!error) {
+                data = JSON.parse(body);
+                //console.log(data);
+                list.push(data.cards.length);
+                searchBoy(boy, list, count + 1, msg);
+            }
+        });
 
-			let embed = new discord.RichEmbed();
-			embed.setTitle("Found (Name | Alias):")
-	        	.setColor(0x96F08C)
-	        	.setDescription("`"+str+"`")
-	        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-	        msg.channel.sendEmbed(embed).catch(console.error);
-		}
-	});
+    }
+    if (count == 1) {
+
+
+
+        request(url + boy + "/four.json", function(error, response, body) {
+            if (error) {
+                console.log(error);
+                return;
+            }
+            if (!(response.statusCode === 200)) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Boy was not found.")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+            if (!error) {
+                data = JSON.parse(body);
+                //console.log(data);
+                list.push(data.cards.length);
+                searchBoy(boy, list, count + 1, msg);
+            }
+        });
+
+    }
+    if (count == 2) {
+
+        request(url + boy + "/five.json", function(error, response, body) {
+            if (error) {
+                console.log(error);
+                return;
+            }
+            if (!(response.statusCode === 200)) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Boy was not found.")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+            if (!error) {
+                data = JSON.parse(body);
+                //console.log(data);
+                list.push(data.cards.length);
+                searchBoy(boy, list, count + 1, msg);
+            }
+        });
+
+    }
+    if (count == 3) {
+
+        request(url + boy + "/five.json", function(error, response, body) {
+            if (error) {
+                console.log(error);
+                return;
+            }
+            if (!(response.statusCode === 200)) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Boy was not found.")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+            if (!error) {
+                data = JSON.parse(body);
+                //console.log(data);
+
+                let name = data.cards[0].name.split(")");
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Results for " + name[1] + ":")
+                    .setColor(0x96F08C)
+                    .setDescription("Number of 3★: " + list[0] + "\nNumber of 4★: " + list[1] + "\nNumber of 5★: " + list[2])
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+        });
+    }
 }
 
-function lookUp(boy, rare, msg) {
+//====================================================================================================
 
-	let check = null;
-	let list=[];
+function searchRare(args, msg) {
+    let boy = args[0];
+    let rare = args[1].toLowerCase();
+    let star;
 
-	request(url, function(error, response, body) {
-		if (error) { console.log(error); }
-		if (!error) { 
-			data = JSON.parse(body);
-			//console.log(data);
-			for(var id in data.cards){
-				//console.log(data.cards[id].nick);
-				if (data.cards[id].nick == boy.toLowerCase() && rare == data.cards[id].alias) {
-					check = id;
-					//console.log("found" + id);
-				}
-			}
+    if (rare == "r") star = "three";
+    else if (rare == "sr") star = "four";
+    else if (rare == "ur") star = "five";
+    else return;
 
-			if (check != null) {
-				let embed = new discord.RichEmbed();
-				embed.setTitle(data.cards[check].name)
-					.setURL("http://enstars.info/card/" + data.cards[check].id)
-		        	.setColor(0x96F08C)
-		        	.setThumbnail(data.cards[check].img)
-		        	.addField("Main Stat", data.cards[check].stat)
-		        	.addField("Lesson Skill", data.cards[check].lesson)
-		        	.addField("DreamFes Skill", data.cards[check].dreamfes)
-		        	.addField("Source", data.cards[check].origin);
-		        msg.channel.sendEmbed(embed).catch(console.error);
-			}
+    let list = [];
 
-			else {
+    request(url + boy + "/" + star + ".json", function(error, response, body) {
+        if (error) { console.log(error); }
+        if (!(response.statusCode === 200)) {
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Error:")
+                .setColor(0xFF0040)
+                .setDescription("Boy was not found.")
+                .setThumbnail("http://i.imgur.com/7TL0t99.png");
+            msg.channel.sendEmbed(embed).catch(console.error);
+            return;
+        }
+        if (!error) {
+            data = JSON.parse(body);
+            if (rare == "r") {
+            	let name = data.cards[0].name.split(")");
 
-				searchBoy(boy, msg);
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Found:")
+                    .setColor(0x96F08C)
+                    .setDescription("`[" + data.cards.length + "]` 3★ cards for " + name[1] + ".")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+            //console.log(data);
+            for (var id in data.cards) {
+                //console.log(data.cards[id].nick);
 
-			}
-		}
-	});
+                if (data.cards[id].nick == boy.toLowerCase()) {
+                    list.push(data.cards[id].name + " : " + data.cards[id].alias.toUpperCase());
+                }
+            }
+
+            if (list.length < 1) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("No such character found!")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+
+            let str = list.join("\n");
+
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Found (Name | Alias):")
+                .setColor(0x96F08C)
+                .setDescription("`" + str + "`")
+                .setThumbnail("http://i.imgur.com/7TL0t99.png");
+            msg.channel.sendEmbed(embed).catch(console.error);
+        }
+    });
+}
+
+//====================================================================================================
+
+
+function lookUp(args, msg) {
+
+    let boy = args[0],
+        alias = args[1],
+        star;
+
+    if (alias.startsWith("r")) star = "three";
+    else if (alias.startsWith("s")) star = "four";
+    else if (alias.startsWith("u")) star = "five";
+
+    let check = null;
+    let list = [];
+
+    request(url + boy + "/" + star + ".json", function(error, response, body) {
+        if (error) { console.log(error); }
+        if (!(response.statusCode === 200)) {
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Error:")
+                .setColor(0xFF0040)
+                .setDescription("Card was not found.")
+                .setThumbnail("http://i.imgur.com/7TL0t99.png");
+            msg.channel.sendEmbed(embed).catch(console.error);
+            return;
+        }
+        if (!error) {
+            data = JSON.parse(body);
+            //console.log(data);
+            for (var id in data.cards) {
+                //console.log(data.cards[id].nick);
+                if (data.cards[id].nick == boy.toLowerCase() && alias == data.cards[id].alias) {
+                    check = id;
+                    //console.log("found" + id);
+                }
+            }
+
+            if (check != null) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle(data.cards[check].name + " [" + data.cards[check].star + "★]")
+                    .setURL("http://enstars.info/card/" + data.cards[check].id)
+                    .setColor(0x96F08C)
+                    .setThumbnail(data.cards[check].img)
+                    .addField("Main Stat", data.cards[check].stat)
+                    .addField("Lesson Skill", data.cards[check].lesson)
+                    .addField("DreamFes Skill", data.cards[check].dreamfes)
+                    .addField("Source", data.cards[check].origin);
+                msg.channel.sendEmbed(embed).catch(console.error);
+            } else {
+
+            	let searcher = [boy];
+            	
+            	if (alias.startsWith("r")) searcher[1] = "r";
+    			else if (alias.startsWith("sr")) searcher[1] = "sr";
+    			else if (alias.startsWith("ur")) searcher[1] = "ur";
+    			else searchBoy(boy, msg);
+
+                searchRare(searcher, msg);
+
+            }
+        }
+    });
 
 }
 
 function download(url, callback) {
-	http.get(url, function(res) {
-		var data = "";
-		res.on('data', function (chunk) {
-			data += chunk;
-		});
-		res.on("end", function() {
-			callback(data);
-		});
-	}).on("error", function() {
-		callback(null);
-	});
+    http.get(url, function(res) {
+        var data = "";
+        res.on('data', function(chunk) {
+            data += chunk;
+        });
+        res.on("end", function() {
+            callback(data);
+        });
+    }).on("error", function() {
+        callback(null);
+    });
+}
+
+function isEmptyObject(obj) {
+    return !Object.keys(obj).length;
 }
