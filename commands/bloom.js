@@ -34,8 +34,8 @@ exports.help = (bot, msg, args) => {
 
 function bloom(args, msg) {
 
-    let boy = args[0],
-        alias = args[1],
+    let boy = args[0].toLowerCase(),
+        alias = args[1].toLowerCase(),
         star;
 
     if (alias.startsWith("r")) star = "three";

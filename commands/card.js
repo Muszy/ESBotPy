@@ -26,11 +26,10 @@ exports.run = (bot, msg, args) => {
         if (args[1].toLowerCase() == "r" || args[1].toLowerCase() == "sr" || args[1].toLowerCase() == "ur") {
             searchRare(args, msg);
             return;
-        }
-        else if (args[1] == "3" || args[1].toLowerCase() == "4" || args[1].toLowerCase() == "5") {
-        	if (args[1] == "3") args[1] = "r";
-        	else if (args[1] == "4") args[1] = "sr";
-        	else if (args[1] == "5") args[1] = "ur";
+        } else if (args[1] == "3" || args[1].toLowerCase() == "4" || args[1].toLowerCase() == "5") {
+            if (args[1] == "3") args[1] = "r";
+            else if (args[1] == "4") args[1] = "sr";
+            else if (args[1] == "5") args[1] = "ur";
 
             searchRare(args, msg);
             return;
@@ -49,10 +48,15 @@ exports.help = (bot, msg, args) => {
 
 function searchBoy(boy, list, count, msg) {
 
-    if (count == 0) {
+    let star;
 
+    if (count < 3) {
 
-        request(url + boy + "/three.json", function(error, response, body) {
+        if (count == 0) star = "three";
+        else if (count == 1) star = "four";
+        else if (count == 2) star = "five";
+
+        request(url + boy + "/" + star + ".json", function(error, response, body) {
             if (error) {
                 console.log(error);
                 return;
@@ -71,63 +75,10 @@ function searchBoy(boy, list, count, msg) {
                 //console.log(data);
                 list.push(data.cards.length);
                 searchBoy(boy, list, count + 1, msg);
+                return;
             }
         });
-
-    }
-    if (count == 1) {
-
-
-
-        request(url + boy + "/four.json", function(error, response, body) {
-            if (error) {
-                console.log(error);
-                return;
-            }
-            if (!(response.statusCode === 200)) {
-                let embed = new discord.RichEmbed();
-                embed.setTitle("Error:")
-                    .setColor(0xFF0040)
-                    .setDescription("Boy was not found.")
-                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
-                return;
-            }
-            if (!error) {
-                data = JSON.parse(body);
-                //console.log(data);
-                list.push(data.cards.length);
-                searchBoy(boy, list, count + 1, msg);
-            }
-        });
-
-    }
-    if (count == 2) {
-
-        request(url + boy + "/five.json", function(error, response, body) {
-            if (error) {
-                console.log(error);
-                return;
-            }
-            if (!(response.statusCode === 200)) {
-                let embed = new discord.RichEmbed();
-                embed.setTitle("Error:")
-                    .setColor(0xFF0040)
-                    .setDescription("Boy was not found.")
-                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
-                return;
-            }
-            if (!error) {
-                data = JSON.parse(body);
-                //console.log(data);
-                list.push(data.cards.length);
-                searchBoy(boy, list, count + 1, msg);
-            }
-        });
-
-    }
-    if (count == 3) {
+    } else {
 
         request(url + boy + "/five.json", function(error, response, body) {
             if (error) {
@@ -155,15 +106,17 @@ function searchBoy(boy, list, count, msg) {
                     .setDescription("Number of 3★: " + list[0] + "\nNumber of 4★: " + list[1] + "\nNumber of 5★: " + list[2])
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
                 msg.channel.sendEmbed(embed).catch(console.error);
+                return;
             }
         });
     }
+
 }
 
 //====================================================================================================
 
 function searchRare(args, msg) {
-    let boy = args[0];
+    let boy = args[0].toLowerCase();
     let rare = args[1].toLowerCase();
     let star;
 
@@ -188,7 +141,7 @@ function searchRare(args, msg) {
         if (!error) {
             data = JSON.parse(body);
             if (rare == "r") {
-            	let name = data.cards[0].name.split(")");
+                let name = data.cards[0].name.split(")");
 
                 let embed = new discord.RichEmbed();
                 embed.setTitle("Found:")
@@ -234,8 +187,8 @@ function searchRare(args, msg) {
 
 function lookUp(args, msg) {
 
-    let boy = args[0],
-        alias = args[1],
+    let boy = args[0].toLowerCase(),
+        alias = args[1].toLowerCase(),
         star;
 
     if (alias.startsWith("r")) star = "three";
@@ -280,12 +233,12 @@ function lookUp(args, msg) {
                 msg.channel.sendEmbed(embed).catch(console.error);
             } else {
 
-            	let searcher = [boy];
-            	
-            	if (alias.startsWith("r")) searcher[1] = "r";
-    			else if (alias.startsWith("sr")) searcher[1] = "sr";
-    			else if (alias.startsWith("ur")) searcher[1] = "ur";
-    			else searchBoy(boy, msg);
+                let searcher = [boy];
+
+                if (alias.startsWith("r")) searcher[1] = "r";
+                else if (alias.startsWith("sr")) searcher[1] = "sr";
+                else if (alias.startsWith("ur")) searcher[1] = "ur";
+                else searchBoy(boy, msg);
 
                 searchRare(searcher, msg);
 
