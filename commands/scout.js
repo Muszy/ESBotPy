@@ -118,7 +118,7 @@ exports.generatePull = function(list, names, count, msg) {
                 });
         });
     } else if (count == 5) {
-        download(list[0], dir + 'row.png', function() {
+        download(list[count], dir + 'row.png', function() {
 
             gm(dir + "row.png").resize(null, 156)
                 .write(dir + 'row.png', function(err) {
