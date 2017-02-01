@@ -100,7 +100,7 @@ function eventChecker() {
     let count = end - present;
     //console.log(count);
 
-    if (globals["event"].end != "" && event == null && count > 10000) {
+    if (globals["event"].end != "" && event == null && count > 60000) {
 
         console.log("new event starting");
 
@@ -152,7 +152,7 @@ function eventChecker() {
         });
 
         //console.log(date-457200000);
-        if ((date - 457200000) > 10000) {
+        if ((date - 457200000) > 60000) {
 
             half = schedule.scheduleJob(date - 457200000, function() {
                 let embed = new discord.RichEmbed();
@@ -181,7 +181,7 @@ function eventChecker() {
 
         //console.log(date-86400000);
 
-        if ((date - 86400000) > 10000) {
+        if ((date - 86400000) > 60000) {
 
             last = schedule.scheduleJob(date - 86400000, function() {
                 let embed = new discord.RichEmbed();

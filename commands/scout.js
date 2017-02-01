@@ -7,12 +7,10 @@ var eventPull = require("./lib/eventPull.js");
 var normPull = require("./lib/normPull.js");
 var ptsPull = require("./lib/ptsPull.js");
 
-var scouting = 0;
 var scoutError = new discord.RichEmbed();
-scoutError.setTitle("Error:")
-    .setColor(0xFF0040)
-    .setDescription("I'm currently processing someone else's pull! 🐾")
-    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+scoutError.setTitle("You're going too fast!")
+    .setColor(0x96F08C)
+    .setDescription("The Adoarmy arrives..");
 
 var dir = './img/';
 var download = function(uri, filename, callback) {
@@ -40,14 +38,8 @@ exports.run = (bot, msg, args) => {
 
         if (args[1] == "10") {
 
-            if (scouting == 1) {
-                msg.channel.sendEmbed(scoutError).catch(console.error);
-                return;
-            }
-
             let list = [];
             let names = [];
-            scouting = 1;
             eventPull.tenPull(list, names, 0, msg);
             return;
         } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
@@ -59,14 +51,9 @@ exports.run = (bot, msg, args) => {
     if (args[0].toLowerCase() == "normal" || args[0].toLowerCase() == "norm" || args[0].toLowerCase() == "dia") {
 
         if (args[1] == "10") {
-            if (scouting == 1) {
-                msg.channel.sendEmbed(scoutError).catch(console.error);
-                return;
-            }
 
             let list = [];
             let names = [];
-            scouting = 1;
             normPull.tenPull(list, names, 0, msg);
             return;
         } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
@@ -78,14 +65,9 @@ exports.run = (bot, msg, args) => {
     if (args[0].toLowerCase() == "points" || args[0].toLowerCase() == "pts" || args[0].toLowerCase() == "point" || args[0].toLowerCase() == "pt") {
 
         if (args[1] == "10") {
-            if (scouting == 1) {
-                msg.channel.sendEmbed(scoutError).catch(console.error);
-                return;
-            }
 
             let list = [];
             let names = [];
-            scouting = 1;
             ptsPull.tenPull(list, names, 0, msg);
             return;
         } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
@@ -107,49 +89,68 @@ exports.help = (bot, msg, args) => {
 
 exports.generatePull = function(list, names, count, msg) {
     if (count == 0) {
-        download(list[0], dir + 'base.png', function() {
+        download(list[0], dir + 'base' + msg.author.id + '.png', function() {
 
-            gm(dir + "base.png").resize(null, 156)
-                .write(dir + 'base.png', function(err) {
+            gm(dir + 'base' + msg.author.id + '.png').resize(null, 156)
+                .write(dir + 'base' + msg.author.id + '.png', function(err) {
                     if (!err) {
                         console.log("Written composite image.");
                         scout.generatePull(list, names, count + 1, msg);
-                    } else if (err) console.log(err);
+                    } else if (err) {
+                        console.log(err);
+                        msg.author.sendEmbed(scoutError).catch(console.error);
+                        msg.author.sendFile(dir + '10pull.png', "error.png");
+                        return;
+                    }
                 });
         });
     } else if (count == 5) {
-        download(list[count], dir + 'row.png', function() {
+        download(list[count], dir + 'row' + msg.author.id + '.png', function() {
 
-            gm(dir + "row.png").resize(null, 156)
-                .write(dir + 'row.png', function(err) {
+            gm(dir + 'row' + msg.author.id + '.png').resize(null, 156)
+                .write(dir + 'row' + msg.author.id + '.png', function(err) {
                     if (!err) {
 
                         scout.generatePull(list, names, count + 1, msg);
-                    } else if (err) console.log(err);
+                    } else if (err) {
+                        console.log(err);
+                        msg.author.sendEmbed(scoutError).catch(console.error);
+                        msg.author.sendFile(dir + '10pull.png', "error.png");
+                        return;
+                    }
                 });
         });
     } else if (count > 5 && count < 10) {
-        download(list[count], dir + 'temp.png', function() {
+        download(list[count], dir + 'temp' + msg.author.id + '.png', function() {
 
-            gm(dir + "temp.png").resize(null, 156)
-                .write(dir + 'temp.png', function(err) {
+            gm(dir + 'temp' + msg.author.id + '.png').resize(null, 156)
+                .write(dir + 'temp' + msg.author.id + '.png', function(err) {
                     if (!err) {
 
-                        gm(dir + "row.png").append(dir + "temp.png", true)
-                            .write(dir + "row.png", function(err) {
+                        gm(dir + 'row' + msg.author.id + '.png').append(dir + 'temp' + msg.author.id + '.png', true)
+                            .write(dir + 'row' + msg.author.id + '.png', function(err) {
                                 if (!err) {
 
                                     scout.generatePull(list, names, count + 1, msg);
-                                } else if (err) console.log(err);
+                                } else if (err) {
+                                    console.log(err);
+                                    msg.author.sendEmbed(scoutError).catch(console.error);
+                                    msg.author.sendFile(dir + '10pull.png', "error.png");
+                                    return;
+                                }
                             })
-                    } else if (err) console.log(err);
+                    } else if (err) {
+                        console.log(err);
+                        msg.author.sendEmbed(scoutError).catch(console.error);
+                        msg.author.sendFile(dir + '10pull.png', "error.png");
+                        return;
+                    }
                 });
         });
     } else if (count == 10) {
-        scouting = 0;
 
-        gm(dir + "base.png").append(dir + "row.png")
-            .write(dir + "scout.png", function(err) {
+        gm(dir + 'base' + msg.author.id + '.png').append(dir + 'row' + msg.author.id + '.png')
+            .write(dir + 'scout' + msg.author.id + '.png', function(err) {
                 if (!err) {
                     let id = msg.author.id;
 
@@ -160,30 +161,57 @@ exports.generatePull = function(list, names, count, msg) {
                     //.setDescription("•" + names.join("\n•"));
                     msg.author.sendEmbed(embed).catch(console.error);
 
-                    msg.author.sendFile(dir + "scout.png", "scout.png");
+                    msg.author.sendFile(dir + 'scout' + msg.author.id + '.png', "scout.png").then(
+                        function() {
+                            fs.unlink(dir + 'temp' + msg.author.id + '.png', function() {
+                                fs.unlink(dir + 'base' + msg.author.id + '.png', function() {
+                                    fs.unlink(dir + 'row' + msg.author.id + '.png', function() {
+                                        fs.unlink(dir + 'scout' + msg.author.id + '.png', function() {
+                                            return;
+                                        });
+                                    });
+                                });
+                            });
+                        });
 
-                    let note = new discord.RichEmbed();
+                    /*let note = new discord.RichEmbed();
                     note.setTitle("Finished!")
                         .setColor(0x96F08C)
                         .setDescription("Finished processing " + msg.author + "'s scout!")
                         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                    msg.channel.sendEmbed(note).catch(console.error);
-                } else if (err) console.log(err);
+                    msg.channel.sendEmbed(note).catch(console.error)*/
+
+                } else if (err) {
+                    console.log(err);
+                    msg.author.sendEmbed(scoutError).catch(console.error);
+                    msg.author.sendFile(dir + '10pull.png', "error.png");
+                    return;
+                }
             });
 
     } else {
-        download(list[count], dir + 'temp.png', function() {
-            gm(dir + "temp.png").resize(null, 156)
-                .write(dir + 'temp.png', function(err) {
+        download(list[count], dir + 'temp' + msg.author.id + '.png', function() {
+            gm(dir + 'temp' + msg.author.id + '.png').resize(null, 156)
+                .write(dir + 'temp' + msg.author.id + '.png', function(err) {
                     if (!err) {
 
-                        gm(dir + "base.png").append(dir + "temp.png", true)
-                            .write(dir + "base.png", function(err) {
+                        gm(dir + 'base' + msg.author.id + '.png').append(dir + 'temp' + msg.author.id + '.png', true)
+                            .write(dir + 'base' + msg.author.id + '.png', function(err) {
                                 if (!err) {
                                     scout.generatePull(list, names, count + 1, msg);
-                                } else if (err) console.log(err);
+                                } else if (err) {
+                                    console.log(err);
+                                    msg.author.sendEmbed(scoutError).catch(console.error);
+                                    msg.author.sendFile(dir + '10pull.png', "error.png");
+                                    return;
+                                }
                             })
-                    } else if (err) console.log(err);
+                    } else if (err) {
+                        console.log(err);
+                        msg.author.sendEmbed(scoutError).catch(console.error);
+                        msg.author.sendFile(dir + '10pull.png', "error.png");
+                        return;
+                    }
                 });
         });
     }

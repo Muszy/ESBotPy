@@ -9,6 +9,12 @@ const threeURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data
 
 //const testURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/testScout.json";
 
+var errorMsg = new discord.RichEmbed();
+errorMsg.setTitle("Error:")
+    .setColor(0xFF0040)
+    .setDescription("An error has occurred! Try again later.")
+    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+
 exports.tenPull = function(list, names, count, msg) {
     if (count == 10) {
         scout.generatePull(list, names, 0, msg);
@@ -17,7 +23,11 @@ exports.tenPull = function(list, names, count, msg) {
 
         if (rand < 15) {
             request(fourURL, function(error, response, body) {
-                if (error) { console.log(error); }
+                if (error) {
+                    console.log(error);
+                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    return;
+                }
                 if (!error) {
                     data = JSON.parse(body);
                     let num = Math.floor(Math.random() * data.four.length);
@@ -32,7 +42,11 @@ exports.tenPull = function(list, names, count, msg) {
         if (rand > 14) {
             //3star
             request(threeURL, function(error, response, body) {
-                if (error) { console.log(error); }
+                if (error) {
+                    console.log(error);
+                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    return;
+                }
                 if (!error) {
                     data = JSON.parse(body);
 
@@ -52,7 +66,11 @@ exports.solo = function(msg) {
     let rand = Math.floor(Math.random() * 1000);
     if (rand < 15) {
         request(fourURL, function(error, response, body) {
-            if (error) { console.log(error); }
+            if (error) {
+                console.log(error);
+                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                return;
+            }
             if (!error) {
                 data = JSON.parse(body);
 
@@ -72,7 +90,11 @@ exports.solo = function(msg) {
 
     if (rand > 14) {
         request(threeURL, function(error, response, body) {
-            if (error) { console.log(error); }
+            if (error) {
+                console.log(error);
+                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                return;
+            }
             if (!error) {
                 data = JSON.parse(body);
 

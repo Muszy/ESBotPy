@@ -9,6 +9,12 @@ const threeURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data
 const fourURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/Scouts/Event/four.json";
 //const testURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/testScout.json";
 
+var errorMsg = new discord.RichEmbed();
+errorMsg.setTitle("Error:")
+    .setColor(0xFF0040)
+    .setDescription("An error has occurred! Try again later.")
+    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+
 exports.tenPull = function(list, names, count, msg) {
     if (count == 10) {
         scout.generatePull(list, names, 0, msg);
@@ -18,7 +24,11 @@ exports.tenPull = function(list, names, count, msg) {
 
         if (rand < 15) {
             request(eventURL, function(error, response, body) {
-                if (error) { console.log(error); }
+                if (error) {
+                    console.log(error);
+                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    return;
+                }
                 if (!error) {
                     data = JSON.parse(body);
 
@@ -34,7 +44,11 @@ exports.tenPull = function(list, names, count, msg) {
             flip = Math.floor(Math.random() * 2);
             if (flip < 1) { //event 4star
                 request(eventURL, function(error, response, body) {
-                    if (error) { console.log(error); }
+                    if (error) {
+                        console.log(error);
+                        msg.channel.sendEmbed(errorMsg).catch(console.error);
+                        return;
+                    }
                     if (!error) {
                         data = JSON.parse(body);
 
@@ -50,7 +64,11 @@ exports.tenPull = function(list, names, count, msg) {
                 });
             } else if (flip > 0) {
                 request(fourURL, function(error, response, body) {
-                    if (error) { console.log(error); }
+                    if (error) {
+                        console.log(error);
+                        msg.channel.sendEmbed(errorMsg).catch(console.error);
+                        return;
+                    }
                     if (!error) {
                         data = JSON.parse(body);
 
@@ -72,7 +90,11 @@ exports.tenPull = function(list, names, count, msg) {
 
         if (rand < 15) {
             request(eventURL, function(error, response, body) {
-                if (error) { console.log(error); }
+                if (error) {
+                    console.log(error);
+                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    return;
+                }
                 if (!error) {
                     data = JSON.parse(body);
 
@@ -88,7 +110,11 @@ exports.tenPull = function(list, names, count, msg) {
             flip = Math.floor(Math.random() * 2);
             if (flip < 1) { //event 4star
                 request(eventURL, function(error, response, body) {
-                    if (error) { console.log(error); }
+                    if (error) {
+                        console.log(error);
+                        msg.channel.sendEmbed(errorMsg).catch(console.error);
+                        return;
+                    }
                     if (!error) {
                         data = JSON.parse(body);
 
@@ -104,7 +130,11 @@ exports.tenPull = function(list, names, count, msg) {
                 });
             } else if (flip > 0) {
                 request(fourURL, function(error, response, body) {
-                    if (error) { console.log(error); }
+                    if (error) {
+                        console.log(error);
+                        msg.channel.sendEmbed(errorMsg).catch(console.error);
+                        return;
+                    }
                     if (!error) {
                         data = JSON.parse(body);
 
@@ -125,7 +155,11 @@ exports.tenPull = function(list, names, count, msg) {
             flip = Math.floor(Math.random() * 4);
             if (flip < 1) { //event 3star
                 request(eventURL, function(error, response, body) {
-                    if (error) { console.log(error); }
+                    if (error) {
+                        console.log(error);
+                        msg.channel.sendEmbed(errorMsg).catch(console.error);
+                        return;
+                    }
                     if (!error) {
                         data = JSON.parse(body);
 
@@ -141,7 +175,11 @@ exports.tenPull = function(list, names, count, msg) {
                 });
             } else if (flip > 0) {
                 request(threeURL, function(error, response, body) {
-                    if (error) { console.log(error); }
+                    if (error) {
+                        console.log(error);
+                        msg.channel.sendEmbed(errorMsg).catch(console.error);
+                        return;
+                    }
                     if (!error) {
                         data = JSON.parse(body);
 
@@ -165,7 +203,11 @@ exports.solo = function(msg) {
 
     if (rand < 15) {
         request(eventURL, function(error, response, body) {
-            if (error) { console.log(error); }
+            if (error) {
+                console.log(error);
+                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                return;
+            }
             if (!error) {
                 data = JSON.parse(body);
 
@@ -189,7 +231,11 @@ exports.solo = function(msg) {
             flip = Math.floor(Math.random() * 2);
             if (flip < 1) { //event 4star
                 request(eventURL, function(error, response, body) {
-                    if (error) { console.log(error); }
+                    if (error) {
+                        console.log(error);
+                        msg.channel.sendEmbed(errorMsg).catch(console.error);
+                        return;
+                    }
                     if (!error) {
                         data = JSON.parse(body);
 
@@ -209,7 +255,11 @@ exports.solo = function(msg) {
                 });
             } else if (flip > 0) {
                 request(fourURL, function(error, response, body) {
-                    if (error) { console.log(error); }
+                    if (error) {
+                        console.log(error);
+                        msg.channel.sendEmbed(errorMsg).catch(console.error);
+                        return;
+                    }
                     if (!error) {
                         data = JSON.parse(body);
 
@@ -232,50 +282,58 @@ exports.solo = function(msg) {
     }
 
     if (rand > 80) {
-            //4star
-            flip = Math.floor(Math.random() * 4);
-            if (flip < 1) { //event 3star
-                request(eventURL, function(error, response, body) {
-                    if (error) { console.log(error); }
-                    if (!error) {
-                        data = JSON.parse(body);
+        //4star
+        flip = Math.floor(Math.random() * 4);
+        if (flip < 1) { //event 3star
+            request(eventURL, function(error, response, body) {
+                if (error) {
+                    console.log(error);
+                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    return;
+                }
+                if (!error) {
+                    data = JSON.parse(body);
 
 
-                        let num = Math.floor(Math.random() * data.eventThree.length);
+                    let num = Math.floor(Math.random() * data.eventThree.length);
 
-                        let id = msg.author.id;
-                        let embed = new discord.RichEmbed();
-                        embed.setTitle(msg.author + "'s Scouting Results")
-                            .setURL("http://enstars.info/card/" + data.eventThree[num].id)
-                            .setColor(0x96F08C)
-                            .setThumbnail(data.eventThree[num].img)
-                            .setDescription(data.eventThree[num].name);
-                        msg.channel.sendEmbed(embed).catch(console.error);
-                    }
+                    let id = msg.author.id;
+                    let embed = new discord.RichEmbed();
+                    embed.setTitle(msg.author + "'s Scouting Results")
+                        .setURL("http://enstars.info/card/" + data.eventThree[num].id)
+                        .setColor(0x96F08C)
+                        .setThumbnail(data.eventThree[num].img)
+                        .setDescription(data.eventThree[num].name);
+                    msg.channel.sendEmbed(embed).catch(console.error);
+                }
 
-                });
-            } else if (flip > 0) {
-                request(threeURL, function(error, response, body) {
-                    if (error) { console.log(error); }
-                    if (!error) {
-                        data = JSON.parse(body);
+            });
+        } else if (flip > 0) {
+            request(threeURL, function(error, response, body) {
+                if (error) {
+                    console.log(error);
+                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    return;
+                }
+                if (!error) {
+                    data = JSON.parse(body);
 
 
-                        let num = Math.floor(Math.random() * data.three.length);
+                    let num = Math.floor(Math.random() * data.three.length);
 
-                        let id = msg.author.id;
-                        let embed = new discord.RichEmbed();
-                        embed.setTitle(msg.author + "'s Scouting Results")
-                            .setURL("http://enstars.info/card/" + data.three[num].id)
-                            .setColor(0x96F08C)
-                            .setThumbnail(data.three[num].img)
-                            .setDescription(data.three[num].name);
-                        msg.channel.sendEmbed(embed).catch(console.error);
-                    }
+                    let id = msg.author.id;
+                    let embed = new discord.RichEmbed();
+                    embed.setTitle(msg.author + "'s Scouting Results")
+                        .setURL("http://enstars.info/card/" + data.three[num].id)
+                        .setColor(0x96F08C)
+                        .setThumbnail(data.three[num].img)
+                        .setDescription(data.three[num].name);
+                    msg.channel.sendEmbed(embed).catch(console.error);
+                }
 
-                });
-            }
+            });
         }
+    }
 
 }
 

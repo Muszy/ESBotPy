@@ -13,6 +13,12 @@ errMsg.setTitle("Error:")
     .setDescription("Please enter in the form of `!img [character first name] (alias)`!")
     .setThumbnail("http://i.imgur.com/7TL0t99.png");
 
+var oops = new discord.RichEmbed();
+oops.setTitle("Error:")
+    .setColor(0xFF0040)
+    .setDescription("An error has occurred! Try again later.")
+    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+
 exports.run = (bot, msg, args) => {
 
     if (args.length < 2) {
@@ -46,7 +52,11 @@ function img(args, msg) {
     let list = [];
 
     request(url + boy + "/" + star + ".json", function(error, response, body) {
-        if (error) { console.log(error); }
+        if (error) {
+            console.log(error);
+            msg.channel.sendEmbed(oops).catch(console.error);
+            return;
+        }
         if (!(response.statusCode === 200)) {
             let embed = new discord.RichEmbed();
             embed.setTitle("Error:")
