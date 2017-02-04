@@ -14,7 +14,7 @@ exports.run = (bot, member, guild) => {
 
 		embed.setTitle("Goodbye...")
 			.setColor(0xFFB6C1)
-			.setDescription(member.user.username + " has left the server..")
+			.setDescription("Goodbye, " + member.user.username + ", we hope that you produce with us again someday!")
 			.setThumbnail("http://i.imgur.com/nRleyfl.png");
 
 		let ch = serverSettings[member.guild.id].notifyChannel;
