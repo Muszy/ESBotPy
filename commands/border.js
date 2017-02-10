@@ -33,7 +33,7 @@ exports.run = (bot, msg, args) => {
 			embed.setTitle("The Current Border is:")
 		        .setColor(0xFFB400)
 		        .setDescription(tweets[0].text)
-		        .setFooter("Info from @enst_border on TWitter.\n万 = 10,000 in China/Japan.")
+		        .setFooter("Info from @enst_border on Twitter.\n万 = 10,000 in China/Japan.")
 		        .setThumbnail("https://pbs.twimg.com/profile_images/664120113797292032/cbs9ZrNi.jpg");
 		    msg.channel.sendEmbed(embed).catch(console.error);
   		}
