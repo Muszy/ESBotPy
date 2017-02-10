@@ -11,5 +11,9 @@
 	"banned_server_ids": [""],
 	"whitelist": [""],
 	"Client_ID": 275452891311898624,
-	"Client_Secret":"M8sS9lyIwzBiuLFKRdYLaBmK9Yf7NOeP"
+	"Client_Secret":"M8sS9lyIwzBiuLFKRdYLaBmK9Yf7NOeP",
+	"twitKey": "5lo1IwlqmhemPO4Yc9g1MQSQ1",
+	"twitSecret": "dN8wblensXINCmfbBfgvSiIpWUwj53SXrvAVL00nMM8RUCfAyb",
+	"twitToken": "297074592-XdS4lX3Bfex1W97FrwtPCANfwh8HxLq8kUZBss5p",
+	"twitTokenSecret": "JW5ZXtbjtQZCoBZ8FV7e7ijSw80Lz9d5VMQPcCEUWiuri"
 }

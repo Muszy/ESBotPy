@@ -128,7 +128,7 @@ function eventChecker() {
                 if (serverSettings[id].notify && serverSettings[id] != "") {
                     //console.log(id);
                     let ch = serverSettings[id].notifyChannel;
-                    //bot.channels.get(ch).sendMessage('tesla');
+                    bot.channels.get(ch).sendMessage('@here');
                     bot.channels.get(ch).sendEmbed(embed).catch(console.error);
                 }
             }
@@ -167,7 +167,7 @@ function eventChecker() {
                     if (serverSettings[id].notify && serverSettings[id] != "") {
                         //console.log(id);
                         let ch = serverSettings[id].notifyChannel;
-                        //bot.channels.get(ch).sendMessage('tesla');
+                        bot.channels.get(ch).sendMessage('@here');
                         bot.channels.get(ch).sendEmbed(embed).catch(console.error);
                     }
                 }
@@ -196,7 +196,7 @@ function eventChecker() {
                     if (serverSettings[id].notify && serverSettings[id] != "") {
                         //console.log(id);
                         let ch = serverSettings[id].notifyChannel;
-                        //bot.channels.get(ch).sendMessage('tesla');
+                        bot.channels.get(ch).sendMessage('@here');
                         bot.channels.get(ch).sendEmbed(embed).catch(console.error);
                     }
                 }
@@ -484,6 +484,15 @@ bot.on("message", msg => {
             embed.setTitle("Daikichi says:")
                 .setColor(0xB48CF0)
                 .setDescription("Revivals start the day the current event ends at **11PM PST / 1AM EST / 6AM GMT / 3PM JST**!")
+                .setThumbnail("http://i.imgur.com/nRleyfl.png");
+            msg.channel.sendEmbed(embed).catch(console.error);
+        }
+        if (msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("daily") > -1 && msg.content.toLowerCase().indexOf("course") > -1 ) {
+
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Daikichi says:")
+                .setColor(0xB48CF0)
+                .setDescription("In JST:\n\n**Monday:** Trickstar (Yellow)\n**Tuesday:** Ryuseitai (Red)\n**Wednesday:** UNDEAD (Blue)\n**Thursday:** Knights (Yellow)\n**Friday:** Akatsuki/2wink (Red)\n**Saturday:** Ra*bits/Valkyrie (Blue)\n**Sunday:** fine/Switch (Double EXP)")
                 .setThumbnail("http://i.imgur.com/nRleyfl.png");
             msg.channel.sendEmbed(embed).catch(console.error);
         }

@@ -33,6 +33,7 @@
     "trim": "*",
     "util": "*",
     "node-schedule": "*",
-    "gm": "*"
+    "gm": "*",
+    "twitter": "*"
   }
 }
