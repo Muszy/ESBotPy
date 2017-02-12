@@ -108,8 +108,11 @@ function searchBoy(boy, list, count, msg) {
 
                 let name = data.cards[0].name.split(")");
 
+                let temp = name[1];
+                if (boy == "cn") temp = "CN/TW Enstars";
+
                 let embed = new discord.RichEmbed();
-                embed.setTitle("Results for " + name[1] + ":")
+                embed.setTitle("Results for " + temp + ":")
                     .setColor(0x96F08C)
                     .setDescription("Number of 3★: " + list[0] + "\nNumber of 4★: " + list[1] + "\nNumber of 5★: " + list[2])
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
@@ -155,10 +158,13 @@ function searchRare(args, msg) {
             if (rare == "r") {
                 let name = data.cards[0].name.split(")");
 
+                let temp = name[1];
+                if (boy == "cn") temp = "CN/TW Enstars";
+
                 let embed = new discord.RichEmbed();
                 embed.setTitle("Found:")
                     .setColor(0x96F08C)
-                    .setDescription("`[" + data.cards.length + "]` 3★ cards for " + name[1] + ".")
+                    .setDescription("`[" + data.cards.length + "]` 3★ cards for " + temp + ".")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
                 msg.channel.sendEmbed(embed).catch(console.error);
                 return;
