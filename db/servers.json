@@ -1,14 +1,12 @@
 {
     "108753685122715648": {
-        "ignore": [
-            "275746453706637313"
-        ],
-        "banAlerts": false,
+        "ignore": [],
+        "banAlerts": true,
         "greet": true,
-        "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mods <@193910559433949185> and <@200388175670018048>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
+        "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role or use !iam <role>! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mod <@108752547166031872>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
         "notify": true,
         "notifyChannel": "188475104512966657",
-        "treats": 0,
+        "treats": 36,
         "roles": [
             "General"
         ],
@@ -16,10 +14,10 @@
     },
     "139081294607941633": {
         "ignore": [],
-        "banAlerts": false,
-        "greet": false,
-        "welcome": "Welcome $USER$ to $SERVER$!",
-        "notify": true,
+        "banAlerts": true,
+        "greet": true,
+        "welcome": "Welcome $USER$ to $SERVER$! Please read the <#275471181401030657> and use the channels for their intended topics.  Use <#275471181401030657> for anything offtopic.\n\nYou can tag yourself accordingly in <#275471181401030657> with `!iam <role>` and you can check out what roles we have available with `!iam list!`",
+        "notify": false,
         "notifyChannel": "174636983178625035",
         "treats": 0,
         "roles": [],
@@ -40,7 +38,7 @@
         "ignore": [],
         "banAlerts": false,
         "greet": true,
-        "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role or use !iam <role>! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mods <@200388175670018048> and <@108752547166031872>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
+        "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role or use !iam <role>! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mod <@108752547166031872>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
         "notify": true,
         "notifyChannel": "210577428815413251",
         "treats": 48,

@@ -34,6 +34,9 @@ var serverSettings = require(serversName);
 var globalsName = "./db/globals.json";
 var globals = require(globalsName);
 
+var quotesName = "./db/quotes.json";
+var quotes = require(globalsName);
+
 /*====================BASE====================*/
 
 //important: don't forget to state the bot
@@ -128,7 +131,7 @@ function eventChecker() {
                 if (serverSettings[id].notify && serverSettings[id] != "") {
                     //console.log(id);
                     let ch = serverSettings[id].notifyChannel;
-                    bot.channels.get(ch).sendMessage('@here');
+                    bot.channels.get(ch).sendMessage('@here Event is now over!');
                     bot.channels.get(ch).sendEmbed(embed).catch(console.error);
                 }
             }
@@ -167,7 +170,7 @@ function eventChecker() {
                     if (serverSettings[id].notify && serverSettings[id] != "") {
                         //console.log(id);
                         let ch = serverSettings[id].notifyChannel;
-                        bot.channels.get(ch).sendMessage('@here');
+                        bot.channels.get(ch).sendMessage('@here Event halfway is here!');
                         bot.channels.get(ch).sendEmbed(embed).catch(console.error);
                     }
                 }
@@ -196,7 +199,7 @@ function eventChecker() {
                     if (serverSettings[id].notify && serverSettings[id] != "") {
                         //console.log(id);
                         let ch = serverSettings[id].notifyChannel;
-                        bot.channels.get(ch).sendMessage('@here');
+                        bot.channels.get(ch).sendMessage('@here Last day of event!');
                         bot.channels.get(ch).sendEmbed(embed).catch(console.error);
                     }
                 }
@@ -266,8 +269,12 @@ bot.on("guildCreate", guild => {
         "roles": [],
         "tags": false
     }
-    console.log("Added server \'" + guild.name + "\' to the servers list.  ID: " + guild.id);
+    quotes[guild.id] = {
+            "quotes": []
+        }
+    console.log("Added server \'" + guild.name + "\' to the servers and quotes list.  ID: " + guild.id);
     updateServers();
+    updateQuotes();
 
     let embed = new discord.RichEmbed();
     embed.setTitle("Hi! I'm DaikichiBot!")
@@ -281,6 +288,7 @@ bot.on("guildCreate", guild => {
 bot.on("guildDelete", guild => {
 
     delete serverSettings[guild.id];
+    delete quotes[guild.id];
     console.log("Deleted server \'" + guild.name + "\' from the servers list.  ID: " + guild.id);
 
     updateServers();
@@ -318,6 +326,22 @@ function updateGlobals() {
             });
         }
     })
+}
+
+function updateQuotes() {
+    fs.writeFile(__dirname + '/db/quotes-temp.json', JSON.stringify(quotes, null, 4), error => {
+        if (error) console.log(error)
+        else {
+            fs.stat(__dirname + '/db/quotes-temp.json', (err, stats) => {
+                if (err) console.log(err)
+                else if (stats["size"] < 2) console.log('Prevented quotes from being overwritten');
+                else {
+                    fs.rename(__dirname + '/db/quotes-temp.json', __dirname + '/db/quotes.json', e => {
+                        if (e) console.log(e) });
+                }
+            });
+        }
+    });
 }
 
 function checkIgnore(bot, msg) {
@@ -473,8 +497,8 @@ bot.on("message", msg => {
             let embed = new discord.RichEmbed();
             embed.setTitle("Tetora is...")
                 .setColor(0xB48CF0)
-                .setDescription("There. Following his taichou around.")
-                .setThumbnail("http://i.imgur.com/ypEMaoX.png");
+                .setDescription("Here he is!  (With his  new card!)")
+                .setImage("https://pbs.twimg.com/media/C4gdyIBUMAEVhso.png");
             msg.channel.sendEmbed(embed).catch(console.error);
         }
 
@@ -506,6 +530,12 @@ bot.on("message", msg => {
                 .setThumbnail("http://i.imgur.com/nRleyfl.png");
             msg.channel.sendEmbed(embed).catch(console.error);
         }
+
+        /*if (msg.content.toLowerCase() == "test") {
+            let embed = new discord.RichEmbed();
+            embed.setDescription("<@" + msg.author.id + ">");
+            msg.channel.sendEmbed(embed).catch(console.error);
+        }*/
         //============================im too lazy to make it nice========================================================
         return;
     }

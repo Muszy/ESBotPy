@@ -18,6 +18,61 @@ exports.run = (bot, msg, args) => {
 		
 	}
 
+	else if ( !isNaN(args[0]) ) {
+		
+		if ( parseInt(args[0]) < 11 && parseInt(args[0]) > 1) {
+
+			file[msg.guild.id].treats = parseInt(file[msg.guild.id].treats) + parseInt(args[0]);
+
+			fs.writeFile(fileName, JSON.stringify(parseInt(file),null,4), function (err) {
+	  			if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating daily treats in ' + fileName);
+			});
+
+			updateTreats();
+
+			let embed = new discord.RichEmbed();
+			embed.setColor(0xFFB6C1)
+				.setTitle("You have given Daikichi " + parseInt(args[0]) + " treats.")
+				.setThumbnail("http://i.imgur.com/gUWJl0u.png")
+				.setDescription("He is pleased.  Today's treats: " + file[msg.guild.id].treats + " ❤️️");
+
+			msg.channel.sendEmbed(embed).catch(console.error);
+		}
+
+		else if ( parseInt(args[0]) == 1) {
+
+			file[msg.guild.id].treats = parseInt(file[msg.guild.id].treats) + parseInt(args[0]);
+
+			fs.writeFile(fileName, JSON.stringify(parseInt(file),null,4), function (err) {
+	  			if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating daily treats in ' + fileName);
+			});
+
+			updateTreats();
+
+			let embed = new discord.RichEmbed();
+			embed.setColor(0xFFB6C1)
+				.setTitle("You have given Daikichi a treat.")
+				.setThumbnail("http://i.imgur.com/gUWJl0u.png")
+				.setDescription("He is pleased.  Today's treats: " + file[msg.guild.id].treats + " ❤️️");
+
+			msg.channel.sendEmbed(embed).catch(console.error);
+		}
+
+		else {
+			let embed = new discord.RichEmbed();
+			embed.setColor(0xFF0040)
+				.setTitle("Error:")
+				.setThumbnail("http://i.imgur.com/gUWJl0u.png")
+				.setDescription("The max amount of treats Daikichi can receive at one time is 10!");
+
+			msg.channel.sendEmbed(embed).catch(console.error);
+		}
+	}
+
 	else {	
 		//console.log(file.dailyTreats);
 
