@@ -17,6 +17,15 @@ exports.run = (bot, msg, args) => {
 
 		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
+	else if (args.length > 0) {
+		let embed = new discord.RichEmbed();
+		embed.setColor(0xFFB6C1)
+			.setTitle("Punted!")
+			.setImage(img[Math.floor(Math.random() * (img.length))])
+			.setDescription("**" + msg.author + "** punts **" + args.join(" ").trim() + "** " + punts[Math.floor(Math.random() * (punts.length))]);
+
+		msg.channel.sendEmbed(embed).catch(console.error);
+	} 
 	else { 
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)

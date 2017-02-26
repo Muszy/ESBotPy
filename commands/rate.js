@@ -27,7 +27,7 @@ exports.run = (bot, msg, args) => {
         return;
     }
 
-    if (msg.mentions.users.first() === bot.user || args.join(" ").trim() == bot.user.username) {
+    if (msg.mentions.users.first() === bot.user || args.join(" ").trim().toLowerCase() == bot.user.username.toLowerCase() || args.join(" ").trim().toLowerCase() == "daikichi" || args.join(" ").trim().toLowerCase() == "daikichi bot") {
         //console.log( "I'd rate myself **10/10**");
         let embed = new discord.RichEmbed();
         embed.setTitle("Rating:")
@@ -52,10 +52,10 @@ exports.run = (bot, msg, args) => {
 
         } else {
 
-        	let embed = new discord.RichEmbed();
+            let embed = new discord.RichEmbed();
             embed.setTitle("Rating:")
                 .setColor(0xFF69B4)
-                .setDescription("I'd rate **" + msg.mentions.users.first().username + "** a **" + generateUserRating(bot, msg, msg.mentions.users.first()) + "/10**!")
+                .setDescription("I'd rate **" + name + "** a **" + generateUserRating(bot, msg, msg.mentions.users.first()) + "/10**!")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
             msg.channel.sendEmbed(embed).catch(console.error);
         }
@@ -110,11 +110,15 @@ function generateUserRating(bot, msg, user) {
             now = new Date();
         if (now.valueOf() - joined.valueOf() >= 2592000000) { score += 1; } //if user has been on the server for at least one month +1
     } catch (e) { console.log("ERROR WITH DATE"); }
-    if (msg.guild.member(user.id).hasPermission("manageRoles")) { score += 1; } //mods get points!
-    if (msg.guild.member(user.id).hasPermission("manageServer")) { score += 1; } //admins get even more~
+    //console.log(msg.guild.member(user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS"));
+    //console.log(msg.guild.member(user).hasPermission("ADMINISTRATOR"));
+    if (msg.guild.member(user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) { score += 1; } //mods get points!
+    if (msg.guild.member(user).hasPermission("ADMINISTRATOR")) { score += 1; } //admins get even more~
     if (user.username.length > 15) { score -= 1; } //long ass names get WAY LESS
     if (!user.avatarURL) { score -= 1; } //no avatar = succ
     //maybe add something to do with dia later
+
+    if (score > 10) { score = 10; } else if (score < 1) { score = 1; } //keep it within 1-10
 
     Ratings[user.username.toLowerCase()] = score;
     return score;

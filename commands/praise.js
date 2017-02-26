@@ -23,6 +23,17 @@ exports.run = (bot, msg, args) => {
 
 		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
+
+	else if (args.length > 0) {
+
+		let embed = new discord.RichEmbed();
+		embed.setColor(0xFF69B4)
+			.setTitle("Praised!")
+			.setThumbnail("http://i.imgur.com/nRleyfl.png")
+			.setDescription("**Daikichi says:** " + args.join(" ").trim() + praise[Math.floor(Math.random() * (praise.length))]);
+
+		msg.channel.sendEmbed(embed).catch(console.error);
+	} 
 	else { 
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFF69B4)
