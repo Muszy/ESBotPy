@@ -1,7 +1,7 @@
 var request = require("superagent");
 const discord = require("discord.js");
 
-var pets = ["http://i.imgur.com/Y3GB3K1.gif", "http://i.imgur.com/f7ByidM.gif", "http://i.imgur.com/LUpk6b6.gif", "http://i.imgur.com/eOJlnwP.gif",	"http://31.media.tumblr.com/tumblr_mckmheJJAZ1rqw7udo1_500.gif", "http://i.imgur.com/OYiSZWX.gif", "https://m.popkey.co/a5cfaf/1x6lW.gif"]
+var pets = ["http://i.imgur.com/Y3GB3K1.gif", "http://i.imgur.com/f7ByidM.gif", "http://i.imgur.com/LUpk6b6.gif", "http://i.imgur.com/eOJlnwP.gif",	"http://i.imgur.com/VmdfAIg.gif", "http://i.imgur.com/OYiSZWX.gif", "http://i.imgur.com/jwiVoa8.gif"]
 
 exports.run = (bot, msg, args) => {
 	var auth = msg.author.id;

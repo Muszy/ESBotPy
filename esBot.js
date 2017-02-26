@@ -11,6 +11,7 @@ color guide:
     0xFFB6C1 - chat
     0xB48CF0 - help
     0xFFB400 - event/gacha info
+    0xFF69B4 - rates
 
 icons:
     treat daikichi - http://i.imgur.com/gUWJl0u.png
@@ -35,7 +36,10 @@ var globalsName = "./db/globals.json";
 var globals = require(globalsName);
 
 var quotesName = "./db/quotes.json";
-var quotes = require(globalsName);
+var quotes = require(quotesName);
+
+var weebName = "./db/weeb.json";
+var weeb = require(weebName);
 
 /*====================BASE====================*/
 
@@ -272,9 +276,13 @@ bot.on("guildCreate", guild => {
     quotes[guild.id] = {
             "quotes": []
         }
-    console.log("Added server \'" + guild.name + "\' to the servers and quotes list.  ID: " + guild.id);
+    weeb[guild.id] = {
+            "weeb": []
+        }
+    console.log("Added server \'" + guild.name + "\' to the servers and quotes/weeb list.  ID: " + guild.id);
     updateServers();
     updateQuotes();
+    updateWeeb();
 
     let embed = new discord.RichEmbed();
     embed.setTitle("Hi! I'm DaikichiBot!")
@@ -337,6 +345,22 @@ function updateQuotes() {
                 else if (stats["size"] < 2) console.log('Prevented quotes from being overwritten');
                 else {
                     fs.rename(__dirname + '/db/quotes-temp.json', __dirname + '/db/quotes.json', e => {
+                        if (e) console.log(e) });
+                }
+            });
+        }
+    });
+}
+
+function updateWeeb() {
+    fs.writeFile(__dirname + '/db/weeb-temp.json', JSON.stringify(weeb, null, 4), error => {
+        if (error) console.log(error)
+        else {
+            fs.stat(__dirname + '/db/weeb-temp.json', (err, stats) => {
+                if (err) console.log(err)
+                else if (stats["size"] < 2) console.log('Prevented weeb from being overwritten');
+                else {
+                    fs.rename(__dirname + '/db/weeb-temp.json', __dirname + '/db/weeb.json', e => {
                         if (e) console.log(e) });
                 }
             });
@@ -531,11 +555,24 @@ bot.on("message", msg => {
             msg.channel.sendEmbed(embed).catch(console.error);
         }
 
-        /*if (msg.content.toLowerCase() == "test") {
+        if (msg.content.toLowerCase().indexOf("faggot") > -1) {
+
             let embed = new discord.RichEmbed();
-            embed.setDescription("<@" + msg.author.id + ">");
+            embed.setTitle("Daikichi says:")
+                .setColor(0x3399FF)
+                .setDescription("Please don't use slurs like that~!")
+                .setThumbnail("http://i.imgur.com/nRleyfl.png");
             msg.channel.sendEmbed(embed).catch(console.error);
-        }*/
+            msg.delete()
+                .then(msg => console.log(`Deleted message from ${msg.author} for slurs`))
+                .catch(console.error);
+        }
+
+        if (msg.content.toLowerCase() == "test") {
+            let embed = new discord.RichEmbed();
+            embed.setDescription("https://gyazo.com/85704b41643d32b74eafa9448d27919b");
+            msg.channel.sendEmbed(embed).catch(console.error);
+        }
         //============================im too lazy to make it nice========================================================
         return;
     }
