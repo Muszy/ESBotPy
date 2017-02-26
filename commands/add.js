@@ -18,7 +18,7 @@ exports.run = (bot, msg, args) => {
 	}
 
     if (args.length>0) {
-        file[msg.guild.id].quotes.push(msg.content.slice(5));
+        file[msg.guild.id].quotes.push(msg.content.slice(5).trim());
 
         let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
