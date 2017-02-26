@@ -12,7 +12,16 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFFB6C1)
 			.setTitle("Waves!")
 			.setImage(waves[Math.floor(Math.random() * (waves.length))])
-			.setDescription(msg.mentions.users.first()+ " waves at **" + msg.author + "!**");
+			.setDescription(msg.author + " waves at **" + msg.mentions.users.first() + "!**");
+
+		msg.channel.sendEmbed(embed).catch(console.error);
+	} 
+	else if (args.length > 0) {
+		let embed = new discord.RichEmbed();
+		embed.setColor(0xFFB6C1)
+			.setTitle("Waves!")
+			.setImage(waves[Math.floor(Math.random() * (waves.length))])
+			.setDescription(msg.author + " waves at **" + args.join(" ").trim() + "!**");
 
 		msg.channel.sendEmbed(embed).catch(console.error);
 	} 

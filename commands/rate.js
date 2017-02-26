@@ -27,7 +27,7 @@ exports.run = (bot, msg, args) => {
         return;
     }
 
-    if (msg.mentions.users.first() === bot.user || args.join(" ").trim() == bot.user.username) {
+    if (msg.mentions.users.first() === bot.user || args.join(" ").trim().toLowerCase() == bot.user.username.toLowerCase() || args.join(" ").trim().toLowerCase() == "daikichi" || args.join(" ").trim().toLowerCase() == "daikichi bot") {
         //console.log( "I'd rate myself **10/10**");
         let embed = new discord.RichEmbed();
         embed.setTitle("Rating:")
@@ -110,8 +110,8 @@ function generateUserRating(bot, msg, user) {
             now = new Date();
         if (now.valueOf() - joined.valueOf() >= 2592000000) { score += 1; } //if user has been on the server for at least one month +1
     } catch (e) { console.log("ERROR WITH DATE"); }
-    console.log(msg.guild.member(user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS"));
-    console.log(msg.guild.member(user).hasPermission("ADMINISTRATOR"));
+    //console.log(msg.guild.member(user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS"));
+    //console.log(msg.guild.member(user).hasPermission("ADMINISTRATOR"));
     if (msg.guild.member(user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) { score += 1; } //mods get points!
     if (msg.guild.member(user).hasPermission("ADMINISTRATOR")) { score += 1; } //admins get even more~
     if (user.username.length > 15) { score -= 1; } //long ass names get WAY LESS

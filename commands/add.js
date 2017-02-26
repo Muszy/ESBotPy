@@ -43,7 +43,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bot, msg, args) => {
-    return "To add a quote, just use `!add [quote]`.";
+    return "To add a quote, just use `!add [quote]`.  Try using the format \"QUOTE\" -*Person*!";
 }
 
 /*==============FUNCTIONS===============*/
