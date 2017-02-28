@@ -247,6 +247,141 @@ exports.run = (bot, msg, args) => {
 	}bot.channels.get(file[msg.guild.id].notificationChannel)
 
 //=========================================================================
+	if (args[0].toLowerCase() == "diagen") {
+		let value = args.slice(1);
+
+		if (value[0].toLowerCase() == "false" || value[0].toLowerCase() == "off") {
+			file[msg.guild.id].diaGen = false;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating diaGen in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**Dia Generation** set to off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
+			file[msg.guild.id].diaGen = true;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating diaGen in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**Dia Generation** set to on.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else {
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Error:")
+				.setColor(0xFF0040)
+				.setDescription("Dia Generation can only be set to on/off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+	}
+
+//=========================================================================
+	if (args[0].toLowerCase() == "diachance") {
+		let value = args.slice(1);
+
+		if (!isNaN(value[0])) {
+			file[msg.guild.id].diaChance = parseInt(value[0]);
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating diaChance in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**Dia Chance** set to " + value[0] + "%.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else {
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Error:")
+				.setColor(0xFF0040)
+				.setDescription("Dia Chance must be set to a number.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+	}
+
+//=========================================================================
+	if (args[0].toLowerCase() == "diatype") {
+		let value = args.slice(1);
+
+		if ((value[0])) {
+			file[msg.guild.id].diaType = value[0];
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating diaType in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**Dia Type** set to " + value[0] + ".")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else {
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Error:")
+				.setColor(0xFF0040)
+				.setDescription("Dia Type must be valid.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+	}
+
+//=========================================================================
 
 if (args[0].toLowerCase() == "check") {
 	let embed = new discord.RichEmbed();
@@ -258,6 +393,9 @@ if (args[0].toLowerCase() == "check") {
 		.addField("Greetings", file[msg.guild.id].greet)
 		.addField("Ban Alerts", file[msg.guild.id].banAlerts)
 		.addField("Tagging", file[msg.guild.id].tags)
+		.addField("Dia Generation", file[msg.guild.id].diaGen)
+		.addField("Dia Chance", file[msg.guild.id].diaChance)
+		.addField("Dia Type", file[msg.guild.id].diaType)
 		.setThumbnail("http://i.imgur.com/7TL0t99.png");
 		if (file[msg.guild.id].welcome != "") {
 			embed.addField("Welcome Msg", file[msg.guild.id].welcome);
@@ -275,7 +413,7 @@ if (args[0].toLowerCase() == "check") {
 
 		embed.setTitle("Error:")
 			.setColor(0xFF0040)
-			.setDescription("Only `banAlerts, notify, greet, tags` are allowed.")
+			.setDescription("Only `banAlerts, notify, greet, tags, diaGen, diaChance, diaType` are allowed.")
 			.setThumbnail("http://i.imgur.com/7TL0t99.png");
 		msg.channel.sendEmbed(embed).catch(console.error);
 

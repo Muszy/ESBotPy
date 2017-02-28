@@ -2,10 +2,16 @@ const discord = require("discord.js");
 var request = require("request");
 var fs = require("fs");
 var gm = require("gm");
+
 var scout = require("./scout.js");
 var eventPull = require("./lib/eventPull.js");
 var normPull = require("./lib/normPull.js");
 var ptsPull = require("./lib/ptsPull.js");
+var boxPull = require("./lib/boxPull.js");
+var specialPull = require("./lib/specialPull.js");
+
+var usersName = "../db/users.json";
+var userSettings = require(usersName);
 
 var scoutError = new discord.RichEmbed();
 scoutError.setTitle("You're going too fast!")
@@ -24,57 +30,97 @@ var download = function(uri, filename, callback) {
 
 exports.run = (bot, msg, args) => {
 
-    if (args.length < 2) {
-        let embed = new discord.RichEmbed();
-        embed.setTitle("Error:")
-            .setColor(0xFF0040)
-            .setDescription("Please enter in the format of `scout [event/dia/points] [1/10]`!")
-            .setThumbnail("http://i.imgur.com/7TL0t99.png");
-        msg.channel.sendEmbed(embed).catch(console.error);
-        return;
-    }
+    if (args.length > 0) {
 
-    if (args[0].toLowerCase() == "event") {
+        if (args.length > 1) {
 
-        if (args[1] == "10") {
+            if (args[0].toLowerCase() == "special") {
+
+                if (userSettings[msg.author.id].dia < 135) {
+                    let embed = new discord.RichEmbed();
+                    embed.setTitle("Error:")
+                        .setColor(0xFF0040)
+                        .setDescription("You don't have enough to scout!  You need 135 cash! 🐾")
+                        .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                    msg.channel.sendEmbed(embed).catch(console.error);
+                    return;
+                }
+
+                userSettings[msg.author.id].dia -= 135;
+                updateUsers();
+
+                let list = [];
+                let names = [];
+                let boy = args[1].toLowerCase().trim();
+                boxPull.tenPull(boy, list, names, 0, msg);
+                return;
+            }
+
+            if (args[0].toLowerCase() == "event") {
+
+                if (args[1] == "10") {
+
+                    let list = [];
+                    let names = [];
+                    eventPull.tenPull(list, names, 0, msg);
+                    return;
+                } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
+                    eventPull.solo(msg);
+                    return;
+                }
+            }
+
+            if (args[0].toLowerCase() == "normal" || args[0].toLowerCase() == "norm" || args[0].toLowerCase() == "dia") {
+
+                if (args[1] == "10") {
+
+                    let list = [];
+                    let names = [];
+                    normPull.tenPull(list, names, 0, msg);
+                    return;
+                } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
+                    normPull.solo(msg);
+                    return;
+                }
+            }
+
+            if (args[0].toLowerCase() == "points" || args[0].toLowerCase() == "pts" || args[0].toLowerCase() == "point" || args[0].toLowerCase() == "pt") {
+
+                if (args[1] == "10") {
+
+                    let list = [];
+                    let names = [];
+                    ptsPull.tenPull(list, names, 0, msg);
+                    return;
+                } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
+                    ptsPull.solo(msg);
+                    return;
+                }
+            }
+        }
+
+        if (args[0].toLowerCase() == "special" && args.length === 1) {
+
+            if (userSettings[msg.author.id].dia < 135) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("You don't have enough to scout!  You need 135 cash! 🐾")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+
+            userSettings[msg.author.id].dia -= 135;
+            updateUsers();
 
             let list = [];
             let names = [];
-            eventPull.tenPull(list, names, 0, msg);
-            return;
-        } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
-            eventPull.solo(msg);
+            specialPull.tenPull(list, names, 0, msg);
             return;
         }
     }
 
-    if (args[0].toLowerCase() == "normal" || args[0].toLowerCase() == "norm" || args[0].toLowerCase() == "dia") {
-
-        if (args[1] == "10") {
-
-            let list = [];
-            let names = [];
-            normPull.tenPull(list, names, 0, msg);
-            return;
-        } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
-            normPull.solo(msg);
-            return;
-        }
-    }
-
-    if (args[0].toLowerCase() == "points" || args[0].toLowerCase() == "pts" || args[0].toLowerCase() == "point" || args[0].toLowerCase() == "pt") {
-
-        if (args[1] == "10") {
-
-            let list = [];
-            let names = [];
-            ptsPull.tenPull(list, names, 0, msg);
-            return;
-        } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
-            ptsPull.solo(msg);
-            return;
-        }
-    }
     let embed = new discord.RichEmbed();
     embed.setTitle("Error:")
         .setColor(0xFF0040)
@@ -84,7 +130,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bot, msg, args) => {
-    return "To pull from the gacha, please use the format of `!scout [event/normal/points] [1/10]`.";
+    return "To pull from the gacha, please use the format of `!scout [event/normal/points] [1/10]` or `!scout special (optional)[boy]`.";
 }
 
 exports.generatePull = function(list, names, count, msg) {
@@ -155,7 +201,7 @@ exports.generatePull = function(list, names, count, msg) {
                     let id = msg.author.id;
 
                     let embed = new discord.RichEmbed();
-                    embed.setTitle(msg.author + "'s Scouting Results")
+                    embed.setTitle(msg.author.username + "'s Scouting Results")
                         .setColor(0x96F08C)
                         .setDescription(names.join(" ★ "));
                     //.setDescription("•" + names.join("\n•"));
@@ -216,4 +262,21 @@ exports.generatePull = function(list, names, count, msg) {
         });
     }
 
+}
+
+function updateUsers() {
+    fs.writeFile(__dirname + '/../db/users-temp.json', JSON.stringify(userSettings, null, 4), error => {
+        if (error) console.log(error)
+        else {
+            fs.stat(__dirname + '/../db/users-temp.json', (err, stats) => {
+                if (err) console.log(err)
+                else if (stats["size"] < 2) console.log('Prevented users from being overwritten');
+                else {
+                    fs.rename(__dirname + '/../db/users-temp.json', __dirname + '/../db/users.json', e => {
+                        if (e) console.log(e)
+                    });
+                }
+            });
+        }
+    })
 }

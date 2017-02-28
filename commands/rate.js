@@ -82,6 +82,12 @@ exports.run = (bot, msg, args) => {
 
 }
 
+exports.reset = (bot) => {
+
+    Ratings = {};
+    console.log('rates reset ');
+}
+
 exports.help = (bots, msg, args) => {
     return "To rate someone, use `!rate <user>`.";
 }

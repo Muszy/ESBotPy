@@ -1,0 +1,19 @@
+{
+    "108752547166031872": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0
+    }
+}

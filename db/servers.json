@@ -1,27 +1,51 @@
 {
     "108753685122715648": {
-        "ignore": [],
+        "ignore": [
+            "275746453706637313"
+        ],
         "banAlerts": true,
         "greet": true,
         "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role or use !iam <role>! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mod <@108752547166031872>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
         "notify": true,
         "notifyChannel": "188475104512966657",
-        "treats": 36,
+        "treats": 0,
         "roles": [
             "General"
         ],
-        "tags": true
+        "tags": true,
+        "diaGen": true,
+        "ignoreDiaCh": [],
+        "diaChance": 100,
+        "diaType": "<:dia:283873457244995584>",
+        "lastDia": 17,
+        "diaMade": true
     },
     "139081294607941633": {
         "ignore": [],
         "banAlerts": true,
         "greet": true,
-        "welcome": "Welcome $USER$ to $SERVER$! Please read the <#275471181401030657> and use the channels for their intended topics.  Use <#275471181401030657> for anything offtopic.\n\nYou can tag yourself accordingly in <#275471181401030657> with `!iam <role>` and you can check out what roles we have available with `!iam list!`",
+        "welcome": "Welcome $USER$ to $SERVER$! Please read the <#174639296752517121> and use the channels for their intended topics. Use <#197038160952295434> for anything offtopic.\n\nYou can tag yourself accordingly with `!iam <role>` and you can check out what roles we have available with `!iam`!",
         "notify": false,
         "notifyChannel": "174636983178625035",
         "treats": 0,
-        "roles": [],
-        "tags": false
+        "roles": [
+            "MMO",
+            "GBF",
+            "KHUX",
+            "Overwatch",
+            "PKMNGO",
+            "House Ostia",
+            "Minions"
+        ],
+        "tags": true,
+        "diaGen": false,
+        "ignoreDiaCh": [
+            "174636983178625035", "142798815831785472", "237381063813496833", "174639296752517121"
+        ],
+        "diaChance": 3,
+        "diaType": "Dia",
+        "lastDia": 0,
+        "diaMade": false
     },
     "184184427885232128": {
         "ignore": [],
@@ -32,16 +56,24 @@
         "notifyChannel": "184184427885232128",
         "treats": 0,
         "roles": [],
-        "tags": false
+        "tags": false,
+        "diaGen": false,
+        "ignoreDiaCh": [],
+        "diaChance": 3,
+        "diaType": "Dia",
+        "lastDia": 0,
+        "diaMade": false
     },
     "210577428815413251": {
-        "ignore": [],
+        "ignore": [
+            "278384722256855040"
+        ],
         "banAlerts": false,
         "greet": true,
         "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role or use !iam <role>! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mod <@108752547166031872>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
         "notify": true,
         "notifyChannel": "210577428815413251",
-        "treats": 2,
+        "treats": 23,
         "roles": [
             "2wink",
             "undead",
@@ -56,7 +88,15 @@
             "gay as fuck",
             "buttP"
         ],
-        "tags": true
+        "tags": true,
+        "diaGen": false,
+        "ignoreDiaCh": [
+            "210584598596419584", "242394097371840513", "213164846290698240", "210582975375474688", "278384722256855040", "275506061329301514", "272590241712570368"
+        ],
+        "diaChance": 3,
+        "diaType": "Dia",
+        "lastDia": 0,
+        "diaMade": false
     },
     "267593821250912256": {
         "ignore": [],
@@ -79,6 +119,14 @@
             "akatsuki",
             "eurobean"
         ],
-        "tags": true
+        "tags": true,
+        "diaGen": false,
+        "ignoreDiaCh": [
+            "267593821250912256", "267610369218969600", "267611578042417164", "284091884656132096", "267611641204441088", "284092825358827531", "267705968412852226"
+        ],
+        "diaChance": 3,
+        "diaType": "Dia",
+        "lastDia": 0,
+        "diaMade": false
     }
 }

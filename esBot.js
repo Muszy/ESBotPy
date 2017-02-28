@@ -12,6 +12,7 @@ color guide:
     0xB48CF0 - help
     0xFFB400 - event/gacha info
     0xFF69B4 - rates
+    0x753FCF - dia stuff
 
 icons:
     treat daikichi - http://i.imgur.com/gUWJl0u.png
@@ -34,6 +35,9 @@ var serverSettings = require(serversName);
 
 var globalsName = "./db/globals.json";
 var globals = require(globalsName);
+
+var usersNames = "./db/users.json";
+var userSettings = require(usersNames);
 
 var quotesName = "./db/quotes.json";
 var quotes = require(quotesName);
@@ -84,6 +88,14 @@ var treatReset = schedule.scheduleJob(ruleTreats, function() {
     let commandFile = require(`./commands/treat.js`);
     commandFile.reset(bot);
     console.log("Daily Treats Reset");
+
+    let dailyFile = require(`./commands/daily.js`);
+    dailyFile.reset(bot);
+    console.log("Daily Cash Reset");
+
+    let rateFile = require(`./commands/rate.js`);
+    rateFile.reset(bot);
+    console.log("Ratings Reset");
 });
 
 /*============ENSTARS EVENT CHECKERS======*/
@@ -271,14 +283,20 @@ bot.on("guildCreate", guild => {
         "notifyChannel": guild.defaultChannel.id,
         "treats": 0,
         "roles": [],
-        "tags": false
+        "tags": false,
+        "diaGen": false,
+        "ignoreDiaCh": [],
+        "diaChance": 3,
+        "diaType": "Dia",
+        "lastDia": 0,
+        "diaMade": false
     }
     quotes[guild.id] = {
-            "quotes": []
-        }
+        "quotes": []
+    }
     weeb[guild.id] = {
-            "weeb": []
-        }
+        "weeb": []
+    }
     console.log("Added server \'" + guild.name + "\' to the servers and quotes/weeb list.  ID: " + guild.id);
     updateServers();
     updateQuotes();
@@ -297,9 +315,12 @@ bot.on("guildDelete", guild => {
 
     delete serverSettings[guild.id];
     delete quotes[guild.id];
+    delete weeb[guild.id];
     console.log("Deleted server \'" + guild.name + "\' from the servers list.  ID: " + guild.id);
 
     updateServers();
+    updateQuotes();
+    updateWeeb();
 });
 
 function updateServers() {
@@ -336,6 +357,23 @@ function updateGlobals() {
     })
 }
 
+function updateUsers() {
+    fs.writeFile(__dirname + '/db/users-temp.json', JSON.stringify(userSettings, null, 4), error => {
+        if (error) console.log(error)
+        else {
+            fs.stat(__dirname + '/db/users-temp.json', (err, stats) => {
+                if (err) console.log(err)
+                else if (stats["size"] < 2) console.log('Prevented users from being overwritten');
+                else {
+                    fs.rename(__dirname + '/db/users-temp.json', __dirname + '/db/users.json', e => {
+                        if (e) console.log(e)
+                    });
+                }
+            });
+        }
+    })
+}
+
 function updateQuotes() {
     fs.writeFile(__dirname + '/db/quotes-temp.json', JSON.stringify(quotes, null, 4), error => {
         if (error) console.log(error)
@@ -345,7 +383,8 @@ function updateQuotes() {
                 else if (stats["size"] < 2) console.log('Prevented quotes from being overwritten');
                 else {
                     fs.rename(__dirname + '/db/quotes-temp.json', __dirname + '/db/quotes.json', e => {
-                        if (e) console.log(e) });
+                        if (e) console.log(e)
+                    });
                 }
             });
         }
@@ -361,7 +400,8 @@ function updateWeeb() {
                 else if (stats["size"] < 2) console.log('Prevented weeb from being overwritten');
                 else {
                     fs.rename(__dirname + '/db/weeb-temp.json', __dirname + '/db/weeb.json', e => {
-                        if (e) console.log(e) });
+                        if (e) console.log(e)
+                    });
                 }
             });
         }
@@ -397,25 +437,70 @@ function guildChecker(msg) {
         "notifyChannel": msg.channel.guild.defaultChannel.id,
         "treats": 0,
         "roles": [],
-        "tags": false
+        "tags": false,
+        "diaGen": false,
+        "ignoreDiaCh": [],
+        "diaChance": 3,
+        "diaType": "Dia",
+        "lastDia": 0,
+        "diaMade": false
     }
 
     console.log("Added server \'" + msg.channel.guild.name + "\' to the servers list.  ID: " + msg.channel.guild.id);
     updateServers();
 }
 
+function userChecker(msg) {
+    userSettings[msg.author.id] = {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0
+    }
+
+    console.log("Added user \'" + msg.author.username + "\' to the users list.  ID: " + msg.author.id);
+    updateUsers();
+}
+
 /*=========MSG/CMD HANDLER==============*/
 
 //we put the message event handler in here so we can handle everything thru it idk why i just yeah
 bot.on("message", msg => {
+    //bot doesn't respond to it's own messages
+    if (msg.author.id == bot.user.id) return;
+
+    if (!userSettings.hasOwnProperty(msg.author.id)) {
+        userChecker(msg);
+    }
+
     if (msg.channel.type != "dm" && msg.channel.type != "group") {
         if (!serverSettings.hasOwnProperty(msg.channel.guild.id)) {
             guildChecker(msg);
         }
+        if (!quotes.hasOwnProperty(msg.channel.guild.id)) {
+            quotes[guild.id] = {
+                "quotes": []
+            }
+            updateQuotes();
+        }
+        if (!weeb.hasOwnProperty(msg.channel.guild.id)) {
+            weeb[guild.id] = {
+                "weeb": []
+            }
+            updateWeeb();
+        }
     }
-
-    //bot doesn't respond to it's own messages
-    if (msg.author.id == bot.user.id) return;
 
     //if the channel is on the ignore list and ur not an admin
     if (msg.channel.type != "dm" && msg.channel.type != "group") {
@@ -423,7 +508,7 @@ bot.on("message", msg => {
     }
 
     //if the msg is a dm
-    if (msg.channel.type == "dm") {
+    if (msg.channel.type == "dm" || msg.channel.type == "group") {
         //if doesn't start with a command prefix and mod prefix and eval
         if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix)) {
             if (/^(help|how do I use this\??)$/i.test(msg.content)) {
@@ -453,6 +538,22 @@ bot.on("message", msg => {
 
     //iff the message is in a server and is not a command
     if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix)) {
+        //generate dia
+        if (!(serverSettings[msg.channel.guild.id].diaMade) && serverSettings[msg.channel.guild.id].diaGen) {
+            let rand = Math.floor(Math.random() * 100);
+
+            if (rand < serverSettings[msg.channel.guild.id].diaChance) {
+                let dia = Math.floor(Math.random() * 20) + 5;
+                serverSettings[msg.channel.guild.id].lastDia += dia;
+                serverSettings[msg.channel.guild.id].diaMade = true;
+                let embed = new discord.RichEmbed();
+                embed.setColor(0x753FCF)
+                    .setDescription(dia + " " + serverSettings[msg.channel.guild.id].diaType + " has appeared!  Type `!pick` to pick it up!");
+                msg.channel.sendEmbed(embed);
+                updateServers();
+            }
+        }
+
         //if bot is pinged
         //if you ask why there are two startsWith <@, it's because <@id> is without nickname, and <@!id> is with nickname!
         if (msg.isMentioned(bot.user) && (msg.content.startsWith("<@" + bot.user.id) || msg.content.startsWith("<@!" + bot.user.id))) {
@@ -535,7 +636,7 @@ bot.on("message", msg => {
                 .setThumbnail("http://i.imgur.com/nRleyfl.png");
             msg.channel.sendEmbed(embed).catch(console.error);
         }
-        if ( ( (msg.content.toLowerCase().indexOf("what") > -1 ) || (msg.content.toLowerCase().indexOf("schedule") > -1) ) && msg.content.toLowerCase().indexOf("daily") > -1 && msg.content.toLowerCase().indexOf("course") > -1 ) {
+        if (((msg.content.toLowerCase().indexOf("what") > -1) || (msg.content.toLowerCase().indexOf("schedule") > -1)) && msg.content.toLowerCase().indexOf("daily") > -1 && msg.content.toLowerCase().indexOf("course") > -1) {
 
             let embed = new discord.RichEmbed();
             embed.setTitle("Daikichi says:")
@@ -568,11 +669,16 @@ bot.on("message", msg => {
                 .catch(console.error);
         }
 
-        if (msg.content.toLowerCase() == "test") {
+        /*if (msg.content.toLowerCase() == "test") {
+            let id;
             let embed = new discord.RichEmbed();
-            embed.setDescription("https://gyazo.com/85704b41643d32b74eafa9448d27919b");
+            embed.setDescription("tester");
             msg.channel.sendEmbed(embed).catch(console.error);
-        }
+
+            msg.channel.fetchMessages({ limit: 4 })
+                .catch(console.error);
+            //let id = bot.lastMessageID;
+        }*/
         //============================im too lazy to make it nice========================================================
         return;
     }
@@ -649,6 +755,10 @@ bot.on("message", msg => {
     }
 
     //====================================================================================================
+
+    //bot ignores blacklisted ppl
+
+    if (userSettings[msg.author.id].botIgnore) return;
 
     let command = msg.content.split(" ")[0];
     //command is whatever you put in like !help

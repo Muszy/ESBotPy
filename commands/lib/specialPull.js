@@ -1,9 +1,10 @@
 const discord = require("discord.js");
 var request = require("request");
 var fs = require("fs");
-var ptsPull = require("./ptsPull.js");
+var specialPull = require("./specialPull.js");
 var scout = require("./../scout.js");
 
+const fiveURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/Scouts/Normal/five.json";
 const fourURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/Scouts/Normal/four.json";
 const threeURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/Scouts/Normal/three.json";
 
@@ -18,10 +19,47 @@ errorMsg.setTitle("Error:")
 exports.tenPull = function(list, names, count, msg) {
     if (count == 10) {
         scout.generatePull(list, names, 0, msg);
+    } else if (count == 0) {
+
+        request(fiveURL, function(error, response, body) {
+            if (error) {
+                console.log(error);
+                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                return;
+            }
+            if (!error) {
+                data = JSON.parse(body);
+                let num = Math.floor(Math.random() * data.five.length);
+
+                list.push(data.five[num].img);
+                names.push(data.five[num].name);
+
+                specialPull.tenPull(list, names, count + 1, msg);
+            }
+        });
     } else {
         let rand = Math.floor(Math.random() * 1000);
 
         if (rand < 15) {
+            request(fiveURL, function(error, response, body) {
+                if (error) {
+                    console.log(error);
+                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    return;
+                }
+                if (!error) {
+                    data = JSON.parse(body);
+                    let num = Math.floor(Math.random() * data.five.length);
+
+                    list.push(data.five[num].img);
+                    names.push(data.five[num].name);
+
+                    specialPull.tenPull(list, names, count + 1, msg);
+                }
+            });
+        }
+        if (rand > 14 && rand < 81 ) {
+            //3star
             request(fourURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
@@ -30,16 +68,17 @@ exports.tenPull = function(list, names, count, msg) {
                 }
                 if (!error) {
                     data = JSON.parse(body);
+
                     let num = Math.floor(Math.random() * data.four.length);
 
                     list.push(data.four[num].img);
                     names.push(data.four[num].name);
 
-                    ptsPull.tenPull(list, names, count + 1, msg);
+                    specialPull.tenPull(list, names, count + 1, msg);
                 }
             });
         }
-        if (rand > 14) {
+        if (rand > 80 ) {
             //3star
             request(threeURL, function(error, response, body) {
                 if (error) {
@@ -55,61 +94,10 @@ exports.tenPull = function(list, names, count, msg) {
                     list.push(data.three[num].img);
                     names.push(data.three[num].name);
 
-                    ptsPull.tenPull(list, names, count + 1, msg);
+                    specialPull.tenPull(list, names, count + 1, msg);
                 }
             });
         }
-    }
-}
-
-exports.solo = function(msg) {
-    let rand = Math.floor(Math.random() * 1000);
-    if (rand < 15) {
-        request(fourURL, function(error, response, body) {
-            if (error) {
-                console.log(error);
-                msg.channel.sendEmbed(errorMsg).catch(console.error);
-                return;
-            }
-            if (!error) {
-                data = JSON.parse(body);
-
-                let num = Math.floor(Math.random() * data.four.length);
-
-                let id = msg.author.id;
-                let embed = new discord.RichEmbed();
-                embed.setTitle(msg.author.username + "'s Scouting Results")
-                    .setURL("http://enstars.info/card/" + data.four[num].id)
-                    .setColor(0x96F08C)
-                    .setThumbnail(data.four[num].img)
-                    .setDescription(data.four[num].name);
-                msg.channel.sendEmbed(embed).catch(console.error);
-            }
-        });
-    }
-
-    if (rand > 14) {
-        request(threeURL, function(error, response, body) {
-            if (error) {
-                console.log(error);
-                msg.channel.sendEmbed(errorMsg).catch(console.error);
-                return;
-            }
-            if (!error) {
-                data = JSON.parse(body);
-
-                let num = Math.floor(Math.random() * data.three.length);
-
-                let id = msg.author.id;
-                let embed = new discord.RichEmbed();
-                embed.setTitle(msg.author.username + "'s Scouting Results")
-                    .setURL("http://enstars.info/card/" + data.three[num].id)
-                    .setColor(0x96F08C)
-                    .setThumbnail(data.three[num].img)
-                    .setDescription(data.three[num].name);
-                msg.channel.sendEmbed(embed).catch(console.error);
-            }
-        });
     }
 }
 
