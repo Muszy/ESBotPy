@@ -247,6 +247,17 @@ function eventChecker() {
     }
 }
 
+function diaChecker() {
+    for (var id in serverSettings) {
+        if (serverSettings[id].diaMade) {
+            console.log("dia expired");
+            serverSettings[id].diaMade = false;
+            updateServers();
+            return;
+        }
+    }
+}
+
 exports.eventReset = function() {
     event = null;
     half = null;
@@ -257,6 +268,10 @@ exports.eventReset = function() {
 setInterval(() => {
     eventChecker();
 }, 30000);
+
+setInterval(() => {
+    diaChecker();
+}, 600000);
 
 /*===========EVENT HANDLER=============*/
 
@@ -427,6 +442,25 @@ function checkIgnore(bot, msg) {
     }
 }
 
+function checkDiaIgnore(bot, msg) {
+    let channel = msg.channel;
+
+    let check = -1;
+    for (var i = serverSettings[msg.guild.id].ignoreDiaCh.length - 1; i >= 0; i--) {
+        if (channel.id === serverSettings[msg.guild.id].ignoreDiaCh[i]) {
+            check = i;
+        }
+    }
+
+    if (check < 0) {
+        //console.log("not ignored");
+        return false;
+    } else {
+        //console.log("ignored");
+        return true;
+    }
+}
+
 function guildChecker(msg) {
     serverSettings[msg.channel.guild.id] = {
         "ignore": [],
@@ -539,18 +573,25 @@ bot.on("message", msg => {
     //iff the message is in a server and is not a command
     if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix)) {
         //generate dia
-        if (!(serverSettings[msg.channel.guild.id].diaMade) && serverSettings[msg.channel.guild.id].diaGen) {
-            let rand = Math.floor(Math.random() * 100);
+        if (msg.channel.type != "dm" && msg.channel.type != "group") {
+            if (!(serverSettings[msg.channel.guild.id].diaMade) && serverSettings[msg.channel.guild.id].diaGen) {
 
-            if (rand < serverSettings[msg.channel.guild.id].diaChance) {
-                let dia = Math.floor(Math.random() * 20) + 5;
-                serverSettings[msg.channel.guild.id].lastDia += dia;
-                serverSettings[msg.channel.guild.id].diaMade = true;
-                let embed = new discord.RichEmbed();
-                embed.setColor(0x753FCF)
-                    .setDescription(dia + " " + serverSettings[msg.channel.guild.id].diaType + " has appeared!  Type `!pick` to pick it up!");
-                msg.channel.sendEmbed(embed);
-                updateServers();
+                if (!checkDiaIgnore(bot, msg)) {
+
+                    let rand = Math.floor(Math.random() * 100);
+
+                    if (rand < serverSettings[msg.channel.guild.id].diaChance) {
+                        let dia = Math.floor(Math.random() * 20) + 5;
+                        serverSettings[msg.channel.guild.id].lastDia += dia;
+                        serverSettings[msg.channel.guild.id].diaMade = true;
+                        let embed = new discord.RichEmbed();
+                        embed.setColor(0x753FCF)
+                            .setDescription(serverSettings[msg.channel.guild.id].lastDia + " " + serverSettings[msg.channel.guild.id].diaType + " has appeared!  Type `!pick` to pick it up!");
+                        msg.channel.sendEmbed(embed);
+                        updateServers();
+                    }
+                }
+
             }
         }
 

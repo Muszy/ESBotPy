@@ -2,6 +2,8 @@ var serversName = "../db/servers.json";
 var serverSettings = require(serversName);
 var usersName = "../db/users.json";
 var userSettings = require(usersName);
+var fs = require("fs");
+
 const discord = require("discord.js");
 
 

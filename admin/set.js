@@ -348,7 +348,7 @@ exports.run = (bot, msg, args) => {
 		let value = args.slice(1);
 
 		if ((value[0])) {
-			file[msg.guild.id].diaType = value[0];
+			file[msg.guild.id].diaType = value.join(" ");
 
 			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
 		 		if (err) return console.log(err);
@@ -362,7 +362,7 @@ exports.run = (bot, msg, args) => {
 
 			embed.setTitle("Confirmation:")
 				.setColor(0x3399FF)
-				.setDescription("**Dia Type** set to " + value[0] + ".")
+				.setDescription("**Dia Type** set to " + value.join(" ") + ".")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
 			msg.channel.sendEmbed(embed).catch(console.error);
 			return;

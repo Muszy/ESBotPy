@@ -37,7 +37,7 @@ exports.run = (bot, msg, args) => {
     let rand = Math.floor(Math.random() * 100);
     if (rand > 90) {
         let embed = new discord.RichEmbed();
-        embed.setTitle("Mining:")
+        embed.setTitle("Digging:")
             .setColor(0x753FCF)
             .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a large jewel!");
         msg.channel.sendEmbed(embed).catch(console.error);
@@ -49,7 +49,7 @@ exports.run = (bot, msg, args) => {
 
     if (rand < 91 && rand > 75) {
         let embed = new discord.RichEmbed();
-        embed.setTitle("Mining:")
+        embed.setTitle("Digging:")
             .setColor(0x753FCF)
             .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a medium jewel!");
         msg.channel.sendEmbed(embed).catch(console.error);
@@ -61,7 +61,7 @@ exports.run = (bot, msg, args) => {
 
     if (rand < 76 && rand > 55) {
         let embed = new discord.RichEmbed();
-        embed.setTitle("Mining:")
+        embed.setTitle("Digging:")
             .setColor(0x753FCF)
             .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a small jewel!");
         msg.channel.sendEmbed(embed).catch(console.error);
@@ -73,7 +73,7 @@ exports.run = (bot, msg, args) => {
 
     if (rand < 56 && rand > 30) {
         let embed = new discord.RichEmbed();
-        embed.setTitle("Mining:")
+        embed.setTitle("Digging:")
             .setColor(0x753FCF)
             .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a boot..");
         msg.channel.sendEmbed(embed).catch(console.error);
@@ -84,7 +84,7 @@ exports.run = (bot, msg, args) => {
     }
 
     let embed = new discord.RichEmbed();
-    embed.setTitle("Mining:")
+    embed.setTitle("Digging:")
         .setColor(0x753FCF)
         .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a piece of trash..");
     msg.channel.sendEmbed(embed).catch(console.error);
@@ -96,7 +96,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bots, msg, args) => {
-    return "Use `!mine` to pay money to mine!";
+    return "Use `!dig` to pay money to dig!";
 }
 
 //===============================FUNCTIONS====================================
