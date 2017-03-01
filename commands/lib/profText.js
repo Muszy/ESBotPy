@@ -31,9 +31,9 @@ exports.gen = function(bot, msg, id) {
     let text = [""];
     if (userSettings[id].bio != "") {
 
-        text[0] = userSettings[id].bio.slice(0, 59);
-        text[1] = userSettings[id].bio.slice(59, 118);
-        text[2] = userSettings[id].bio.slice(118);
+        text[0] = userSettings[id].bio.slice(0, 49);
+        text[1] = userSettings[id].bio.slice(49, 99);
+        text[2] = userSettings[id].bio.slice(99);
     }
 
     gm(dir + 'prof' + id + '.png')

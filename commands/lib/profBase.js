@@ -4,6 +4,7 @@ var http = require("http");
 var fs = require("fs"),
     gm = require('gm');
 
+var profCard = require("./profCard.js");
 var profText = require("./profText.js");
 
 var dir = './img/';
@@ -34,81 +35,18 @@ exports.gen = function(bot, msg, card, style, id) {
     download(msg, card, dir + 'bg' + id + '.png', function(err) {
         //console.log("done");
         if (!err) {
+            var width;
+            var height;
             gm(dir + 'bg' + id + '.png')
-                .resize(null, 500)
-                .crop(500, 500)
-                .write(dir + 'bg' + id + '.png', function(err) {
+                .size(function(err, value) {
+                    width = value.width;
+                    height = value.height;
 
-                    if (!err) {
+                    profCard.create(bot, msg, card, style, id, width, height);
 
-                        //console.log("Written composite image.");
-                        gm()
-                            .command("composite")
-                            .in(dir + 'temp' + style + '.png')
-                            .in(dir + 'bg' + id + '.png')
-                            .write(dir + 'prof' + id + '.png', function(err) {
-
-                                if (!err) {
-
-                                    //console.log("Written composite image2.");
-
-                                    if (bot.users.get(id).avatarURL) {
-                                        download(msg, bot.users.get(id).avatarURL, dir + 'avatar' + id + '.png', function() {
-                                            //console.log("done");
-
-                                            gm(dir + 'avatar' + id + '.png')
-                                                .resize(150, 150)
-                                                .write(dir + 'avatar' + id + '.png', function(err) {
-                                                    if (!err) {
-
-                                                        gm()
-                                                            .command("composite")
-                                                            .in("-gravity", "center")
-                                                            .in("-geometry", "+0-80")
-                                                            .in(dir + 'avatar' + id + '.png')
-                                                            .in(dir + 'prof' + id + '.png')
-                                                            .write(dir + 'prof' + id + '.png', function(err) {
-                                                                if (!err) {
-
-                                                                    //console.log("Written composite image3.");
-                                                                    profText.gen(bot, msg, id);
-                                                                    return;
-
-                                                                } else if (err) {
-                                                                    console.log(err);
-                                                                    msg.channel.sendEmbed(errorMsg).catch(console.error);
-                                                                    return;
-                                                                }
-                                                            });
-
-                                                    } else if (err) {
-                                                        console.log(err);
-                                                        msg.channel.sendEmbed(errorMsg).catch(console.error);
-                                                        return;
-                                                    }
-                                                });
-
-                                        });
-                                        return;
-                                    }
-
-                                    profText.gen(bot, msg, id);
-                                    return;
-
-                                } else if (err) {
-                                    console.log(err);
-                                    msg.channel.sendEmbed(errorMsg).catch(console.error);
-                                    return;
-                                }
-                            });
-                    } else if (err) {
-                        console.log(err);
-                        msg.channel.sendEmbed(errorMsg).catch(console.error);
-
-                        fs.unlink(dir + 'bg' + id + '.png');
-                        return;
-                    }
+                    return;
                 });
+
         } else if (err) {
             console.log(err);
             msg.channel.sendEmbed(errorMsg).catch(console.error);

@@ -9,8 +9,8 @@ exports.run = (bot, msg, args) => {
     if (args.length > 0) {
         let str = args.join(" ");
 
-        if (str.length > 70) {
-            str = str.slice(0, 69);
+        if (str.length > 50) {
+            str = str.slice(0, 49);
         }
 
         userSettings[msg.author.id].title = str;
@@ -36,7 +36,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bots, msg, args) => {
-    return "To change your profile title, use `!title [title]`.  Titles can only be up to 70 characters long.";
+    return "To change your profile title, use `!title [title]`.  Titles can only be up to 50 characters long.";
 }
 
 //===============================FUNCTIONS====================================

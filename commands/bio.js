@@ -8,8 +8,8 @@ exports.run = (bot, msg, args) => {
 
     if (args.length > 0) {
         let str = args.join(" ");
-        if (str.length > 180) {
-            str = str.slice(0, 179);
+        if (str.length > 150) {
+            str = str.slice(0, 149);
         }
 
         userSettings[msg.author.id].bio = str;
@@ -35,7 +35,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bots, msg, args) => {
-    return "To change your profile bio, use `!bio [info]`.  Bios are limited to 180 characters or less.";
+    return "To change your profile bio, use `!bio [info]`.  Bios are limited to 150 characters or less.";
 }
 
 //===============================FUNCTIONS====================================
