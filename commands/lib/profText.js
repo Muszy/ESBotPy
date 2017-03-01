@@ -28,12 +28,14 @@ exports.gen = function(bot, msg, id) {
     let dia = userSettings[id].dia;
     let rep = userSettings[id].rep;
 
-    let text = [""];
+    let text = ["", "", ""];
     if (userSettings[id].bio != "") {
 
-        text[0] = userSettings[id].bio.slice(0, 49);
-        text[1] = userSettings[id].bio.slice(49, 99);
-        text[2] = userSettings[id].bio.slice(99);
+        text = userSettings[id].bio.split("|");
+
+        if(!text[0]) text[0]=" ";
+        if(!text[1]) text[1]=" ";
+        if(!text[2]) text[2]=" ";
     }
 
     gm(dir + 'prof' + id + '.png')
@@ -55,7 +57,7 @@ exports.gen = function(bot, msg, id) {
         .drawText(0, 215, userSettings[id].twitter)
         .drawText(-160, 215, userSettings[id].tumblr)
         .drawText(168, 215, userSettings[id].reddit)
-        .fontSize("14")
+        .fontSize("15")
         .drawText(0, 75, text[0])
         .drawText(0, 95, text[1])
         .drawText(0, 115, text[2])

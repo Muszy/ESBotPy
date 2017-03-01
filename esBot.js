@@ -505,7 +505,8 @@ function userChecker(msg) {
         "tumblr": "",
         "reddit": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "style": 1
     }
 
     console.log("Added user \'" + msg.author.username + "\' to the users list.  ID: " + msg.author.id);

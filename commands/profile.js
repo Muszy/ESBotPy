@@ -50,6 +50,7 @@ exports.run = (bot, msg, args) => {
             "style": 1,
             "rep": 0
         }
+        updateUsers();
     }
 
     let card = "";
@@ -68,4 +69,21 @@ exports.run = (bot, msg, args) => {
 
 exports.help = (bots, msg, args) => {
     return "To generate your profile, use `!profile`.  To look at someone else's profile, use `!profile [user]`.";
+}
+
+function updateUsers() {
+    fs.writeFile(__dirname + '/../db/users-temp.json', JSON.stringify(userSettings, null, 4), error => {
+        if (error) console.log(error)
+        else {
+            fs.stat(__dirname + '/../db/users-temp.json', (err, stats) => {
+                if (err) console.log(err)
+                else if (stats["size"] < 2) console.log('Prevented users from being overwritten');
+                else {
+                    fs.rename(__dirname + '/../db/users-temp.json', __dirname + '/../db/users.json', e => {
+                        if (e) console.log(e)
+                    });
+                }
+            });
+        }
+    })
 }
