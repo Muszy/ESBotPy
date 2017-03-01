@@ -1,6 +1,8 @@
 {
     "108753685122715648": {
-        "ignore": [],
+        "ignore": [
+            "275746453706637313"
+        ],
         "banAlerts": true,
         "greet": true,
         "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role or use !iam <role>! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mod <@108752547166031872>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
@@ -13,7 +15,8 @@
         "tags": true,
         "diaGen": true,
         "ignoreDiaCh": [
-            "275746453706637313"
+            "275746453706637313",
+            "275154406477922304"
         ],
         "diaChance": 100,
         "diaType": "<:dia:283873457244995584>",
@@ -27,7 +30,7 @@
         "welcome": "Welcome $USER$ to $SERVER$! Please read the <#174639296752517121> and use the channels for their intended topics. Use <#197038160952295434> for anything offtopic.\n\nYou can tag yourself accordingly with `!iam <role>` and you can check out what roles we have available with `!iam`!",
         "notify": false,
         "notifyChannel": "174636983178625035",
-        "treats": 0,
+        "treats": 20,
         "roles": [
             "MMO",
             "GBF",
@@ -38,7 +41,7 @@
             "Minions"
         ],
         "tags": true,
-        "diaGen": false,
+        "diaGen": true,
         "ignoreDiaCh": [
             "174636983178625035",
             "142798815831785472",
@@ -46,7 +49,7 @@
             "174639296752517121"
         ],
         "diaChance": 3,
-        "diaType": "Dia",
+        "diaType": "💸 Memes",
         "lastDia": 0,
         "diaMade": false
     },
@@ -76,7 +79,7 @@
         "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role or use !iam <role>! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mod <@108752547166031872>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
         "notify": true,
         "notifyChannel": "210577428815413251",
-        "treats": 23,
+        "treats": 40,
         "roles": [
             "2wink",
             "undead",
@@ -92,7 +95,7 @@
             "buttP"
         ],
         "tags": true,
-        "diaGen": false,
+        "diaGen": true,
         "ignoreDiaCh": [
             "210584598596419584",
             "242394097371840513",
@@ -103,7 +106,7 @@
             "272590241712570368"
         ],
         "diaChance": 3,
-        "diaType": "Dia",
+        "diaType": "💎",
         "lastDia": 0,
         "diaMade": false
     },
@@ -129,7 +132,7 @@
             "eurobean"
         ],
         "tags": true,
-        "diaGen": false,
+        "diaGen": true,
         "ignoreDiaCh": [
             "267593821250912256",
             "267610369218969600",
@@ -137,7 +140,8 @@
             "284091884656132096",
             "267611641204441088",
             "284092825358827531",
-            "267705968412852226"
+            "267705968412852226",
+            "267935232857079808"
         ],
         "diaChance": 3,
         "diaType": "Dia",

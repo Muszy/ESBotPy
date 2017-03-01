@@ -13,6 +13,8 @@ color guide:
     0xFFB400 - event/gacha info
     0xFF69B4 - rates
     0x753FCF - dia stuff
+    0xA7DBD8 - profile
+    0xFF3232 - luck
 
 icons:
     treat daikichi - http://i.imgur.com/gUWJl0u.png
@@ -499,6 +501,9 @@ function userChecker(msg) {
         },
         "bio": "",
         "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
         "bg": "",
         "rep": 0
     }
@@ -697,6 +702,28 @@ bot.on("message", msg => {
             msg.channel.sendEmbed(embed).catch(console.error);
         }
 
+        if (((msg.content.toLowerCase().indexOf("jewel") > -1) || (msg.content.toLowerCase().indexOf("gem") > -1)) && msg.content.toLowerCase().indexOf("skill") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("trans") > -1) {
+
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Click here for the full Jewel Skill Guide:")
+                .setColor(0xB48CF0)
+                .setURL("https://docs.google.com/document/d/1SPnw-AE9MapcyAwm1VkriS1VgExTRyZ7n9nN070Ew3A/pub")
+                .setDescription("赤 = Red\n青 = Blue\n黄 = Yellow\n全 = All\n小 = Small\n中 = Medium\n大 = Large\nジュエル = Jewel\nフィーバー上昇割合が = Fever Up\n全員の信頼度上昇率が = Trust Up")
+                .setThumbnail("http://i.imgur.com/nRleyfl.png");
+            msg.channel.sendEmbed(embed).catch(console.error);
+        }
+
+        if ( msg.content.toLowerCase().indexOf("luck") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("do") > -1) {
+
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Click here for the Master Guide!")
+                .setColor(0xB48CF0)
+                .setURL("http://ensemble-stars.wikia.com/wiki/Ensemble_Stars!_Master_Guide")
+                .setDescription("The higher your luck, the more Trust increases. There is also a chance that more mini-events will appear.")
+                .setThumbnail("http://i.imgur.com/nRleyfl.png");
+            msg.channel.sendEmbed(embed).catch(console.error);
+        }
+
         if (msg.content.toLowerCase().indexOf("faggot") > -1) {
 
             let embed = new discord.RichEmbed();
@@ -710,6 +737,17 @@ bot.on("message", msg => {
                 .catch(console.error);
         }
 
+        if (msg.content.toLowerCase() == "/o/") {
+
+            msg.channel.sendMessage("\\o\\");
+        }
+
+        if (msg.content.toLowerCase() == "\\o\\") {
+
+            msg.channel.sendMessage("/o/");
+        }
+
+
         /*if (msg.content.toLowerCase() == "test") {
             let id;
             let embed = new discord.RichEmbed();
@@ -719,6 +757,11 @@ bot.on("message", msg => {
             msg.channel.fetchMessages({ limit: 4 })
                 .catch(console.error);
             //let id = bot.lastMessageID;
+            for(var id in userSettings){
+                userSettings[id].style = 1;
+            }
+
+            updateUsers();
         }*/
         //============================im too lazy to make it nice========================================================
         return;
@@ -818,6 +861,7 @@ bot.on("message", msg => {
     } catch (e) {
         //console.log(e);
         console.log("COMMAND NOT FOUND : " + command);
+        console.log(e);
 
         //msg.channel.sendEmbed(commError).catch(console.error);
     }

@@ -1,6 +1,6 @@
 {
   "name": "DaikichiBot",
-  "version": "2.0.0",
+  "version": "2.5.0",
   "description": "A bot for the /r/EnsembleStars subreddit!",
   "author": "Hani!",
   "main": "esBot.js",
@@ -34,6 +34,9 @@
     "util": "*",
     "node-schedule": "*",
     "gm": "*",
-    "twitter": "*"
+    "twitter": "*",
+    "youtube-node": "*",
+    "valid-url": "*",
+    "http": "*"
   }
 }

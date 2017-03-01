@@ -16,7 +16,8 @@ var lizard = [
 	"http://i0.kym-cdn.com/photos/images/original/000/804/869/67f.jpg",
 	"http://i3.kym-cdn.com/photos/images/original/000/804/865/c50.jpg",
 	"http://i3.kym-cdn.com/photos/images/original/000/804/870/d7a.jpg",
-	"http://i2.kym-cdn.com/photos/images/original/000/804/893/92c.jpg"
+	"http://i2.kym-cdn.com/photos/images/original/000/804/893/92c.jpg",
+	"http://i.imgur.com/mLrunCA.gif"
 ]
 
 exports.run = (bot, msg, args) => {

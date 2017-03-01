@@ -28,6 +28,16 @@ exports.run = (bot, msg, args) => {
 
             let id = msg.mentions.users.first().id;
 
+            if (!args[1]) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Please use the format `award [user] [amount]`!")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+
             console.log("awarding " + msg.guild.member(id).displayName + " " + dia + " from " + msg.author.id);
 
             if (!userSettings.hasOwnProperty(id)) {
@@ -44,7 +54,12 @@ exports.run = (bot, msg, args) => {
                         "big": 0
                     },
                     "bio": "",
+                    "title": "",
+                    "twitter": "",
+                    "tumblr": "",
+                    "reddit": "",
                     "bg": "",
+                    "style": 1,
                     "rep": 0
                 }
             }

@@ -18,13 +18,25 @@ scoutError.setTitle("You're going too fast!")
     .setColor(0x96F08C)
     .setDescription("The Adoarmy arrives..");
 
+var errorMsg = new discord.RichEmbed();
+errorMsg.setTitle("Error:")
+    .setColor(0xFF0040)
+    .setDescription("Something went wrong!")
+    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+
 var dir = './img/';
-var download = function(uri, filename, callback) {
+var download = function(msg, uri, filename, callback) {
     request.head(uri, function(err, res, body) {
+        if (err) {
+            //console.log("bg img not found");
+            msg.channel.sendEmbed(errorMsg).catch(console.error);
+            return;
+        }
         //console.log('content-type:', res.headers['content-type']);
         //console.log('content-length:', res.headers['content-length']);
-
-        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+        if (!err) {
+            request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+        }
     });
 };
 
@@ -135,7 +147,7 @@ exports.help = (bot, msg, args) => {
 
 exports.generatePull = function(list, names, count, msg) {
     if (count == 0) {
-        download(list[0], dir + 'base' + msg.author.id + '.png', function() {
+        download(msg, list[0], dir + 'base' + msg.author.id + '.png', function() {
 
             gm(dir + 'base' + msg.author.id + '.png').resize(null, 156)
                 .write(dir + 'base' + msg.author.id + '.png', function(err) {
@@ -151,7 +163,7 @@ exports.generatePull = function(list, names, count, msg) {
                 });
         });
     } else if (count == 5) {
-        download(list[count], dir + 'row' + msg.author.id + '.png', function() {
+        download(msg, list[count], dir + 'row' + msg.author.id + '.png', function() {
 
             gm(dir + 'row' + msg.author.id + '.png').resize(null, 156)
                 .write(dir + 'row' + msg.author.id + '.png', function(err) {
@@ -167,7 +179,7 @@ exports.generatePull = function(list, names, count, msg) {
                 });
         });
     } else if (count > 5 && count < 10) {
-        download(list[count], dir + 'temp' + msg.author.id + '.png', function() {
+        download(msg, list[count], dir + 'temp' + msg.author.id + '.png', function() {
 
             gm(dir + 'temp' + msg.author.id + '.png').resize(null, 156)
                 .write(dir + 'temp' + msg.author.id + '.png', function(err) {
@@ -236,7 +248,7 @@ exports.generatePull = function(list, names, count, msg) {
             });
 
     } else {
-        download(list[count], dir + 'temp' + msg.author.id + '.png', function() {
+        download(msg, list[count], dir + 'temp' + msg.author.id + '.png', function() {
             gm(dir + 'temp' + msg.author.id + '.png').resize(null, 156)
                 .write(dir + 'temp' + msg.author.id + '.png', function(err) {
                     if (!err) {

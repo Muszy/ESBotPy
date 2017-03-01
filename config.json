@@ -16,5 +16,6 @@
 	"twitSecret": "dN8wblensXINCmfbBfgvSiIpWUwj53SXrvAVL00nMM8RUCfAyb",
 	"twitToken": "297074592-XdS4lX3Bfex1W97FrwtPCANfwh8HxLq8kUZBss5p",
 	"twitTokenSecret": "JW5ZXtbjtQZCoBZ8FV7e7ijSw80Lz9d5VMQPcCEUWiuri",
-	"weather_api_key": "3970e1bfc55a35c13bd6345827fc0529"
+	"weather_api_key": "3970e1bfc55a35c13bd6345827fc0529",
+	"youtube_api_key": "AIzaSyClnTBPRQJsk74msN7pGWyW0qnYBul4dJ4"
 }

@@ -1,25 +1,8 @@
 {
     "108752547166031872": {
         "botIgnore": false,
-        "dia": 300,
+        "dia": 420,
         "daily": false,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 2,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "161882610652545024": {
-        "botIgnore": false,
-        "dia": 300,
-        "daily": true,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -31,11 +14,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "145687696570974209": {
         "botIgnore": false,
-        "dia": 100,
+        "dia": 111,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -48,7 +35,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "179829284909744128": {
         "botIgnore": false,
@@ -65,7 +56,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "52440115582078976": {
         "botIgnore": false,
@@ -82,45 +77,57 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "233645413465325568": {
         "botIgnore": false,
-        "dia": 176,
-        "daily": false,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 1,
-            "small": 0,
-            "med": 1,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "102844252433711104": {
-        "botIgnore": false,
-        "dia": 206,
+        "dia": 11,
         "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
             "boots": 0,
             "small": 0,
-            "med": 1,
+            "med": 0,
             "big": 0
         },
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "102844252433711104": {
+        "botIgnore": false,
+        "dia": 150,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "80695294731227136": {
         "botIgnore": false,
-        "dia": 40,
+        "dia": 46,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -133,11 +140,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "120733242180632577": {
         "botIgnore": false,
-        "dia": 159,
+        "dia": 391,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -149,12 +160,17 @@
         },
         "bio": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "269008588792397824": {
         "botIgnore": false,
         "dia": 0,
-        "daily": true,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -166,11 +182,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "275452891311898624": {
         "botIgnore": false,
-        "dia": 27,
+        "dia": 29,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -182,7 +202,12 @@
         },
         "bio": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "138251722198876160": {
         "botIgnore": false,
@@ -199,11 +224,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "169514353782030336": {
         "botIgnore": false,
-        "dia": 25,
+        "dia": 0,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -216,11 +245,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "78037878784921600": {
         "botIgnore": false,
-        "dia": 25,
+        "dia": 41,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -233,11 +266,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "105294221497360384": {
         "botIgnore": false,
-        "dia": 35,
+        "dia": 183,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -250,11 +287,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "129062552255594496": {
         "botIgnore": false,
-        "dia": 25,
+        "dia": 43,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -267,12 +308,16 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "121257411322314752": {
         "botIgnore": false,
-        "dia": 25,
-        "daily": true,
+        "dia": 0,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -284,7 +329,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "86793103406538752": {
         "botIgnore": false,
@@ -301,7 +350,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "130394713554550784": {
         "botIgnore": false,
@@ -318,7 +371,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "228468364312313857": {
         "botIgnore": false,
@@ -335,29 +392,37 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "122637460990722049": {
         "botIgnore": false,
-        "dia": 15,
+        "dia": 110,
         "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
             "boots": 0,
-            "small": 0,
+            "small": 1,
             "med": 0,
             "big": 1
         },
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "118015315056656389": {
         "botIgnore": false,
-        "dia": 25,
-        "daily": true,
+        "dia": 70,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -369,7 +434,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "98468418964975616": {
         "botIgnore": false,
@@ -386,7 +455,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "188992314675429376": {
         "botIgnore": false,
@@ -403,15 +476,19 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "279906962643091456": {
         "botIgnore": false,
-        "dia": 10,
-        "daily": true,
+        "dia": 177,
+        "daily": false,
         "dailyRep": true,
         "inv": {
-            "trash": 0,
+            "trash": 2,
             "boots": 0,
             "small": 0,
             "med": 0,
@@ -420,82 +497,39 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "171760277895905280": {
-        "botIgnore": false,
-        "dia": 91,
-        "daily": false,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "138177548830900224": {
-        "botIgnore": false,
-        "dia": 136,
-        "daily": true,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "164154666664329216": {
-        "botIgnore": false,
-        "dia": 25,
-        "daily": true,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "169276989302243328": {
-        "botIgnore": false,
-        "dia": 1,
-        "daily": false,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "143100567420534784": {
         "botIgnore": false,
         "dia": 0,
         "daily": false,
         "dailyRep": true,
         "inv": {
+            "trash": 5,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "138177548830900224": {
+        "botIgnore": false,
+        "dia": 156,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
             "trash": 0,
             "boots": 0,
             "small": 0,
@@ -505,7 +539,74 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "164154666664329216": {
+        "botIgnore": false,
+        "dia": 16,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "169276989302243328": {
+        "botIgnore": false,
+        "dia": 438,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "143100567420534784": {
+        "botIgnore": false,
+        "dia": 63,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "117809280924647430": {
         "botIgnore": false,
@@ -522,12 +623,16 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "65248023407493120": {
         "botIgnore": false,
         "dia": 1,
-        "daily": false,
+        "daily": true,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -539,7 +644,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "192423792067346444": {
         "botIgnore": false,
@@ -556,7 +665,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "94847324857040896": {
         "botIgnore": false,
@@ -573,11 +686,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "108704129160871936": {
         "botIgnore": false,
-        "dia": 109,
+        "dia": 252,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -590,7 +707,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "144842859223318528": {
         "botIgnore": false,
@@ -607,11 +728,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "147006367490768896": {
         "botIgnore": false,
-        "dia": 72,
+        "dia": 83,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -624,7 +749,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "107839094888857600": {
         "botIgnore": false,
@@ -641,7 +770,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "275806546888491010": {
         "botIgnore": false,
@@ -658,7 +791,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "177174244411572224": {
         "botIgnore": false,
@@ -675,7 +812,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "122935260840198144": {
         "botIgnore": false,
@@ -692,11 +833,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "145956085335982080": {
         "botIgnore": false,
-        "dia": 250,
+        "dia": 36,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -709,12 +854,16 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "112011738068619264": {
         "botIgnore": false,
-        "dia": 24,
-        "daily": false,
+        "dia": 62,
+        "daily": true,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -726,7 +875,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "169263850611408897": {
         "botIgnore": false,
@@ -743,7 +896,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "208003923359825930": {
         "botIgnore": false,
@@ -760,11 +917,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "189440406402891776": {
         "botIgnore": false,
-        "dia": 23,
+        "dia": 0,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -777,11 +938,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "86131126606794752": {
         "botIgnore": false,
-        "dia": 90,
+        "dia": 20,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -794,62 +959,36 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "239606579467386880": {
         "botIgnore": false,
-        "dia": 58,
-        "daily": true,
+        "dia": 160,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
-            "boots": 0,
-            "small": 0,
+            "boots": 1,
+            "small": 1,
             "med": 0,
             "big": 0
         },
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "179449306334363649": {
         "botIgnore": false,
-        "dia": 30,
-        "daily": true,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "152181556079755264": {
-        "botIgnore": false,
-        "dia": 25,
-        "daily": true,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "184048649582411777": {
-        "botIgnore": false,
-        "dia": 256,
+        "dia": 56,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -862,7 +1001,53 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "152181556079755264": {
+        "botIgnore": false,
+        "dia": 0,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "184048649582411777": {
+        "botIgnore": false,
+        "dia": 386,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 1,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "182610388574011392": {
         "botIgnore": false,
@@ -879,11 +1064,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "178902524172959744": {
         "botIgnore": false,
-        "dia": 25,
+        "dia": 50,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -896,11 +1085,36 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "139081188777132032": {
         "botIgnore": false,
         "dia": 0,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "197456382742626305": {
+        "botIgnore": false,
+        "dia": 75,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -913,33 +1127,20 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
-    },
-    "197456382742626305": {
-        "botIgnore": false,
-        "dia": 43,
-        "daily": true,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "118857191661764608": {
         "botIgnore": false,
         "dia": 0,
-        "daily": true,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
-            "boots": 1,
+            "boots": 33,
             "small": 0,
             "med": 0,
             "big": 0
@@ -947,7 +1148,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "139140284549169152": {
         "botIgnore": false,
@@ -964,12 +1169,16 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "148297949754032129": {
         "botIgnore": false,
-        "dia": 0,
-        "daily": false,
+        "dia": 85,
+        "daily": true,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -981,7 +1190,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "219515622831292416": {
         "botIgnore": false,
@@ -998,11 +1211,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "138862876747235328": {
         "botIgnore": false,
-        "dia": 0,
+        "dia": 131,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -1015,7 +1232,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "171387440978722816": {
         "botIgnore": false,
@@ -1032,96 +1253,36 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "243209612654936065": {
         "botIgnore": false,
-        "dia": 25,
-        "daily": true,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "226159932867739649": {
-        "botIgnore": false,
-        "dia": 63,
-        "daily": true,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "142438415177089025": {
-        "botIgnore": false,
-        "dia": 82,
-        "daily": true,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "214715036562751488": {
-        "botIgnore": false,
-        "dia": 25,
-        "daily": true,
-        "dailyRep": true,
-        "inv": {
-            "trash": 0,
-            "boots": 0,
-            "small": 0,
-            "med": 0,
-            "big": 0
-        },
-        "bio": "",
-        "title": "",
-        "bg": "",
-        "rep": 0
-    },
-    "151766949884329984": {
-        "botIgnore": false,
-        "dia": 0,
+        "dia": 138,
         "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
             "boots": 0,
             "small": 0,
-            "med": 2,
-            "big": 2
+            "med": 0,
+            "big": 0
         },
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
-    "65823642642022400": {
+    "226159932867739649": {
         "botIgnore": false,
-        "dia": 25,
+        "dia": 84,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -1134,7 +1295,95 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "142438415177089025": {
+        "botIgnore": false,
+        "dia": 206,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "214715036562751488": {
+        "botIgnore": false,
+        "dia": 0,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "151766949884329984": {
+        "botIgnore": false,
+        "dia": 11,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 2,
+            "med": 3,
+            "big": 6
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "65823642642022400": {
+        "botIgnore": false,
+        "dia": 30,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "282451220311048192": {
         "botIgnore": false,
@@ -1151,7 +1400,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "212966280066498560": {
         "botIgnore": false,
@@ -1168,7 +1421,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "141451124392722432": {
         "botIgnore": false,
@@ -1185,11 +1442,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "197183554227142656": {
         "botIgnore": false,
-        "dia": 50,
+        "dia": 40,
         "daily": false,
         "dailyRep": true,
         "inv": {
@@ -1202,11 +1463,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "102260254137405440": {
         "botIgnore": false,
-        "dia": 25,
+        "dia": 0,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -1219,7 +1484,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "98380045810147328": {
         "botIgnore": false,
@@ -1236,24 +1505,32 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "284745791883444236": {
         "botIgnore": false,
-        "dia": 41,
+        "dia": 46,
         "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
             "boots": 0,
-            "small": 0,
-            "med": 0,
+            "small": 1,
+            "med": 1,
             "big": 0
         },
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "278808670404476928": {
         "botIgnore": false,
@@ -1270,16 +1547,20 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "174972638391828480": {
         "botIgnore": false,
-        "dia": 44,
+        "dia": 31,
         "daily": true,
         "dailyRep": true,
         "inv": {
             "trash": 0,
-            "boots": 0,
+            "boots": 1,
             "small": 0,
             "med": 0,
             "big": 0
@@ -1287,11 +1568,15 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "174976551056703489": {
         "botIgnore": false,
-        "dia": 45,
+        "dia": 18,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -1304,12 +1589,16 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "202252612538466305": {
         "botIgnore": false,
-        "dia": 25,
-        "daily": true,
+        "dia": 0,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -1321,7 +1610,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "85864570442240000": {
         "botIgnore": false,
@@ -1338,7 +1631,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "279646333940269056": {
         "botIgnore": false,
@@ -1355,7 +1652,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "206947790310473738": {
         "botIgnore": false,
@@ -1372,7 +1673,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "141507830443147264": {
         "botIgnore": false,
@@ -1389,7 +1694,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "135877233175691264": {
         "botIgnore": false,
@@ -1406,7 +1715,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "248970452964212746": {
         "botIgnore": false,
@@ -1423,7 +1736,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "151471621083758593": {
         "botIgnore": false,
@@ -1440,11 +1757,36 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "205467504150183936": {
         "botIgnore": false,
-        "dia": 15,
+        "dia": 10,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "161882610652545024": {
+        "botIgnore": false,
+        "dia": 25,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -1457,7 +1799,11 @@
         "bio": "",
         "title": "",
         "bg": "",
-        "rep": 0
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
     },
     "113831715381837826": {
         "botIgnore": false,
@@ -1473,6 +1819,589 @@
         },
         "bio": "",
         "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "129340353886027776": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "274396239783526401": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "205311708049178624": {
+        "botIgnore": false,
+        "dia": 10,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 1,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "221665917384261632": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "199042628489183232": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "99729683284770816": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 1,
+            "boots": 0,
+            "small": 3,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "181185376516308992": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "97728704695762944": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "202340510654791680": {
+        "botIgnore": false,
+        "dia": 117,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "202619500032557056": {
+        "botIgnore": false,
+        "dia": 10,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 1,
+            "boots": 1,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "250905061641682945": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "143127896683184129": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "177162512565796867": {
+        "botIgnore": false,
+        "dia": 35,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "191551311026716672": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "191428470398517258": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "143184617329917952": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "bg": "",
+        "rep": 0,
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "style": 1
+    },
+    "246789855584059392": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0
+    },
+    "187331989743992833": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "style": 1,
+        "rep": 0
+    },
+    "144633554167398410": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0
+    },
+    "276350857505800203": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "style": 1,
+        "rep": 0
+    },
+    "232816793159335936": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0
+    },
+    "117956069635915785": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0
+    },
+    "176555734979313664": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0
+    },
+    "60822552045420544": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "style": 1,
+        "rep": 0
+    },
+    "173754674137006080": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0
+    },
+    "142460298467475456": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0
+    },
+    "169613103783346177": {
+        "botIgnore": false,
+        "dia": 35,
+        "daily": false,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0
+    },
+    "206063457479426048": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
         "bg": "",
         "rep": 0
     }

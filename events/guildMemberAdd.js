@@ -24,7 +24,11 @@ exports.run = (bot, member, guild) => {
         },
         "bio": "",
         "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
         "bg": "",
+        "style": 1,
         "rep": 0
     }
 

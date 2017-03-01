@@ -81,7 +81,12 @@ exports.run = (bot, msg, args) => {
                         "big": 0
                     },
                     "bio": "",
+                    "title": "",
+                    "twitter": "",
+                    "tumblr": "",
+                    "reddit": "",
                     "bg": "",
+                    "style": 1,
                     "rep": 0
                 }
             }
