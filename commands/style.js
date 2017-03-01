@@ -7,7 +7,7 @@ var userSettings = require(usersName);
 exports.run = (bot, msg, args) => {
 
     if (args.length > 0) {
-        if (!isNaN(args[0]) && parseInt(args[0]) > 0 && parseInt(args[0]) < 4) {
+        if (!isNaN(args[0]) && parseInt(args[0]) > 0 && parseInt(args[0]) < 5) {
             userSettings[msg.author.id].style = parseInt(args[0]);
             updateUsers();
 
@@ -32,7 +32,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bots, msg, args) => {
-    return "To change your profile style, use `!style [number]`.  Current Styles: 1, 2, 3";
+    return "To change your profile style, use `!style [number]`.  Current Styles: 1, 2, 3, 4";
 }
 
 //===============================FUNCTIONS====================================
