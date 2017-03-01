@@ -22,7 +22,35 @@ exports.run = (bot, msg, args) => {
 
     if (args.length > 0) {
         if (!isNaN(args[0])) {
-            let dia = parseInt(args[0]);
+            let dia = parseInt(args[0].trim());
+
+            if (!args[0]) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Please use the format `!bet [amount]`!")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+
+            if (dia < 1) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("You can't use a negative amount!");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+
+            if (dia > 1000) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Please do not exceed 1000!");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
 
             if (userSettings[msg.author.id].dia < dia) {
                 let embed = new discord.RichEmbed();

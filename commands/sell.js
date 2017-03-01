@@ -21,7 +21,35 @@ exports.run = (bot, msg, args) => {
     }
 
     if (args.length > 1 && !isNaN(args[1])) {
-        let amt = parseInt(args[1]);
+        let amt = parseInt(args[1].trim());
+
+        if (!args[1]) {
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Error:")
+                .setColor(0xFF0040)
+                .setDescription("Please use the format `!sell [type] [amount]`!")
+                .setThumbnail("http://i.imgur.com/7TL0t99.png");
+            msg.channel.sendEmbed(embed).catch(console.error);
+            return;
+        }
+
+        if (amt < 1) {
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Error:")
+                .setColor(0xFF0040)
+                .setDescription("You can't use a negative amount!");
+            msg.channel.sendEmbed(embed).catch(console.error);
+            return;
+        }
+
+        if (amt > 1000) {
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Error:")
+                .setColor(0xFF0040)
+                .setDescription("Please do not exceed 1000!");
+            msg.channel.sendEmbed(embed).catch(console.error);
+            return;
+        }
 
         if (args[0].toLowerCase() == "big" || args[0].toLowerCase() == "large") {
             if (userSettings[msg.author.id].inv.big < amt) {
@@ -142,7 +170,7 @@ exports.run = (bot, msg, args) => {
     let embed = new discord.RichEmbed();
     embed.setTitle("Error:")
         .setColor(0xFF0040)
-        .setDescription("Please use the format `!mine / !mine sell [type] [amount]`!")
+        .setDescription("Please use the format `!sell [type] [amount]`!")
         .setThumbnail("http://i.imgur.com/7TL0t99.png");
     msg.channel.sendEmbed(embed).catch(console.error);
 
