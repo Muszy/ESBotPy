@@ -15,7 +15,8 @@ exports.run = (bot, msg, args) => {
             .setDescription("Please use the format: `!rip [year] [user]`.")
             .setThumbnail("http://i.imgur.com/7TL0t99.png");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+		msg.delete(1500);
 		return;
 	}
 
@@ -32,11 +33,11 @@ exports.run = (bot, msg, args) => {
 		.write(dir + 'ripTemp.png', function(err) {
 			if(!err) {
 				console.log("Written composite image.");
-				msg.channel.sendFile(dir + 'ripTemp.png', "rip.png");
+				msg.channel.sendFile(dir + 'ripTemp.png', "rip.png").then(m => m.delete(8000)).catch(console.error);
 			}
 			else if(err) console.log(err);
 		});
-
+		msg.delete(1500);
 }
 
 exports.help = (bots, msg, args) => {

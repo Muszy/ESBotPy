@@ -53,7 +53,8 @@ exports.run = (bot, msg, args) => {
     		.setColor(0xFF0040)
         	.setDescription("Please look up person at a time!")
         	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-        msg.channel.sendEmbed(embed).catch(console.error);
+        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+        msg.delete(1500);
 	}
 
 	else if ( msg.mentions.users.size === 1 ) {
@@ -79,7 +80,8 @@ exports.run = (bot, msg, args) => {
     		.setColor(0xFF0040)
         	.setDescription("Please use `!info [blank/roles/bot/user]`!")
         	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-        msg.channel.sendEmbed(embed).catch(console.error);
+        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+        msg.delete(1500);
 	}
 }
 

@@ -19,7 +19,8 @@ var download = function(msg, uri, filename, callback) {
     request.head(uri, function(err, res, body) {
         if (err) {
             //console.log("bg img not found");
-            msg.channel.sendEmbed(errorMsg).catch(console.error);
+            msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
         //console.log('content-type:', res.headers['content-type']);
@@ -75,14 +76,16 @@ exports.create = function(bot, msg, card, style, id, w, h) {
 
                                                             } else if (err) {
                                                                 console.log(err);
-                                                                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                                                                mmsg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                                                msg.delete(1500);
                                                                 return;
                                                             }
                                                         });
 
                                                 } else if (err) {
                                                     console.log(err);
-                                                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                                                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                                    msg.delete(1500);
                                                     return;
                                                 }
                                             });
@@ -96,13 +99,15 @@ exports.create = function(bot, msg, card, style, id, w, h) {
 
                             } else if (err) {
                                 console.log(err);
-                                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                                msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                msg.delete(1500);
                                 return;
                             }
                         });
                 } else if (err) {
                     console.log(err);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
 
                     fs.unlink(dir + 'bg' + id + '.png');
                     return;
@@ -153,14 +158,16 @@ exports.create = function(bot, msg, card, style, id, w, h) {
 
                                                         } else if (err) {
                                                             console.log(err);
-                                                            msg.channel.sendEmbed(errorMsg).catch(console.error);
+                                                            msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                                            msg.delete(1500);
                                                             return;
                                                         }
                                                     });
 
                                             } else if (err) {
                                                 console.log(err);
-                                                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                                                msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                                msg.delete(1500);
                                                 return;
                                             }
                                         });
@@ -174,13 +181,15 @@ exports.create = function(bot, msg, card, style, id, w, h) {
 
                         } else if (err) {
                             console.log(err);
-                            msg.channel.sendEmbed(errorMsg).catch(console.error);
+                            msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                            msg.delete(1500);
                             return;
                         }
                     });
             } else if (err) {
                 console.log(err);
-                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
 
                 fs.unlink(dir + 'bg' + id + '.png');
                 return;

@@ -1,6 +1,7 @@
 {
     "108753685122715648": {
         "ignore": [
+            "275746453706637313"
         ],
         "banAlerts": true,
         "greet": true,
@@ -14,13 +15,14 @@
         "tags": true,
         "diaGen": true,
         "ignoreDiaCh": [
-            "275746453706637313",
-            "275154406477922304"
+            "275154406477922304",
+            "275746453706637313"
         ],
         "diaChance": 100,
         "diaType": "<:dia:283873457244995584>",
-        "lastDia": 0,
-        "diaMade": false
+        "lastDia": 19,
+        "diaMade": false,
+        "lastDiaMsg": ""
     },
     "139081294607941633": {
         "ignore": [],
@@ -29,7 +31,7 @@
         "welcome": "Welcome $USER$ to $SERVER$! Please read the <#174639296752517121> and use the channels for their intended topics. Use <#197038160952295434> for anything offtopic.\n\nYou can tag yourself accordingly with `!iam <role>` and you can check out what roles we have available with `!iam`!",
         "notify": false,
         "notifyChannel": "174636983178625035",
-        "treats": 20,
+        "treats": 50,
         "roles": [
             "MMO",
             "GBF",
@@ -37,7 +39,8 @@
             "Overwatch",
             "PKMNGO",
             "House Ostia",
-            "Minions"
+            "Minions",
+            "Orphan Farmer"
         ],
         "tags": true,
         "diaGen": true,
@@ -50,7 +53,8 @@
         "diaChance": 3,
         "diaType": "💸 Memes",
         "lastDia": 0,
-        "diaMade": false
+        "diaMade": false,
+        "lastDiaMsg": ""
     },
     "184184427885232128": {
         "ignore": [],
@@ -67,18 +71,19 @@
         "diaChance": 3,
         "diaType": "Dia",
         "lastDia": 0,
-        "diaMade": false
+        "diaMade": false,
+        "lastDiaMsg": ""
     },
     "210577428815413251": {
         "ignore": [
             "278384722256855040"
         ],
-        "banAlerts": false,
+        "banAlerts": true,
         "greet": true,
         "welcome": "Welcome to the /r/EnsembleStars Discord! Ready to rep your unit? Message the mods and ask for a role or use !iam <role>! Your mods are <@206947790310473738>,  <@199042628489183232> and <@169339685041078274> (with Discord mod <@108752547166031872>) Get easy access to all the events, news, and gacha info and more through the channels on the side (and the bot commands!)\n\nHave fun producing!",
         "notify": true,
         "notifyChannel": "210577428815413251",
-        "treats": 40,
+        "treats": 0,
         "roles": [
             "2wink",
             "undead",
@@ -104,10 +109,11 @@
             "275506061329301514",
             "272590241712570368"
         ],
-        "diaChance": 3,
-        "diaType": "💎",
+        "diaChance": 1,
+        "diaType": "<:dia:287030622625726464>",
         "lastDia": 0,
-        "diaMade": false
+        "diaMade": false,
+        "lastDiaMsg": ""
     },
     "267593821250912256": {
         "ignore": [],
@@ -145,6 +151,7 @@
         "diaChance": 3,
         "diaType": "Dia",
         "lastDia": 0,
-        "diaMade": false
+        "diaMade": false,
+        "lastDiaMsg": ""
     }
 }

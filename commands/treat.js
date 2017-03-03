@@ -69,7 +69,8 @@ exports.run = (bot, msg, args) => {
 				.setThumbnail("http://i.imgur.com/gUWJl0u.png")
 				.setDescription("The max amount of treats Daikichi can receive at one time is 10!");
 
-			msg.channel.sendEmbed(embed).catch(console.error);
+			msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+			msg.delete(1500);
 		}
 	}
 

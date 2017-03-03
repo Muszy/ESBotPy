@@ -24,7 +24,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
             request(boyURL + boy + "/box.json", function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!(response.statusCode === 200)) {
@@ -33,7 +34,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
                         .setColor(0xFF0040)
                         .setDescription("Boy was not found.")
                         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                    msg.channel.sendEmbed(embed).catch(console.error);
+                    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -53,7 +55,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
             request(boyURL + boy + "/box.json", function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!(response.statusCode === 200)) {
@@ -62,7 +65,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
                         .setColor(0xFF0040)
                         .setDescription("Boy was not found.")
                         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                    msg.channel.sendEmbed(embed).catch(console.error);
+                    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -86,7 +90,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
             request(boyURL + boy + "/box.json", function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!(response.statusCode === 200)) {
@@ -95,7 +100,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
                         .setColor(0xFF0040)
                         .setDescription("Boy was not found.")
                         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                    msg.channel.sendEmbed(embed).catch(console.error);
+                    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -116,7 +122,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
             request(boyURL + boy + "/box.json", function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!(response.statusCode === 200)) {
@@ -125,7 +132,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
                         .setColor(0xFF0040)
                         .setDescription("Boy was not found.")
                         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                    msg.channel.sendEmbed(embed).catch(console.error);
+                    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -148,7 +156,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
             request(boyURL + boy + "/box.json", function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!(response.statusCode === 200)) {
@@ -157,7 +166,8 @@ exports.tenPull = function(boy, list, names, count, msg) {
                         .setColor(0xFF0040)
                         .setDescription("Boy was not found.")
                         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                    msg.channel.sendEmbed(embed).catch(console.error);
+                    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {

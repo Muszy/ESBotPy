@@ -1,5 +1,5 @@
 exports.run = (bot, msg, args) => {
-    msg.channel.sendMessage("Ping!");
+    msg.channel.sendMessage("Pong!");
 }
 
 exports.help = (bot, msg, args) => {

@@ -30,7 +30,7 @@ exports.run = (bot, msg, args) => {
                 .setColor(0xFF0040)
                 .setDescription("Please use the format `!plant [amount]`!")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
             return;
         }
 
@@ -39,7 +39,7 @@ exports.run = (bot, msg, args) => {
             embed.setTitle("Error:")
                 .setColor(0xFF0040)
                 .setDescription("You can't use a negative amount!");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
             return;
         }
 
@@ -48,7 +48,7 @@ exports.run = (bot, msg, args) => {
             embed.setTitle("Error:")
                 .setColor(0xFF0040)
                 .setDescription("Please do not exceed 1000!");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
             return;
         }
 
@@ -58,7 +58,7 @@ exports.run = (bot, msg, args) => {
                 .setColor(0xFF0040)
                 .setDescription("You don't have enough to plant that!")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
             return;
         }
 
@@ -67,11 +67,29 @@ exports.run = (bot, msg, args) => {
         let embed = new discord.RichEmbed();
         embed.setColor(0x753FCF)
             .setDescription(msg.author.username + " has planted " + dia + " " + serverSettings[msg.channel.guild.id].diaType + "!  Use `!pick` to pick it up!");
-        msg.channel.sendEmbed(embed);
+        msg.channel.sendEmbed(embed).then(function(m) {
+            if (serverSettings[msg.channel.guild.id].lastDiaMsg != "") {
+
+                msg.channel.fetchMessage(serverSettings[msg.channel.guild.id].lastDiaMsg).then(function(me) {
+                    me.delete(1500);
+                    serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
+                    serverSettings[msg.channel.guild.id].lastDia += dia;
+                    msg.delete(1500);
+                    m.delete(600000);
+                    userSettings[msg.author.id].dia -= dia;
+                    updateUsers();
+                    updateServers();
+                    return;
+                }).catch(console.error);
+
+            }
+            serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
+            serverSettings[msg.channel.guild.id].lastDia += dia;
+            m.delete(600000);
+            updateServers();
+        }).catch(console.error);
 
         userSettings[msg.author.id].dia -= dia;
-        serverSettings[msg.channel.guild.id].lastDia += dia;
-        updateServers();
         updateUsers();
         return;
     }
@@ -81,7 +99,7 @@ exports.run = (bot, msg, args) => {
         .setColor(0xFF0040)
         .setDescription("Please use the format `!plant [amount]`!")
         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-    msg.channel.sendEmbed(embed).catch(console.error);
+    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 
 }
 

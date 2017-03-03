@@ -22,6 +22,7 @@ exports.run = (bot, msg, args) => {
 			.setColor(0xB48CF0)
 			.setImage(bot.users.get(id).avatarURL);
 		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.delete(1500);
 	}
 
 	else {
@@ -31,7 +32,8 @@ exports.run = (bot, msg, args) => {
     		.setColor(0xFF0040)
         	.setDescription("Please use `!avatar [user]`!")
         	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-        msg.channel.sendEmbed(embed).catch(console.error);
+        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+        msg.delete(1500);
 	}
 }
 

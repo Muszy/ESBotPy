@@ -18,6 +18,8 @@ exports.run = (bot, msg, args) => {
         .setThumbnail(bot.users.get(msg.author.id).avatarURL);
     msg.channel.sendEmbed(embed).catch(console.error);
 
+    msg.delete(1500);
+
 }
 
 exports.help = (bots, msg, args) => {

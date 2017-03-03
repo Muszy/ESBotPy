@@ -32,7 +32,8 @@ exports.run = (bot, msg, args) => {
                     .setColor(0xFF0040)
                     .setDescription("Please use the format `!give [user] [amount]`!")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -41,7 +42,8 @@ exports.run = (bot, msg, args) => {
                 embed.setTitle("Error:")
                     .setColor(0xFF0040)
                     .setDescription("You can't use a negative amount!");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -50,7 +52,8 @@ exports.run = (bot, msg, args) => {
                 embed.setTitle("Error:")
                     .setColor(0xFF0040)
                     .setDescription("Please do not exceed 1000!");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -59,7 +62,8 @@ exports.run = (bot, msg, args) => {
                 embed.setTitle("Error:")
                     .setColor(0xFF0040)
                     .setDescription("You don't have enough to give that!");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -95,7 +99,6 @@ exports.run = (bot, msg, args) => {
             embed.setColor(0x753FCF)
                 .setDescription(msg.author.username + " has given " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " to " + msg.guild.member(id).displayName + "!");
             msg.channel.sendEmbed(embed);
-
             userSettings[msg.author.id].dia -= dia;
             userSettings[id].dia += dia;
             updateUsers();
@@ -108,7 +111,8 @@ exports.run = (bot, msg, args) => {
         .setColor(0xFF0040)
         .setDescription("Please use the format `!give <user> [amount]`!")
         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-    msg.channel.sendEmbed(embed).catch(console.error);
+    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+    msg.delete(1500);
 
 }
 

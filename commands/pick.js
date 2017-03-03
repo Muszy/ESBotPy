@@ -21,23 +21,29 @@ exports.run = (bot, msg, args) => {
     }
 
     if (serverSettings[msg.channel.guild.id].lastDia > 0) {
-    	let dia = serverSettings[msg.channel.guild.id].lastDia;
-    	console.log("adding " + dia + " to " + msg.author.username);
+        let dia = serverSettings[msg.channel.guild.id].lastDia;
+        console.log("adding " + dia + " to " + msg.author.username);
 
-    	let embed = new discord.RichEmbed();
+        let embed = new discord.RichEmbed();
         embed.setColor(0x753FCF)
             .setDescription(dia + " " + serverSettings[msg.channel.guild.id].diaType + " has been added to " + msg.author.username + "'s inventory.");
-        msg.channel.sendEmbed(embed);
+        msg.channel.sendEmbed(embed).then(m => m.delete(3000));
 
-    	userSettings[msg.author.id].dia += serverSettings[msg.channel.guild.id].lastDia;
-    	serverSettings[msg.channel.guild.id].lastDia = 0;
-    	serverSettings[msg.channel.guild.id].diaMade = false;
-    	updateServers();
-    	updateUsers();
-    	return;
+        userSettings[msg.author.id].dia += serverSettings[msg.channel.guild.id].lastDia;
+        serverSettings[msg.channel.guild.id].lastDia = 0;
+        serverSettings[msg.channel.guild.id].diaMade = false;
+        msg.channel.fetchMessage(serverSettings[msg.channel.guild.id].lastDiaMsg).then(function(m) {
+                m.delete(1000);
+                serverSettings[msg.channel.guild.id].lastDiaMsg = "";
+                msg.delete(1000);
+                updateServers();
+            }).catch(console.error);
+        updateUsers();
+        return;
     }
 
     console.log("0 dia");
+    msg.delete(1000);
 
 }
 

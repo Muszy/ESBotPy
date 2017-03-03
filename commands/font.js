@@ -6,38 +6,42 @@ var userSettings = require(usersName);
 
 exports.run = (bot, msg, args) => {
 
-    if (args.length > 0) {
-        let str = args.join(" ");
+    if (args.length > 1) {
+        let type = parseInt(args[0]);
 
-        /*if (str.length > 20) {
-            str = str.slice(0, 19);
-        }*/
+        if (!isNaN(args[0]) && type > 0 && type < 4) {
 
-        userSettings[msg.author.id].reddit = str;
-        updateUsers();
+            if ( type === 1 ) userSettings[msg.author.id].fontOne = args[1];
+            if ( type === 2 ) userSettings[msg.author.id].fontTwo = args[1];
+            if ( type === 3 ) userSettings[msg.author.id].fontThree = args[1];
+            
+            updateUsers();
 
-        let embed = new discord.RichEmbed();
+            let embed = new discord.RichEmbed();
 
-        embed.setTitle("Reddit changed for " + msg.author.username + ".")
-            .setColor(0xA7DBD8);
-        msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
-        msg.delete(1500);
-        return;
+            embed.setTitle("Font #" + type + " changed for " + msg.author.username + " to: " + args[1] + ".")
+                .setColor(0xA7DBD8);
+            msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+            msg.delete(1500);
+            return;
+        }
     }
 
-    userSettings[msg.author.id].reddit = "";
+    userSettings[msg.author.id].fontOne = "";
+    userSettings[msg.author.id].fontTwo = "";
+    userSettings[msg.author.id].fontThree = "";
     updateUsers();
 
     let embed = new discord.RichEmbed();
 
-    embed.setTitle("Reddit changed for " + msg.author.username + ".")
+    embed.setTitle("Font colors changed to default for " + msg.author.username + ".")
         .setColor(0xA7DBD8);
     msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
     msg.delete(1500);
 }
 
 exports.help = (bots, msg, args) => {
-    return "To change your Reddit, use `!reddit [handle]`.";
+    return "To change your profile font colors, use `!font [1 to 3] [hex code]`.\nFont 1 changes rep/cash and social media.\nFont 2 changes username and bio.\nFont 3 changes title.";
 }
 
 //===============================FUNCTIONS====================================

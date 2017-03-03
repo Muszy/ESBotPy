@@ -17,7 +17,10 @@ exports.run = (bot, msg, args) => {
         let embed = new discord.RichEmbed();
         embed.setColor(0x753FCF)
             .setDescription("Daily: " + dia + " has been added to " + msg.author.username + "'s inventory.");
-        msg.channel.sendEmbed(embed);
+        msg.channel.sendEmbed(embed).then(function(m) {
+            msg.delete(1000);
+            m.delete(2000);
+        });
 
     	userSettings[msg.author.id].dia += 10;
         userSettings[msg.author.id].daily = false;
@@ -25,7 +28,8 @@ exports.run = (bot, msg, args) => {
     	return;
     }
 
-    msg.channel.sendMessage("`You've already received your daily!`");
+    msg.channel.sendMessage("`You've already received your daily!`").then(m => m.delete(3000)).catch(console.error);
+    msg.delete(1000);
 
 }
 

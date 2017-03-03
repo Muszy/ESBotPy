@@ -14,7 +14,7 @@ exports.run = (bot, msg, args) => {
 			.setImage(hugs[Math.floor(Math.random() * (hugs.length))])
 			.setDescription(msg.author+ " hugs **" + msg.mentions.users.first() + "!**");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	} 
 	else if (args.length > 0) {
 		let embed = new discord.RichEmbed();
@@ -23,7 +23,7 @@ exports.run = (bot, msg, args) => {
 			.setImage(hugs[Math.floor(Math.random() * (hugs.length))])
 			.setDescription(msg.author+ " hugs **" + args.join(" ").trim() + "!**");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
@@ -32,8 +32,10 @@ exports.run = (bot, msg, args) => {
 			.setImage("http://i.imgur.com/P6tTJUm.gif")
 			.setDescription("**" + msg.author + " hugs Daikichi Bot!**");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	}
+
+	msg.delete(1500);
 }
 
 exports.help = (bots, msg, args) => {

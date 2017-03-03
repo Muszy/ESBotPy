@@ -21,7 +21,7 @@ exports.run = (bot, msg, args) => {
 			.setThumbnail("http://i.imgur.com/nRleyfl.png")
 			.setDescription("**Daikichi says:** " + msg.mentions.users.first() + praise[Math.floor(Math.random() * (praise.length))]);
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	} 
 
 	else if (args.length > 0) {
@@ -32,7 +32,7 @@ exports.run = (bot, msg, args) => {
 			.setThumbnail("http://i.imgur.com/nRleyfl.png")
 			.setDescription("**Daikichi says:** " + args.join(" ").trim() + praise[Math.floor(Math.random() * (praise.length))]);
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
@@ -41,8 +41,9 @@ exports.run = (bot, msg, args) => {
 			.setThumbnail("http://i.imgur.com/nRleyfl.png")
 			.setDescription("**Daikichi says:** " + msg.author + praise[Math.floor(Math.random() * (praise.length))]);
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	}
+	msg.delete(1500);
 }
 
 exports.help = (bots, msg, args) => {

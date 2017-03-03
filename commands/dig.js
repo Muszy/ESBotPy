@@ -28,7 +28,8 @@ exports.run = (bot, msg, args) => {
             .setColor(0xFF0040)
             .setDescription("You don't have enough to gamble!")
             .setThumbnail("http://i.imgur.com/7TL0t99.png");
-        msg.channel.sendEmbed(embed).catch(console.error);
+        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+        msg.delete(1500);
         return;
     }
 
@@ -39,7 +40,7 @@ exports.run = (bot, msg, args) => {
         let embed = new discord.RichEmbed();
         embed.setTitle("Digging:")
             .setColor(0x753FCF)
-            .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a large jewel!");
+            .setDescription(msg.author.username + " paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a large jewel!");
         msg.channel.sendEmbed(embed).catch(console.error);
 
         userSettings[msg.author.id].inv.big += 1;
@@ -51,7 +52,7 @@ exports.run = (bot, msg, args) => {
         let embed = new discord.RichEmbed();
         embed.setTitle("Digging:")
             .setColor(0x753FCF)
-            .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a medium jewel!");
+            .setDescription(msg.author.username + " paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a medium jewel!");
         msg.channel.sendEmbed(embed).catch(console.error);
 
         userSettings[msg.author.id].inv.med += 1;
@@ -63,7 +64,7 @@ exports.run = (bot, msg, args) => {
         let embed = new discord.RichEmbed();
         embed.setTitle("Digging:")
             .setColor(0x753FCF)
-            .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a small jewel!");
+            .setDescription(msg.author.username + " paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a small jewel!");
         msg.channel.sendEmbed(embed).catch(console.error);
 
         userSettings[msg.author.id].inv.small += 1;
@@ -75,7 +76,7 @@ exports.run = (bot, msg, args) => {
         let embed = new discord.RichEmbed();
         embed.setTitle("Digging:")
             .setColor(0x753FCF)
-            .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a boot..");
+            .setDescription(msg.author.username + " paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a boot..");
         msg.channel.sendEmbed(embed).catch(console.error);
 
         userSettings[msg.author.id].inv.boots += 1;
@@ -86,7 +87,7 @@ exports.run = (bot, msg, args) => {
     let embed = new discord.RichEmbed();
     embed.setTitle("Digging:")
         .setColor(0x753FCF)
-        .setDescription("You paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a piece of trash..");
+        .setDescription(msg.author.username + " paid " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " and found a piece of trash..");
     msg.channel.sendEmbed(embed).catch(console.error);
 
     userSettings[msg.author.id].inv.trash += 1;

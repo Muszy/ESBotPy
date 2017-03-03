@@ -16,6 +16,12 @@ color guide:
     0xA7DBD8 - profile
     0xFF3232 - luck
 
+timeouts:
+    1500 - commands
+    4000 - errors
+    5000 - interacts
+    3000 - updating stuff
+
 icons:
     treat daikichi - http://i.imgur.com/gUWJl0u.png
     reg daikichi - http://i.imgur.com/7TL0t99.png
@@ -55,6 +61,8 @@ var boofs = ["Boof!", "Woof!", "Woof woof!", "Arf!", "Bark!", "Bork!", "Bork bor
 var event = null;
 var half = null;
 var last = null;
+
+var recentComm = [];
 
 var commError = new discord.RichEmbed();
 commError.setTitle("Error:")
@@ -99,6 +107,17 @@ var treatReset = schedule.scheduleJob(ruleTreats, function() {
     rateFile.reset(bot);
     console.log("Ratings Reset");
 });
+
+var ruleRep = new schedule.RecurrenceRule();
+ruleRep.hour = 0;
+ruleRep.minute = 0;
+ruleRep.dayOfWeek = 0;
+
+var repReset = schedule.scheduleJob(ruleRep, function() {
+    let commandFile = require(`./commands/rep.js`);
+    commandFile.reset(bot);
+    console.log("Weekly Rep Reset");
+})
 
 /*============ENSTARS EVENT CHECKERS======*/
 
@@ -249,15 +268,51 @@ function eventChecker() {
     }
 }
 
-function diaChecker() {
-    for (var id in serverSettings) {
-        if (serverSettings[id].diaMade) {
+function diaChecker(msg) {
+    //for (var id in serverSettings) {
+    let id = msg.guild.id;
+    if (serverSettings[id].diaMade) {
+
+        if (serverSettings[id].lastDiaMsg != "") {
             console.log("dia expired");
             serverSettings[id].diaMade = false;
+
+            serverSettings[id].lastDiaMsg = "";
+            msg.delete();
+            updateServers();
+            return;
+        }
+
+        console.log("dia expired");
+        serverSettings[id].diaMade = false;
+
+        updateServers();
+        return;
+    }
+    //}
+}
+
+function diaExpire() {
+    for (var id in serverSettings) {
+        if (serverSettings[id].diaMade) {
+
+            if (serverSettings[id].lastDiaMsg != "") {
+                console.log("dia expired");
+                serverSettings[id].diaMade = false;
+
+                serverSettings[id].lastDiaMsg = "";
+                updateServers();
+                return;
+            }
+
+            console.log("dia expired");
+            serverSettings[id].diaMade = false;
+
             updateServers();
             return;
         }
     }
+    return;
 }
 
 exports.eventReset = function() {
@@ -272,7 +327,7 @@ setInterval(() => {
 }, 30000);
 
 setInterval(() => {
-    diaChecker();
+    diaExpire();
 }, 600000);
 
 /*===========EVENT HANDLER=============*/
@@ -306,7 +361,8 @@ bot.on("guildCreate", guild => {
         "diaChance": 3,
         "diaType": "Dia",
         "lastDia": 0,
-        "diaMade": false
+        "diaMade": false,
+        "lastDiaMsg": ""
     }
     quotes[guild.id] = {
         "quotes": []
@@ -479,7 +535,8 @@ function guildChecker(msg) {
         "diaChance": 3,
         "diaType": "Dia",
         "lastDia": 0,
-        "diaMade": false
+        "diaMade": false,
+        "lastDiaMsg": ""
     }
 
     console.log("Added server \'" + msg.channel.guild.name + "\' to the servers list.  ID: " + msg.channel.guild.id);
@@ -593,8 +650,13 @@ bot.on("message", msg => {
                         let embed = new discord.RichEmbed();
                         embed.setColor(0x753FCF)
                             .setDescription(serverSettings[msg.channel.guild.id].lastDia + " " + serverSettings[msg.channel.guild.id].diaType + " has appeared!  Type `!pick` to pick it up!");
-                        msg.channel.sendEmbed(embed);
-                        updateServers();
+                        msg.channel.sendEmbed(embed).then(function(m) {
+                            serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
+                            setTimeout(() => {
+                                diaChecker(m);
+                            }, 600000);
+                            updateServers();
+                        }).catch(console.error);
                     }
                 }
 
@@ -703,7 +765,7 @@ bot.on("message", msg => {
             msg.channel.sendEmbed(embed).catch(console.error);
         }
 
-        if (((msg.content.toLowerCase().indexOf("jewel") > -1) || (msg.content.toLowerCase().indexOf("gem") > -1)) && msg.content.toLowerCase().indexOf("skill") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("trans") > -1) {
+        if (((msg.content.toLowerCase().indexOf("jewel") > -1) || (msg.content.toLowerCase().indexOf("gem") > -1) || (msg.content.toLowerCase().indexOf("card") > -1)) && msg.content.toLowerCase().indexOf("skill") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("trans") > -1) {
 
             let embed = new discord.RichEmbed();
             embed.setTitle("Click here for the full Jewel Skill Guide:")
@@ -714,7 +776,7 @@ bot.on("message", msg => {
             msg.channel.sendEmbed(embed).catch(console.error);
         }
 
-        if ( msg.content.toLowerCase().indexOf("luck") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("do") > -1) {
+        if (msg.content.toLowerCase().indexOf("luck") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("do") > -1) {
 
             let embed = new discord.RichEmbed();
             embed.setTitle("Click here for the Master Guide!")
@@ -749,17 +811,19 @@ bot.on("message", msg => {
         }
 
 
-        /*if (msg.content.toLowerCase() == "test") {
-            let id;
-            let embed = new discord.RichEmbed();
-            embed.setDescription("tester");
-            msg.channel.sendEmbed(embed).catch(console.error);
+        /*if (msg.content.toLowerCase() == "hg me is a damn fool") {
+            //let id;
+            //let embed = new discord.RichEmbed();
+            //embed.setDescription("tester");
+            //msg.channel.sendEmbed(embed).catch(console.error);
 
-            msg.channel.fetchMessages({ limit: 4 })
-                .catch(console.error);
+            //msg.channel.fetchMessages({ limit: 4 })
+            //    .catch(console.error);
             //let id = bot.lastMessageID;
             for(var id in userSettings){
-                userSettings[id].style = 1;
+                userSettings[id].fontOne = "";
+                userSettings[id].fontTwo = "";
+                userSettings[id].fontThree = "";
             }
 
             updateUsers();
@@ -780,7 +844,8 @@ bot.on("message", msg => {
                 .setColor(0xFF0040)
                 .setDescription("Please set a role to `" + config.mod_role + "` in order to use mod commands!")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(5000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
 
@@ -798,7 +863,8 @@ bot.on("message", msg => {
             } catch (e) {
                 console.log("command not found");
 
-                msg.channel.sendEmbed(commError).catch(console.error);
+                msg.channel.sendEmbed(commError).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
             }
             return;
         }
@@ -810,7 +876,8 @@ bot.on("message", msg => {
                 .setColor(0xFF0040)
                 .setDescription("You do not have the proper rank to access this! Grrr... 🐾")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
     } else if ((msg.content.startsWith(config.mod_prefix + "event") || msg.content.startsWith(config.mod_prefix + "gachas")) && msg.author.id == config.admin_id) {
@@ -826,7 +893,8 @@ bot.on("message", msg => {
         } catch (e) {
             console.log("command not found");
 
-            msg.channel.sendEmbed(commError).catch(console.error);
+            msg.channel.sendEmbed(commError).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
         }
         return;
     } else if (msg.content.startsWith(config.mod_prefix) && (msg.channel.type == "dm" || msg.channel.type == "group")) {
@@ -845,6 +913,15 @@ bot.on("message", msg => {
 
     if (userSettings[msg.author.id].botIgnore) return;
 
+    if (recentComm.includes(msg.author.id)) {
+        let embed = new discord.RichEmbed();
+        embed.setColor(0xFF0040)
+            .setDescription("Please wait!  The command cooldown is 2 seconds!");
+        msg.channel.sendEmbed(embed).then(m => m.delete(2000)).catch(console.error);
+        msg.delete(1000);
+        return;
+    }
+
     let command = msg.content.split(" ")[0];
     //command is whatever you put in like !help
     command = command.slice(config.prefix.length);
@@ -859,6 +936,14 @@ bot.on("message", msg => {
     try {
         let commandFile = require(`./commands/${command}.js`);
         commandFile.run(bot, msg, args);
+
+        //cooldown duder
+        recentComm.push(msg.author.id);
+        setTimeout(() => {
+            let index = recentComm.indexOf(msg .author.id);
+            // Removes the user from the array after 2.5 seconds
+            recentComm.splice(index, 1);
+        }, 2000);
     } catch (e) {
         //console.log(e);
         console.log("COMMAND NOT FOUND : " + command);

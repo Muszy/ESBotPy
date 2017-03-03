@@ -18,7 +18,7 @@ exports.run = (bot, msg, args) => {
 	        .setColor(0xFF0040)
 	        .setDescription("Role tagging is off! Bork! 🐾")
 	        .setThumbnail("http://i.imgur.com/7TL0t99.png");
-	    msg.channel.sendEmbed(embed).catch(console.error);
+	    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 	}
 
 	else if (args.length < 1){
@@ -28,7 +28,7 @@ exports.run = (bot, msg, args) => {
 		    .setColor(0xFF0040)
 		    .setThumbnail("http://i.imgur.com/7TL0t99.png")
 		    .setDescription("Please specify a role!");
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 	}
 
 	else {
@@ -53,7 +53,7 @@ exports.run = (bot, msg, args) => {
 			    		.setColor(0xFF0040)
 			        	.setDescription("You don't have that role!")
 			        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			        msg.channel.sendEmbed(embed).catch(console.error);
+			        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 				} else {
 					try {
 						let can_roles = msg.channel.permissionsFor(bot.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS");
@@ -70,7 +70,7 @@ exports.run = (bot, msg, args) => {
 								.setColor(0xFFB6C1)
 								.setDescription("You have been removed from the `" + myRole.name + "` role!")
 								.setThumbnail("http://i.imgur.com/7TL0t99.png");
-							msg.channel.sendEmbed(embed).catch(console.error);
+							msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
 						}
 
 						else {
@@ -80,7 +80,7 @@ exports.run = (bot, msg, args) => {
 					    		.setColor(0xFF0040)
 					        	.setDescription("Daikichi does not have sufficient permissions to untag you.")
 					        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-					        msg.channel.sendEmbed(embed).catch(console.error);
+					        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 						}
 					}
 
@@ -91,7 +91,7 @@ exports.run = (bot, msg, args) => {
 				    		.setColor(0xFF0040)
 				        	.setDescription("Daikichi does not have sufficient permissions to untag you.")
 				        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-				        msg.channel.sendEmbed(embed).catch(console.error);
+				        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 					}
 				}
 			}
@@ -103,7 +103,7 @@ exports.run = (bot, msg, args) => {
 		    		.setColor(0xFF0040)
 		        	.setDescription("Please use a valid role!")
 		        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-		        msg.channel.sendEmbed(embed).catch(console.error);
+		        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 			}
 		}
 
@@ -114,10 +114,10 @@ exports.run = (bot, msg, args) => {
 	    		.setColor(0xFF0040)
 	        	.setDescription("Please use a valid role/role in the list!")
 	        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-	        msg.channel.sendEmbed(embed).catch(console.error);
+	        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 		}
 	}
-
+	msg.delete(1500);
 }
 
 exports.help = (bot, msg, args) => {

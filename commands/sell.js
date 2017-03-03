@@ -29,7 +29,8 @@ exports.run = (bot, msg, args) => {
                 .setColor(0xFF0040)
                 .setDescription("Please use the format `!sell [type] [amount]`!")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
 
@@ -38,7 +39,8 @@ exports.run = (bot, msg, args) => {
             embed.setTitle("Error:")
                 .setColor(0xFF0040)
                 .setDescription("You can't use a negative amount!");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
 
@@ -47,7 +49,8 @@ exports.run = (bot, msg, args) => {
             embed.setTitle("Error:")
                 .setColor(0xFF0040)
                 .setDescription("Please do not exceed 1000!");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
 
@@ -58,7 +61,8 @@ exports.run = (bot, msg, args) => {
                     .setColor(0xFF0040)
                     .setDescription("You don't have enough large jewels to sell!")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -66,7 +70,8 @@ exports.run = (bot, msg, args) => {
             embed.setTitle("Sold:")
                 .setColor(0x753FCF)
                 .setDescription("You sold " + amt + " large jewel(s)!  You gained " + (amt * 15) + " " + serverSettings[msg.channel.guild.id].diaType + ".");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+            msg.delete(1500);
 
             userSettings[msg.author.id].dia += amt * 15;
             userSettings[msg.author.id].inv.big -= amt;
@@ -81,7 +86,8 @@ exports.run = (bot, msg, args) => {
                     .setColor(0xFF0040)
                     .setDescription("You don't have enough medium jewels to sell!")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -89,7 +95,8 @@ exports.run = (bot, msg, args) => {
             embed.setTitle("Sold:")
                 .setColor(0x753FCF)
                 .setDescription("You sold " + amt + " medium jewel(s)!  You gained " + (amt * 10) + " " + serverSettings[msg.channel.guild.id].diaType + ".");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+            msg.delete(1500);
 
             userSettings[msg.author.id].dia += amt * 10;
             userSettings[msg.author.id].inv.med -= amt;
@@ -104,7 +111,8 @@ exports.run = (bot, msg, args) => {
                     .setColor(0xFF0040)
                     .setDescription("You don't have enough small jewels to sell!")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -112,8 +120,8 @@ exports.run = (bot, msg, args) => {
             embed.setTitle("Sold:")
                 .setColor(0x753FCF)
                 .setDescription("You sold " + amt + " small jewel(s)!  You gained " + (amt * 5) + " " + serverSettings[msg.channel.guild.id].diaType + ".");
-            msg.channel.sendEmbed(embed).catch(console.error);
-
+            msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+            msg.delete(1500);
             userSettings[msg.author.id].dia += amt * 5;
             userSettings[msg.author.id].inv.small -= amt;
             updateUsers();
@@ -127,7 +135,8 @@ exports.run = (bot, msg, args) => {
                     .setColor(0xFF0040)
                     .setDescription("You don't have enough boots to sell..")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -135,7 +144,8 @@ exports.run = (bot, msg, args) => {
             embed.setTitle("Sold:")
                 .setColor(0x753FCF)
                 .setDescription("You sold " + amt + " boot(s)!  You gained " + (amt * 2) + " " + serverSettings[msg.channel.guild.id].diaType + ".");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+            msg.delete(1500);
 
             userSettings[msg.author.id].dia += amt * 2;
             userSettings[msg.author.id].inv.boots -= amt;
@@ -150,7 +160,8 @@ exports.run = (bot, msg, args) => {
                     .setColor(0xFF0040)
                     .setDescription("You don't have enough trash to sell?")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -158,7 +169,8 @@ exports.run = (bot, msg, args) => {
             embed.setTitle("Sold:")
                 .setColor(0x753FCF)
                 .setDescription("You sold " + amt + " piece(s) of trash!  You gained " + (amt) + " " + serverSettings[msg.channel.guild.id].diaType + ".");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+            msg.delete(1500);
 
             userSettings[msg.author.id].dia += amt;
             userSettings[msg.author.id].inv.trash -= amt;
@@ -170,9 +182,10 @@ exports.run = (bot, msg, args) => {
     let embed = new discord.RichEmbed();
     embed.setTitle("Error:")
         .setColor(0xFF0040)
-        .setDescription("Please use the format `!sell [type] [amount]`!")
+        .setDescription("Please use the format `!sell [type] [amount]`! You can sell: `trash, boots, small, medium, large`.")
         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-    msg.channel.sendEmbed(embed).catch(console.error);
+    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+    msg.delete(1500);
 
 }
 

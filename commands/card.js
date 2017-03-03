@@ -22,7 +22,8 @@ oops.setTitle("Error:")
 exports.run = (bot, msg, args) => {
 
     if (args.length < 1) {
-        msg.channel.sendEmbed(errMsg).catch(console.error);
+        msg.channel.sendEmbed(errMsg).then(m => m.delete(4000)).catch(console.error);
+        msg.delete(1500);
         return;
     } else if (args.length == 1) {
         let list = [];
@@ -65,7 +66,8 @@ function searchBoy(boy, list, count, msg) {
         request(url + boy + "/" + star + ".json", function(error, response, body) {
             if (error) {
                 console.log(error);
-                msg.channel.sendEmbed(oops).catch(console.error);
+                msg.channel.sendEmbed(oops).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
             if (!(response.statusCode === 200)) {
@@ -74,7 +76,8 @@ function searchBoy(boy, list, count, msg) {
                     .setColor(0xFF0040)
                     .setDescription("Boy was not found.")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
             if (!error) {
@@ -90,7 +93,8 @@ function searchBoy(boy, list, count, msg) {
         request(url + boy + "/five.json", function(error, response, body) {
             if (error) {
                 console.log(error);
-                msg.channel.sendEmbed(oops).catch(console.error);
+                msg.channel.sendEmbed(oops).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
             if (!(response.statusCode === 200)) {
@@ -99,7 +103,8 @@ function searchBoy(boy, list, count, msg) {
                     .setColor(0xFF0040)
                     .setDescription("Boy was not found.")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
             if (!error) {
@@ -141,7 +146,8 @@ function searchRare(args, msg) {
     request(url + boy + "/" + star + ".json", function(error, response, body) {
         if (error) {
             console.log(error);
-            msg.channel.sendEmbed(oops).catch(console.error);
+            msg.channel.sendEmbed(oops).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
         if (!(response.statusCode === 200)) {
@@ -150,7 +156,8 @@ function searchRare(args, msg) {
                 .setColor(0xFF0040)
                 .setDescription("Boy was not found.")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
         if (!error) {
@@ -184,7 +191,8 @@ function searchRare(args, msg) {
                     .setColor(0xFF0040)
                     .setDescription("No such character found!")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -219,7 +227,8 @@ function lookUp(args, msg) {
     request(url + boy + "/" + star + ".json", function(error, response, body) {
         if (error) {
             console.log(error);
-            msg.channel.sendEmbed(oops).catch(console.error);
+            msg.channel.sendEmbed(oops).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
         if (!(response.statusCode === 200)) {
@@ -228,7 +237,8 @@ function lookUp(args, msg) {
                 .setColor(0xFF0040)
                 .setDescription("Card was not found.")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
         if (!error) {

@@ -26,7 +26,7 @@ exports.run = (bot, msg, args) => {
 	let embed = new discord.RichEmbed();
     embed.setTitle("🎱 says:")
         .setColor(0x3399FF)
-        .setDescription(responses[Math.floor(Math.random() * (responses.length))])
+        .setDescription("**Q: **" + args.join(" ") + "\n**A: **" + responses[Math.floor(Math.random() * (responses.length))])
         .setThumbnail("http://i.imgur.com/7TL0t99.png");
     msg.channel.sendEmbed(embed).catch(console.error);
 }

@@ -14,7 +14,7 @@ exports.run = (bot, msg, args) => {
 			.setImage(pets[Math.floor(Math.random() * (pets.length))])
 			.setDescription("**" + msg.mentions.users.first()+ "** was pet by **" + msg.author + "**");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	} 
 	else if (args.length>0) {
 
@@ -24,7 +24,7 @@ exports.run = (bot, msg, args) => {
 			.setImage(pets[Math.floor(Math.random() * (pets.length))])
 			.setDescription("**" + args.join(" ").trim()+ "** was pet by **" + msg.author + "**");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
@@ -33,8 +33,9 @@ exports.run = (bot, msg, args) => {
 			.setImage("http://i.imgur.com/P6tTJUm.gif")
 			.setDescription("**DaikichiBot** was pet by **" + msg.author + "**");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	}
+	msg.delete(1500);
 }
 
 exports.help = (bots, msg, args) => {

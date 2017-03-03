@@ -1,7 +1,7 @@
 var request = require("superagent");
 const discord = require("discord.js");
 
-var punts = ["into the San Francisco Bay!", "into a volcano!", "into the abyss.", "into a god damn cactus.", "into the void.", "into the Eye of Sauron.", "into dank memes.", "into 5000 BEES.", "into the Marianas Trench.", "off Mount Everest!", "into a pitfall!", "off the map!"]
+var punts = ["into the San Francisco Bay!", "into a volcano!", "into the abyss.", "into a god damn cactus.", "into the void.", "into the Eye of Sauron.", "into dank memes.", "into 5000 BEES.", "into the Marianas Trench.", "off Mount Everest!", "into a pitfall!", "off the map!", "into a trash can!"]
 var img = ["http://i.imgur.com/Wh249YP.gif", "http://i.imgur.com/xn6GIVb.gif", "http://i.imgur.com/aAYyZNG.gif", "http://i.imgur.com/UMKL5YP.gif", "http://i.imgur.com/jNhltDT.gif", "http://i.imgur.com/RwZ4gLS.gif", "http://i.imgur.com/ylBuzSP.gif", "http://i.imgur.com/7iqyy2i.gif", "http://i.imgur.com/T6cmuXy.gif", "http://i.imgur.com/DkyiZ3H.gif"]
 
 exports.run = (bot, msg, args) => {
@@ -15,7 +15,7 @@ exports.run = (bot, msg, args) => {
 			.setImage(img[Math.floor(Math.random() * (img.length))])
 			.setDescription("**" + msg.author + "** punts **" + msg.mentions.users.first() + "** " + punts[Math.floor(Math.random() * (punts.length))]);
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	} 
 	else if (args.length > 0) {
 		let embed = new discord.RichEmbed();
@@ -24,7 +24,7 @@ exports.run = (bot, msg, args) => {
 			.setImage(img[Math.floor(Math.random() * (img.length))])
 			.setDescription("**" + msg.author + "** punts **" + args.join(" ").trim() + "** " + punts[Math.floor(Math.random() * (punts.length))]);
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
@@ -33,8 +33,10 @@ exports.run = (bot, msg, args) => {
 			.setImage(img[Math.floor(Math.random() * (img.length))])
 			.setDescription("**" + msg.author + "** has punted themself " + punts[Math.floor(Math.random() * (punts.length))]);
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	}
+
+	msg.delete(1500);
 }
 
 exports.help = (bots, msg, args) => {

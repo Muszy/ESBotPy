@@ -19,7 +19,8 @@ var download = function(msg, uri, filename, callback) {
     request.head(uri, function(err, res, body) {
         if (err) {
             //console.log("bg img not found");
-            msg.channel.sendEmbed(errorMsg).catch(console.error);
+            msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
         //console.log('content-type:', res.headers['content-type']);
@@ -42,14 +43,20 @@ exports.gen = function(bot, msg, card, style, id) {
                     width = value.width;
                     height = value.height;
 
-                    profCard.create(bot, msg, card, style, id, width, height);
+                    if (!width || !height) {
+                        console.log(err);
+                        msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                        msg.delete(1500);
+                        return;
+                    } else profCard.create(bot, msg, card, style, id, width, height);
 
                     return;
                 });
 
         } else if (err) {
             console.log(err);
-            msg.channel.sendEmbed(errorMsg).catch(console.error);
+            msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
     });

@@ -31,6 +31,7 @@ exports.run = (bot, msg, args) => {
                     if (typeof result.items[i].id.videoId !== "undefined") {
 
                         msg.channel.sendMessage("I searched for **" + args.join(" ") + "** and found this **" + msg.author.username + "**: \nhttps://www.youtube.com/watch?v=" + result.items[i].id.videoId);
+                        msg.delete(1500);
                         return;
                     }
 
@@ -39,6 +40,7 @@ exports.run = (bot, msg, args) => {
             }
 
             msg.channel.sendMessage("I searched for **\"" + args.join(" ") + "\"** and found this, **" + msg.author.username + "**: \nhttps://www.youtube.com/watch?v=" + result.items[0].id.videoId);
+            msg.delete(1500);
             return;
 
         });
@@ -49,7 +51,8 @@ exports.run = (bot, msg, args) => {
         .setColor(0xFF0040)
         .setDescription("Please use the format `!yt [search terms]`!")
         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-    msg.channel.sendEmbed(embed).catch(console.error);
+    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+    msg.delete(1500);
 }
 
 exports.help = (bot, msg, args) => {

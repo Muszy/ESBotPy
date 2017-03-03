@@ -12,7 +12,7 @@ exports.run = (bot, msg, args) => {
 			.setImage("http://i.imgur.com/p615BrO.jpg")
 			.setDescription(msg.mentions.users.first()+ " was slapped by **" + msg.author + "!**");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
@@ -21,8 +21,9 @@ exports.run = (bot, msg, args) => {
 			.setImage("http://i.imgur.com/p615BrO.jpg")
 			.setDescription("**" + msg.author + "** slaps!");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
 	}
+	msg.delete(1500);
 }
 
 exports.help = (bots, msg, args) => {

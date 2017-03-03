@@ -37,7 +37,8 @@ exports.run = (bot, msg, args) => {
             .setDescription("You need a quote to add!")
             .setThumbnail("http://i.imgur.com/7TL0t99.png");
 
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+        msg.delete(1500);
     }
 
 }

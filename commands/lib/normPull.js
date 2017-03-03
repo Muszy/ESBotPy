@@ -26,7 +26,8 @@ exports.tenPull = function(list, names, count, msg) {
             request(fiveURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -45,7 +46,8 @@ exports.tenPull = function(list, names, count, msg) {
             request(fourURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -67,7 +69,8 @@ exports.tenPull = function(list, names, count, msg) {
             request(fiveURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -86,7 +89,8 @@ exports.tenPull = function(list, names, count, msg) {
             request(fourURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -107,7 +111,8 @@ exports.tenPull = function(list, names, count, msg) {
             request(threeURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -131,7 +136,8 @@ exports.solo = function(msg) {
         request(fiveURL, function(error, response, body) {
             if (error) {
                 console.log(error);
-                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
             if (!error) {
@@ -147,6 +153,7 @@ exports.solo = function(msg) {
                     .setThumbnail(data.five[num].img)
                     .setDescription(data.five[num].name);
                 msg.channel.sendEmbed(embed).catch(console.error);
+                msg.delete(1500);
             }
         });
     }
@@ -155,7 +162,8 @@ exports.solo = function(msg) {
         request(fourURL, function(error, response, body) {
             if (error) {
                 console.log(error);
-                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
             if (!error) {
@@ -171,6 +179,7 @@ exports.solo = function(msg) {
                     .setThumbnail(data.four[num].img)
                     .setDescription(data.four[num].name);
                 msg.channel.sendEmbed(embed).catch(console.error);
+                msg.delete(1500);
             }
         });
     }
@@ -179,7 +188,8 @@ exports.solo = function(msg) {
         request(threeURL, function(error, response, body) {
             if (error) {
                 console.log(error);
-                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
             if (!error) {
@@ -195,6 +205,7 @@ exports.solo = function(msg) {
                     .setThumbnail(data.three[num].img)
                     .setDescription(data.three[num].name);
                 msg.channel.sendEmbed(embed).catch(console.error);
+                msg.delete(1500);
             }
         });
     }

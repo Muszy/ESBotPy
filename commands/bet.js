@@ -30,7 +30,8 @@ exports.run = (bot, msg, args) => {
                     .setColor(0xFF0040)
                     .setDescription("Please use the format `!bet [amount]`!")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -39,7 +40,8 @@ exports.run = (bot, msg, args) => {
                 embed.setTitle("Error:")
                     .setColor(0xFF0040)
                     .setDescription("You can't use a negative amount!");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -48,7 +50,8 @@ exports.run = (bot, msg, args) => {
                 embed.setTitle("Error:")
                     .setColor(0xFF0040)
                     .setDescription("Please do not exceed 1000!");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -58,7 +61,8 @@ exports.run = (bot, msg, args) => {
                     .setColor(0xFF0040)
                     .setDescription("You don't have enough to gamble!")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -67,7 +71,7 @@ exports.run = (bot, msg, args) => {
                 let embed = new discord.RichEmbed();
                 embed.setTitle("Gambling:")
                     .setColor(0x753FCF)
-                    .setDescription("Daikichi rolled: " + rand + "!  You gained " + (dia * 2) + " " + serverSettings[msg.channel.guild.id].diaType + ".");
+                    .setDescription("Daikichi rolled: " + rand + "!  " + msg.author.username + " gained " + (dia * 2) + " " + serverSettings[msg.channel.guild.id].diaType + ".");
                 msg.channel.sendEmbed(embed).catch(console.error);
 
                 userSettings[msg.author.id].dia += dia;
@@ -78,7 +82,7 @@ exports.run = (bot, msg, args) => {
             let embed = new discord.RichEmbed();
             embed.setTitle("Gambling:")
                 .setColor(0x753FCF)
-                .setDescription("Daikichi rolled: " + rand + "!  Sorry, you lost " + dia + " " + serverSettings[msg.channel.guild.id].diaType + ".");
+                .setDescription("Daikichi rolled: " + rand + "!  Sorry, " + msg.author.username + " lost " + dia + " " + serverSettings[msg.channel.guild.id].diaType + ".");
             msg.channel.sendEmbed(embed).catch(console.error);
 
             userSettings[msg.author.id].dia -= dia;
@@ -92,7 +96,8 @@ exports.run = (bot, msg, args) => {
         .setColor(0xFF0040)
         .setDescription("Please use the format `!bet [amount]`!")
         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-    msg.channel.sendEmbed(embed).catch(console.error);
+    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+    msg.delete(1500);
 
 }
 

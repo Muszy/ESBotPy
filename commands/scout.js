@@ -29,7 +29,8 @@ var download = function(msg, uri, filename, callback) {
     request.head(uri, function(err, res, body) {
         if (err) {
             //console.log("bg img not found");
-            msg.channel.sendEmbed(errorMsg).catch(console.error);
+            msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
         //console.log('content-type:', res.headers['content-type']);
@@ -54,7 +55,8 @@ exports.run = (bot, msg, args) => {
                         .setColor(0xFF0040)
                         .setDescription("You don't have enough to scout!  You need 135 cash! 🐾")
                         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                    msg.channel.sendEmbed(embed).catch(console.error);
+                    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
 
@@ -119,7 +121,8 @@ exports.run = (bot, msg, args) => {
                     .setColor(0xFF0040)
                     .setDescription("You don't have enough to scout!  You need 135 cash! 🐾")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
 
@@ -138,7 +141,8 @@ exports.run = (bot, msg, args) => {
         .setColor(0xFF0040)
         .setDescription("Scout not found! Woof! 🐾")
         .setThumbnail("http://i.imgur.com/7TL0t99.png");
-    msg.channel.sendEmbed(embed).catch(console.error);
+    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+    msg.delete(1500);
 }
 
 exports.help = (bot, msg, args) => {

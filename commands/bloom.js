@@ -22,7 +22,8 @@ oops.setTitle("Error:")
 exports.run = (bot, msg, args) => {
 
     if (args.length < 2) {
-        msg.channel.sendEmbed(errMsg).catch(console.error);
+        msg.channel.sendEmbed(errMsg).then(m => m.delete(4000)).catch(console.error);
+        msg.delete(1500);
         return;
     } else {
 
@@ -54,7 +55,8 @@ function bloom(args, msg) {
     request(url + boy + "/" + star + ".json", function(error, response, body) {
         if (error) {
             console.log(error);
-            msg.channel.sendEmbed(oops).catch(console.error);
+            msg.channel.sendEmbed(oops).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
         if (!(response.statusCode === 200)) {
@@ -63,7 +65,8 @@ function bloom(args, msg) {
                 .setColor(0xFF0040)
                 .setDescription("Card was not found.")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
         if (!error) {
@@ -91,7 +94,8 @@ function bloom(args, msg) {
                     .setColor(0xFF0040)
                     .setDescription("Card was not found.")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
 
             }

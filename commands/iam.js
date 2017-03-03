@@ -18,7 +18,7 @@ exports.run = (bot, msg, args) => {
 	        .setColor(0xFF0040)
 	        .setDescription("Role tagging is off! Bork! 🐾")
 	        .setThumbnail("http://i.imgur.com/7TL0t99.png");
-	    msg.channel.sendEmbed(embed).catch(console.error);
+	    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 	}
 
 	else if (args.length < 1 || args[0].toLowerCase() == "list" ){
@@ -28,7 +28,7 @@ exports.run = (bot, msg, args) => {
 		    .setColor(0xB48CF0)
 		    .setThumbnail("http://i.imgur.com/7TL0t99.png")
 		    .setDescription(file[msg.guild.id].roles);
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.sendEmbed(embed).then(m => m.delete(5000)).catch(console.error);
 	}
 
 	else {
@@ -53,7 +53,7 @@ exports.run = (bot, msg, args) => {
 			    		.setColor(0xFF0040)
 			        	.setDescription("You already have that role!")
 			        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			        msg.channel.sendEmbed(embed).catch(console.error);
+			        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 				} else {
 					try {
 						let can_roles = msg.channel.permissionsFor(bot.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS");
@@ -70,7 +70,7 @@ exports.run = (bot, msg, args) => {
 								.setColor(0xFFB6C1)
 								.setDescription("You have been added to the `" + myRole.name + "` role!")
 								.setThumbnail("http://i.imgur.com/7TL0t99.png");
-							msg.channel.sendEmbed(embed).catch(console.error);
+							msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
 						}
 						else {
 							let embed = new discord.RichEmbed();
@@ -79,7 +79,7 @@ exports.run = (bot, msg, args) => {
 					    		.setColor(0xFF0040)
 					        	.setDescription("Daikichi does not have sufficient permissions to tag you.")
 					        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-					        msg.channel.sendEmbed(embed).catch(console.error);
+					        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 						}
 					}
 
@@ -90,7 +90,7 @@ exports.run = (bot, msg, args) => {
 				    		.setColor(0xFF0040)
 				        	.setDescription("Daikichi does not have sufficient permissions to tag you.")
 				        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-				        msg.channel.sendEmbed(embed).catch(console.error);
+				        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 					}
 				}
 			}
@@ -102,7 +102,7 @@ exports.run = (bot, msg, args) => {
 		    		.setColor(0xFF0040)
 		        	.setDescription("Please use a valid role!")
 		        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-		        msg.channel.sendEmbed(embed).catch(console.error);
+		        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 			}
 		}
 
@@ -113,10 +113,10 @@ exports.run = (bot, msg, args) => {
 	    		.setColor(0xFF0040)
 	        	.setDescription("Please use a valid role/role in the list!")
 	        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-	        msg.channel.sendEmbed(embed).catch(console.error);
+	        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
 		}
 	}
-
+	msg.delete(1500);
 }
 
 exports.help = (bot, msg, args) => {

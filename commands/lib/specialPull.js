@@ -24,7 +24,8 @@ exports.tenPull = function(list, names, count, msg) {
         request(fiveURL, function(error, response, body) {
             if (error) {
                 console.log(error);
-                msg.channel.sendEmbed(errorMsg).catch(console.error);
+                msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
                 return;
             }
             if (!error) {
@@ -44,7 +45,8 @@ exports.tenPull = function(list, names, count, msg) {
             request(fiveURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -63,7 +65,8 @@ exports.tenPull = function(list, names, count, msg) {
             request(fourURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {
@@ -83,7 +86,8 @@ exports.tenPull = function(list, names, count, msg) {
             request(threeURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
-                    msg.channel.sendEmbed(errorMsg).catch(console.error);
+                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
                     return;
                 }
                 if (!error) {

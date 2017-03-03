@@ -18,7 +18,8 @@ exports.run = (bot, msg, args) => {
                 .setColor(0xFF0040)
                 .setDescription("Please set the image to a valid image URL (png/jpg/gif)!")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
 
@@ -29,7 +30,8 @@ exports.run = (bot, msg, args) => {
 
         embed.setTitle("Profile background changed for " + msg.author.username + ".")
             .setColor(0xA7DBD8);
-        msg.channel.sendEmbed(embed).catch(console.error);
+        msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+        msg.delete(1500);
 
         return;
     }
@@ -41,7 +43,8 @@ exports.run = (bot, msg, args) => {
 
     embed.setTitle("Profile background changed for " + msg.author.username + ".")
         .setColor(0xA7DBD8);
-    msg.channel.sendEmbed(embed).catch(console.error);
+    msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+    msg.delete(1500);
 }
 
 exports.help = (bots, msg, args) => {

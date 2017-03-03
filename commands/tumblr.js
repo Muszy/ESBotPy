@@ -9,9 +9,9 @@ exports.run = (bot, msg, args) => {
     if (args.length > 0) {
         let str = args.join(" ");
 
-        if (str.length > 20) {
+        /*if (str.length > 20) {
             str = str.slice(0, 19);
-        }
+        }*/
 
         userSettings[msg.author.id].tumblr = str;
         updateUsers();
@@ -20,8 +20,8 @@ exports.run = (bot, msg, args) => {
 
         embed.setTitle("Tumblr changed for " + msg.author.username + ".")
             .setColor(0xA7DBD8);
-        msg.channel.sendEmbed(embed).catch(console.error);
-
+        msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+        msg.delete(1500);
         return;
     }
 
@@ -32,11 +32,12 @@ exports.run = (bot, msg, args) => {
 
     embed.setTitle("Tumblr changed for " + msg.author.username + ".")
         .setColor(0xA7DBD8);
-    msg.channel.sendEmbed(embed).catch(console.error);
+    msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+    msg.delete(1500);
 }
 
 exports.help = (bots, msg, args) => {
-    return "To change your Tumblr, use `!tumblr [handle]`.  Handles can only be up to 20 characters long.";
+    return "To change your Tumblr, use `!tumblr [handle]`.";
 }
 
 //===============================FUNCTIONS====================================
