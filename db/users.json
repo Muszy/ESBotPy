@@ -3,22 +3,25 @@
         "botIgnore": false,
         "dia": 420,
         "daily": true,
-        "dailyRep": true,
+        "dailyRep": false,
         "inv": {
             "trash": 0,
             "boots": 0,
             "small": 0,
             "med": 0,
-            "big": 0
+            "big": 1
         },
         "bio": "Owner and Programmer of DaikichiBot!|@ me if you need me, I'm almost always online!",
         "title": "\"Anime was a mistake.\" -Hayao Miyazaki",
         "bg": "http://i.imgur.com/BeXbbZt.png",
-        "rep": 0,
+        "rep": 1,
         "twitter": "Cakeling",
         "tumblr": "hanifish",
         "reddit": "Shushh",
-        "style": 1
+        "style": 7,
+        "fontOne": "595959",
+        "fontTwo": "0093E3",
+        "fontThree": "606060"
     },
     "145687696570974209": {
         "botIgnore": false,
@@ -39,7 +42,10 @@
         "twitter": "Don't",
         "tumblr": "I",
         "reddit": "Exist",
-        "style": 2
+        "style": 2,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "179829284909744128": {
         "botIgnore": false,
@@ -60,7 +66,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "52440115582078976": {
         "botIgnore": false,
@@ -81,13 +90,16 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "233645413465325568": {
         "botIgnore": false,
-        "dia": 125,
+        "dia": 176,
         "daily": true,
-        "dailyRep": true,
+        "dailyRep": false,
         "inv": {
             "trash": 0,
             "boots": 0,
@@ -98,19 +110,22 @@
         "bio": "meme me up",
         "title": "tubbsP",
         "bg": "http://i.imgur.com/KRWMvvd.jpg",
-        "rep": 0,
+        "rep": 1,
         "twitter": "bytebugular2",
         "tumblr": "",
         "reddit": "oriole_onion",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "102844252433711104": {
         "botIgnore": false,
-        "dia": 220,
+        "dia": 755,
         "daily": false,
-        "dailyRep": true,
+        "dailyRep": false,
         "inv": {
-            "trash": 2,
+            "trash": 0,
             "boots": 0,
             "small": 0,
             "med": 0,
@@ -119,11 +134,14 @@
         "bio": "I'll protect Koga no matter what | but please don't hurt him. I love him incredibly | much so please take care of him as well!",
         "title": "Mother of Koga",
         "bg": "https://cdn.discordapp.com/attachments/211899866039713792/286620059818786816/unknown.png",
-        "rep": 0,
+        "rep": 1,
         "twitter": "MagnificentMaja",
         "tumblr": "",
         "reddit": "MagnificentMaja",
-        "style": 4
+        "style": 4,
+        "fontOne": "#2A2A2A",
+        "fontTwo": "#000000",
+        "fontThree": "#353535"
     },
     "80695294731227136": {
         "botIgnore": false,
@@ -144,13 +162,16 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "120733242180632577": {
         "botIgnore": false,
-        "dia": 420,
+        "dia": 646,
         "daily": false,
-        "dailyRep": true,
+        "dailyRep": false,
         "inv": {
             "trash": 0,
             "boots": 0,
@@ -160,16 +181,19 @@
         },
         "bio": "e | 🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠|🤠🤠🤠🤠🤠🤠🤠🤠howdy",
         "bg": "https://cdn.discordapp.com/attachments/264941604903583754/286621439195611136/image.jpg",
-        "rep": 0,
+        "rep": 2,
         "title": "fuckign piece of shit",
         "twitter": "mintpistachios",
         "tumblr": "mintpistachios",
         "reddit": "sircinamon",
-        "style": 4
+        "style": 4,
+        "fontOne": "807f43",
+        "fontTwo": "807f43",
+        "fontThree": "807f43"
     },
     "269008588792397824": {
         "botIgnore": false,
-        "dia": 145,
+        "dia": 265,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -186,7 +210,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "275452891311898624": {
         "botIgnore": false,
@@ -207,7 +234,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "138251722198876160": {
         "botIgnore": false,
@@ -228,19 +258,22 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "169514353782030336": {
         "botIgnore": false,
-        "dia": 46,
-        "daily": true,
+        "dia": 17,
+        "daily": false,
         "dailyRep": true,
         "inv": {
-            "trash": 0,
-            "boots": 4,
-            "small": 2,
-            "med": 0,
-            "big": 0
+            "trash": 6,
+            "boots": 12,
+            "small": 4,
+            "med": 8,
+            "big": 3
         },
         "bio": "",
         "title": "",
@@ -249,11 +282,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "78037878784921600": {
         "botIgnore": false,
-        "dia": 69,
+        "dia": 84,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -270,11 +306,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "105294221497360384": {
         "botIgnore": false,
-        "dia": 299,
+        "dia": 349,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -284,18 +323,21 @@
             "med": 0,
             "big": 0
         },
-        "bio": "Hwah, hwah♪",
-        "title": "",
+        "bio": "o7 I'm Sundae~ | I'm ValkP, SwitchP and secret KnightsP | Please save me from idol hell",
+        "title": "who's that in the bg?",
         "bg": "https://pbs.twimg.com/media/C4HjqKTWEAApOS0.jpg",
         "rep": 0,
         "twitter": "PandoraHearchu",
         "tumblr": "",
         "reddit": "",
-        "style": 4
+        "style": 5,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "129062552255594496": {
         "botIgnore": false,
-        "dia": 0,
+        "dia": 110,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -312,11 +354,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "121257411322314752": {
         "botIgnore": false,
-        "dia": 222,
+        "dia": 232,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -333,7 +378,10 @@
         "twitter": "QE_Catadioptric",
         "tumblr": "",
         "reddit": "",
-        "style": 3
+        "style": 3,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "86793103406538752": {
         "botIgnore": false,
@@ -354,12 +402,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "130394713554550784": {
         "botIgnore": false,
         "dia": 0,
-        "daily": true,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -375,7 +426,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "228468364312313857": {
         "botIgnore": false,
@@ -396,11 +450,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "122637460990722049": {
         "botIgnore": false,
-        "dia": 125,
+        "dia": 250,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -411,13 +468,16 @@
             "big": 1
         },
         "bio": "Aloha~ Hi, I'm Silverstar and it's nice to meet you! | I'm a sort of a gamer, so you could probably | find me on a *lot* of games!",
-        "title": "EveryoneP",
-        "bg": "http://hdwallpaperdaily.com/wp-content/uploads/2013/03/dark-blue-flower-wallpaper-1920x1080.jpg",
+        "title": "UndeadP/AkatsukiP",
+        "bg": "http://i32.photobucket.com/albums/d30/Katie_Sliverstar/AkatsukiNUndead_zps1ool4mjf.png",
         "rep": 0,
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 7,
+        "fontOne": "000000",
+        "fontTwo": "502d72",
+        "fontThree": "6c6a6d"
     },
     "118015315056656389": {
         "botIgnore": false,
@@ -435,10 +495,13 @@
         "title": "",
         "bg": "",
         "rep": 0,
-        "twitter": "",
+        "twitter": "torikagos",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "98468418964975616": {
         "botIgnore": false,
@@ -459,7 +522,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "188992314675429376": {
         "botIgnore": false,
@@ -480,32 +546,38 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "279906962643091456": {
         "botIgnore": false,
-        "dia": 187,
+        "dia": 298,
         "daily": false,
         "dailyRep": true,
         "inv": {
-            "trash": 2,
+            "trash": 1,
             "boots": 0,
             "small": 0,
             "med": 0,
             "big": 0
         },
-        "bio": "",
-        "title": "",
+        "bio": "I HATE MAO",
+        "title": "switchP & knightsP",
         "bg": "",
         "rep": 0,
-        "twitter": "",
+        "twitter": "theatreciub",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 3,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "171760277895905280": {
         "botIgnore": false,
-        "dia": 13,
+        "dia": 53,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -522,11 +594,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "138177548830900224": {
         "botIgnore": false,
-        "dia": 175,
+        "dia": 233,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -543,12 +618,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "164154666664329216": {
         "botIgnore": false,
-        "dia": 22,
-        "daily": true,
+        "dia": 32,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -564,11 +642,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "169276989302243328": {
         "botIgnore": false,
-        "dia": 1100,
+        "dia": 1111,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -585,11 +666,14 @@
         "twitter": "@PBnSquid",
         "tumblr": "i dun use a tumbler",
         "reddit": "NSFW",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "143100567420534784": {
         "botIgnore": false,
-        "dia": 0,
+        "dia": 16,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -606,7 +690,10 @@
         "twitter": "N/A",
         "tumblr": "N/A",
         "reddit": "Raidken",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "117809280924647430": {
         "botIgnore": false,
@@ -627,11 +714,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "65248023407493120": {
         "botIgnore": false,
-        "dia": 13,
+        "dia": 0,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -648,11 +738,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "192423792067346444": {
         "botIgnore": false,
-        "dia": 33,
+        "dia": 99,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -669,7 +762,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "94847324857040896": {
         "botIgnore": false,
@@ -690,11 +786,14 @@
         "twitter": "",
         "tumblr": "aestheticbishies",
         "reddit": "",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "108704129160871936": {
         "botIgnore": false,
-        "dia": 640,
+        "dia": 718,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -711,7 +810,10 @@
         "twitter": "Nah fam",
         "tumblr": "Sheeniebeaniegamer",
         "reddit": "Nah fam",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "144842859223318528": {
         "botIgnore": false,
@@ -732,19 +834,22 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "147006367490768896": {
         "botIgnore": false,
-        "dia": 104,
-        "daily": true,
+        "dia": 129,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
             "boots": 0,
             "small": 0,
             "med": 0,
-            "big": 1
+            "big": 0
         },
         "bio": "small and ready to fight",
         "title": "",
@@ -753,7 +858,10 @@
         "twitter": "excalliebur",
         "tumblr": "ibecameawerewolf",
         "reddit": "",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "107839094888857600": {
         "botIgnore": false,
@@ -774,7 +882,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "275806546888491010": {
         "botIgnore": false,
@@ -795,7 +906,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "177174244411572224": {
         "botIgnore": false,
@@ -816,7 +930,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "122935260840198144": {
         "botIgnore": false,
@@ -837,12 +954,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "145956085335982080": {
         "botIgnore": false,
-        "dia": 320,
-        "daily": true,
+        "dia": 406,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -858,12 +978,15 @@
         "twitter": "miraihen",
         "tumblr": "innersenshis",
         "reddit": "himenonohara",
-        "style": 4
+        "style": 7,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "112011738068619264": {
         "botIgnore": false,
-        "dia": 606,
-        "daily": true,
+        "dia": 350,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -879,7 +1002,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "169263850611408897": {
         "botIgnore": false,
@@ -900,7 +1026,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "208003923359825930": {
         "botIgnore": false,
@@ -921,12 +1050,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "189440406402891776": {
         "botIgnore": false,
         "dia": 0,
-        "daily": true,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -942,12 +1074,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "86131126606794752": {
         "botIgnore": false,
-        "dia": 15,
-        "daily": true,
+        "dia": 25,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -963,7 +1098,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "239606579467386880": {
         "botIgnore": false,
@@ -984,13 +1122,16 @@
         "twitter": "AJRambles",
         "tumblr": "ramblingsofawritera",
         "reddit": "mistressofshipping",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "179449306334363649": {
         "botIgnore": false,
-        "dia": 224,
-        "daily": true,
-        "dailyRep": true,
+        "dia": 223,
+        "daily": false,
+        "dailyRep": false,
         "inv": {
             "trash": 0,
             "boots": 0,
@@ -1001,15 +1142,18 @@
         "bio": "A struggling Art Student at Uni | I'd whale on all of Ryuseitai if I had a wallet | Also the mother of Yuri Plisetsky",
         "title": "Shinobu's Mother",
         "bg": "http://i.imgur.com/hUSLMC3l.jpg",
-        "rep": 0,
+        "rep": 1,
         "twitter": "xawakenddreams",
         "tumblr": "xawakenddreams",
         "reddit": "xawakenddreams",
-        "style": 4
+        "style": 5,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "152181556079755264": {
         "botIgnore": false,
-        "dia": 0,
+        "dia": 22,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -1026,11 +1170,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "184048649582411777": {
         "botIgnore": false,
-        "dia": 520,
+        "dia": 717,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -1047,7 +1194,10 @@
         "twitter": "J2a1m1i2e",
         "tumblr": "j2a1m1i2e",
         "reddit": "J2a1m1i2e",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "182610388574011392": {
         "botIgnore": false,
@@ -1068,7 +1218,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "178902524172959744": {
         "botIgnore": false,
@@ -1089,7 +1242,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "139081188777132032": {
         "botIgnore": false,
@@ -1110,7 +1266,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 3
+        "style": 3,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "197456382742626305": {
         "botIgnore": false,
@@ -1131,13 +1290,16 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "118857191661764608": {
         "botIgnore": false,
         "dia": 4,
         "daily": false,
-        "dailyRep": true,
+        "dailyRep": false,
         "inv": {
             "trash": 0,
             "boots": 48,
@@ -1152,7 +1314,10 @@
         "twitter": "klousable",
         "tumblr": "koga-s",
         "reddit": "klousable",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "139140284549169152": {
         "botIgnore": false,
@@ -1173,11 +1338,14 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "148297949754032129": {
         "botIgnore": false,
-        "dia": 21,
+        "dia": 120,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -1190,11 +1358,14 @@
         "bio": "i hand u a burger",
         "title": "",
         "bg": "",
-        "rep": 0,
+        "rep": 1,
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "219515622831292416": {
         "botIgnore": false,
@@ -1215,12 +1386,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "138862876747235328": {
         "botIgnore": false,
-        "dia": 104,
-        "daily": true,
+        "dia": 122,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -1236,7 +1410,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "171387440978722816": {
         "botIgnore": false,
@@ -1257,12 +1434,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "243209612654936065": {
         "botIgnore": false,
-        "dia": 148,
-        "daily": true,
+        "dia": 158,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -1278,7 +1458,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "226159932867739649": {
         "botIgnore": false,
@@ -1299,13 +1482,16 @@
         "twitter": "Ali_E8",
         "tumblr": "masamvnes",
         "reddit": "masamvnes",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "142438415177089025": {
         "botIgnore": false,
         "dia": 420,
         "daily": true,
-        "dailyRep": true,
+        "dailyRep": false,
         "inv": {
             "trash": 0,
             "boots": 0,
@@ -1320,7 +1506,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "214715036562751488": {
         "botIgnore": false,
@@ -1341,18 +1530,21 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "151766949884329984": {
         "botIgnore": false,
-        "dia": 0,
-        "daily": true,
+        "dia": 18,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
             "boots": 0,
-            "small": 26,
-            "med": 12,
+            "small": 27,
+            "med": 15,
             "big": 12
         },
         "bio": "",
@@ -1362,15 +1554,18 @@
         "twitter": "tarukryl",
         "tumblr": "trenchcoatlove",
         "reddit": "Corvus_Tristis",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "65823642642022400": {
         "botIgnore": false,
         "dia": 0,
-        "daily": true,
+        "daily": false,
         "dailyRep": true,
         "inv": {
-            "trash": 0,
+            "trash": 2,
             "boots": 0,
             "small": 0,
             "med": 0,
@@ -1383,7 +1578,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "282451220311048192": {
         "botIgnore": false,
@@ -1404,7 +1602,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "212966280066498560": {
         "botIgnore": false,
@@ -1425,7 +1626,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "141451124392722432": {
         "botIgnore": false,
@@ -1446,19 +1650,22 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "197183554227142656": {
         "botIgnore": false,
-        "dia": 57,
-        "daily": true,
+        "dia": 119,
+        "daily": false,
         "dailyRep": true,
         "inv": {
-            "trash": 2,
-            "boots": 1,
-            "small": 2,
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
             "med": 0,
-            "big": 1
+            "big": 0
         },
         "bio": "your local nazuna and natsume waifu | love live, ensemble stars, pokemon | background by 55099900 on pixiv",
         "title": "actually dying over gladion right now",
@@ -1467,7 +1674,10 @@
         "twitter": "sakasaki_nazuna",
         "tumblr": "sakasakinazuna",
         "reddit": "voiceofsword",
-        "style": 2
+        "style": 2,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "102260254137405440": {
         "botIgnore": false,
@@ -1488,7 +1698,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "98380045810147328": {
         "botIgnore": false,
@@ -1509,7 +1722,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "284745791883444236": {
         "botIgnore": false,
@@ -1530,7 +1746,10 @@
         "twitter": "",
         "tumblr": "prince-cream-puff",
         "reddit": "aurialle",
-        "style": 3
+        "style": 3,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "278808670404476928": {
         "botIgnore": false,
@@ -1551,7 +1770,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "174972638391828480": {
         "botIgnore": false,
@@ -1572,7 +1794,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "174976551056703489": {
         "botIgnore": false,
@@ -1593,16 +1818,19 @@
         "twitter": "",
         "tumblr": "nemurinsanjou",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "202252612538466305": {
         "botIgnore": false,
-        "dia": 0,
-        "daily": true,
+        "dia": 58,
+        "daily": false,
         "dailyRep": true,
         "inv": {
-            "trash": 0,
-            "boots": 0,
+            "trash": 3,
+            "boots": 2,
             "small": 0,
             "med": 0,
             "big": 0
@@ -1614,7 +1842,10 @@
         "twitter": "adequategrey",
         "tumblr": "",
         "reddit": "",
-        "style": 3
+        "style": 7,
+        "fontOne": "#FFFFFF",
+        "fontTwo": "",
+        "fontThree": "#000000"
     },
     "85864570442240000": {
         "botIgnore": false,
@@ -1635,12 +1866,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "279646333940269056": {
         "botIgnore": false,
-        "dia": 58,
-        "daily": true,
+        "dia": 23,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -1656,7 +1890,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "206947790310473738": {
         "botIgnore": false,
@@ -1677,7 +1914,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "141507830443147264": {
         "botIgnore": false,
@@ -1698,7 +1938,10 @@
         "twitter": "mcamanix",
         "tumblr": "camanix",
         "reddit": "camanix",
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "135877233175691264": {
         "botIgnore": false,
@@ -1719,7 +1962,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "248970452964212746": {
         "botIgnore": false,
@@ -1740,7 +1986,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "151471621083758593": {
         "botIgnore": false,
@@ -1761,12 +2010,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "205467504150183936": {
         "botIgnore": false,
-        "dia": 0,
-        "daily": true,
+        "dia": 40,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -1782,7 +2034,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "161882610652545024": {
         "botIgnore": false,
@@ -1803,7 +2058,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "113831715381837826": {
         "botIgnore": false,
@@ -1824,7 +2082,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "129340353886027776": {
         "botIgnore": false,
@@ -1845,7 +2106,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "274396239783526401": {
         "botIgnore": false,
@@ -1866,12 +2130,15 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "205311708049178624": {
         "botIgnore": false,
         "dia": 0,
-        "daily": true,
+        "daily": false,
         "dailyRep": true,
         "inv": {
             "trash": 0,
@@ -1887,7 +2154,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "221665917384261632": {
         "botIgnore": false,
@@ -1908,7 +2178,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "199042628489183232": {
         "botIgnore": false,
@@ -1929,7 +2202,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "99729683284770816": {
         "botIgnore": false,
@@ -1950,7 +2226,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "181185376516308992": {
         "botIgnore": false,
@@ -1971,7 +2250,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "97728704695762944": {
         "botIgnore": false,
@@ -1992,15 +2274,18 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "202340510654791680": {
         "botIgnore": false,
-        "dia": 220,
-        "daily": true,
+        "dia": 272,
+        "daily": false,
         "dailyRep": true,
         "inv": {
-            "trash": 3,
+            "trash": 1,
             "boots": 1,
             "small": 1,
             "med": 0,
@@ -2013,17 +2298,20 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "202619500032557056": {
         "botIgnore": false,
-        "dia": 40,
-        "daily": true,
+        "dia": 35,
+        "daily": false,
         "dailyRep": true,
         "inv": {
-            "trash": 1,
-            "boots": 0,
-            "small": 0,
+            "trash": 2,
+            "boots": 1,
+            "small": 1,
             "med": 0,
             "big": 0
         },
@@ -2034,7 +2322,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "250905061641682945": {
         "botIgnore": false,
@@ -2055,7 +2346,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "143127896683184129": {
         "botIgnore": false,
@@ -2076,7 +2370,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "177162512565796867": {
         "botIgnore": false,
@@ -2097,7 +2394,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "191551311026716672": {
         "botIgnore": false,
@@ -2118,7 +2418,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "191428470398517258": {
         "botIgnore": false,
@@ -2139,7 +2442,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "143184617329917952": {
         "botIgnore": false,
@@ -2160,7 +2466,10 @@
         "twitter": "",
         "tumblr": "",
         "reddit": "",
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "246789855584059392": {
         "botIgnore": false,
@@ -2181,11 +2490,14 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "187331989743992833": {
         "botIgnore": false,
-        "dia": 56,
+        "dia": 90,
         "daily": true,
         "dailyRep": true,
         "inv": {
@@ -2202,7 +2514,10 @@
         "reddit": "",
         "bg": "",
         "style": 1,
-        "rep": 0
+        "rep": 0,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "144633554167398410": {
         "botIgnore": false,
@@ -2223,7 +2538,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "276350857505800203": {
         "botIgnore": false,
@@ -2244,7 +2562,10 @@
         "reddit": "",
         "bg": "",
         "style": 1,
-        "rep": 0
+        "rep": 0,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "232816793159335936": {
         "botIgnore": false,
@@ -2265,7 +2586,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "117956069635915785": {
         "botIgnore": false,
@@ -2286,7 +2610,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "176555734979313664": {
         "botIgnore": false,
@@ -2307,7 +2634,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "60822552045420544": {
         "botIgnore": false,
@@ -2328,7 +2658,10 @@
         "reddit": "",
         "bg": "",
         "style": 1,
-        "rep": 0
+        "rep": 0,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "173754674137006080": {
         "botIgnore": false,
@@ -2349,7 +2682,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "142460298467475456": {
         "botIgnore": false,
@@ -2370,7 +2706,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "169613103783346177": {
         "botIgnore": false,
@@ -2391,7 +2730,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "206063457479426048": {
         "botIgnore": false,
@@ -2412,7 +2754,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "105129594868252672": {
         "botIgnore": false,
@@ -2433,7 +2778,10 @@
         "reddit": "squishy3000",
         "bg": "http://i.imgur.com/5tdm4NC.png",
         "rep": 0,
-        "style": 4
+        "style": 4,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "140475995479212032": {
         "botIgnore": false,
@@ -2454,7 +2802,10 @@
         "reddit": "",
         "bg": "",
         "style": 1,
-        "rep": 0
+        "rep": 0,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "173153559683137536": {
         "botIgnore": false,
@@ -2475,7 +2826,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "113737011516538886": {
         "botIgnore": false,
@@ -2496,7 +2850,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "181184815180021767": {
         "botIgnore": false,
@@ -2517,7 +2874,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "193820708697145344": {
         "botIgnore": false,
@@ -2538,7 +2898,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "96362307877109760": {
         "botIgnore": false,
@@ -2559,7 +2922,10 @@
         "reddit": "",
         "bg": "",
         "style": 1,
-        "rep": 0
+        "rep": 0,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "110053260731125760": {
         "botIgnore": false,
@@ -2580,7 +2946,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "234342787007512587": {
         "botIgnore": false,
@@ -2601,7 +2970,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "187073598639439872": {
         "botIgnore": false,
@@ -2622,7 +2994,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "280158245497077760": {
         "botIgnore": false,
@@ -2643,7 +3018,10 @@
         "reddit": "",
         "bg": "",
         "style": 1,
-        "rep": 0
+        "rep": 0,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "162411646730371072": {
         "botIgnore": false,
@@ -2664,7 +3042,10 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     },
     "112792500359438336": {
         "botIgnore": false,
@@ -2685,6 +3066,105 @@
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
+    },
+    "207492504000397312": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "style": 1,
+        "rep": 0,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
+    },
+    "287207148637650945": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "style": 1,
+        "rep": 0,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
+    },
+    "132049270684647424": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0,
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
+    },
+    "210542688515129354": {
+        "botIgnore": false,
+        "dia": 25,
+        "daily": true,
+        "dailyRep": true,
+        "inv": {
+            "trash": 0,
+            "boots": 0,
+            "small": 0,
+            "med": 0,
+            "big": 0
+        },
+        "bio": "",
+        "title": "",
+        "twitter": "",
+        "tumblr": "",
+        "reddit": "",
+        "bg": "",
+        "rep": 0,
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     }
 }

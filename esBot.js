@@ -274,12 +274,16 @@ function diaChecker(msg) {
     if (serverSettings[id].diaMade) {
 
         if (serverSettings[id].lastDiaMsg != "") {
-            console.log("dia expired");
-            serverSettings[id].diaMade = false;
+            if (serverSettings[id].lastDiaMsg == id) {
+                console.log("dia expired");
+                serverSettings[id].diaMade = false;
 
-            serverSettings[id].lastDiaMsg = "";
-            msg.delete();
-            updateServers();
+                serverSettings[id].lastDiaMsg = "";
+                msg.delete(1000);
+                updateServers();
+                return;
+            }
+            
             return;
         }
 
@@ -326,9 +330,9 @@ setInterval(() => {
     eventChecker();
 }, 30000);
 
-setInterval(() => {
+/*setInterval(() => {
     diaExpire();
-}, 600000);
+}, 600000);*/
 
 /*===========EVENT HANDLER=============*/
 
@@ -563,7 +567,10 @@ function userChecker(msg) {
         "reddit": "",
         "bg": "",
         "rep": 0,
-        "style": 1
+        "style": 1,
+        "fontOne": "",
+        "fontTwo": "",
+        "fontThree": ""
     }
 
     console.log("Added user \'" + msg.author.username + "\' to the users list.  ID: " + msg.author.id);
@@ -652,10 +659,10 @@ bot.on("message", msg => {
                             .setDescription(serverSettings[msg.channel.guild.id].lastDia + " " + serverSettings[msg.channel.guild.id].diaType + " has appeared!  Type `!pick` to pick it up!");
                         msg.channel.sendEmbed(embed).then(function(m) {
                             serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
+                            updateServers();
                             setTimeout(() => {
                                 diaChecker(m);
                             }, 600000);
-                            updateServers();
                         }).catch(console.error);
                     }
                 }
@@ -940,7 +947,7 @@ bot.on("message", msg => {
         //cooldown duder
         recentComm.push(msg.author.id);
         setTimeout(() => {
-            let index = recentComm.indexOf(msg .author.id);
+            let index = recentComm.indexOf(msg.author.id);
             // Removes the user from the array after 2.5 seconds
             recentComm.splice(index, 1);
         }, 2000);

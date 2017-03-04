@@ -43,28 +43,28 @@ exports.gen = function(bot, msg, id) {
     if (userSettings[id].fontOne) {
         if (userSettings[id].fontOne.charAt(0) == "#") {
             font[0] = userSettings[id].fontOne.slice(1);
-            console.log(font[0]);
+            //console.log(font[0]);
         } else {
             font[0] = userSettings[id].fontOne;
-            console.log(font[0]);
+            //console.log(font[0]);
         }
     }
     if (userSettings[id].fontTwo) {
         if (userSettings[id].fontTwo.charAt(0) == "#") {
             font[1] = userSettings[id].fontTwo.slice(1);
-            console.log(font[1]);
+            //console.log(font[1]);
         } else {
             font[1] = userSettings[id].fontTwo;
-            console.log(font[1]);
+            //console.log(font[1]);
         }
     }
     if (userSettings[id].fontThree) {
         if (userSettings[id].fontThree.charAt(0) == "#") {
             font[2] = userSettings[id].fontThree.slice(1);
-            console.log(font[2]);
+            //console.log(font[2]);
         } else {
             font[2] = userSettings[id].fontThree;
-            console.log(font[2]);
+            //console.log(font[2]);
         }
     }
 

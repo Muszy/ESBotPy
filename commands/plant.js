@@ -31,6 +31,7 @@ exports.run = (bot, msg, args) => {
                 .setDescription("Please use the format `!plant [amount]`!")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
             msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
 
@@ -40,6 +41,7 @@ exports.run = (bot, msg, args) => {
                 .setColor(0xFF0040)
                 .setDescription("You can't use a negative amount!");
             msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
 
@@ -49,6 +51,7 @@ exports.run = (bot, msg, args) => {
                 .setColor(0xFF0040)
                 .setDescription("Please do not exceed 1000!");
             msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
 
@@ -59,6 +62,7 @@ exports.run = (bot, msg, args) => {
                 .setDescription("You don't have enough to plant that!")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
             msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+            msg.delete(1500);
             return;
         }
 
@@ -86,6 +90,7 @@ exports.run = (bot, msg, args) => {
             serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
             serverSettings[msg.channel.guild.id].lastDia += dia;
             m.delete(600000);
+            msg.delete(1500);
             updateServers();
         }).catch(console.error);
 
@@ -100,6 +105,7 @@ exports.run = (bot, msg, args) => {
         .setDescription("Please use the format `!plant [amount]`!")
         .setThumbnail("http://i.imgur.com/7TL0t99.png");
     msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+    msg.delete(1500);
 
 }
 
