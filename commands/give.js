@@ -22,6 +22,52 @@ exports.run = (bot, msg, args) => {
 
     if (msg.mentions.users.size === 1) {
 
+        if (args[1].toLowerCase() == "all") {
+
+            if (userSettings[msg.author.id].dia < 1) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("You have nothing to give!");
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
+                return;
+            }
+
+            if (userSettings[msg.author.id].dia > 1000) {
+                let dia = 1000;
+
+                let id = msg.mentions.users.first().id;
+
+                checker(id);
+
+                let embed = new discord.RichEmbed();
+                embed.setColor(0x753FCF)
+                    .setDescription(msg.author.username + " has given " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " to " + msg.guild.member(id).displayName + "!");
+                msg.channel.sendEmbed(embed);
+                userSettings[msg.author.id].dia -= dia;
+                userSettings[id].dia += dia;
+                updateUsers();
+                return;
+            }
+
+            let dia = userSettings[msg.author.id].dia;
+
+            let id = msg.mentions.users.first().id;
+
+            checker(id);
+
+            let embed = new discord.RichEmbed();
+            embed.setColor(0x753FCF)
+                .setDescription(msg.author.username + " has given " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " to " + msg.guild.member(id).displayName + "!");
+            msg.channel.sendEmbed(embed);
+            userSettings[msg.author.id].dia -= dia;
+            userSettings[id].dia += dia;
+            updateUsers();
+            return;
+
+        }
+
         if (!isNaN(args[1])) {
 
             let dia = parseInt(args[1].trim());
@@ -71,29 +117,7 @@ exports.run = (bot, msg, args) => {
 
             console.log("giving " + msg.guild.member(id).displayName + " " + dia + " from " + msg.author.id);
 
-            if (!userSettings.hasOwnProperty(id)) {
-                userSettings[id] = {
-                    "botIgnore": false,
-                    "dia": 25,
-                    "daily": true,
-                    "dailyRep": true,
-                    "inv": {
-                        "trash": 0,
-                        "boots": 0,
-                        "small": 0,
-                        "med": 0,
-                        "big": 0
-                    },
-                    "bio": "",
-                    "title": "",
-                    "twitter": "",
-                    "tumblr": "",
-                    "reddit": "",
-                    "bg": "",
-                    "style": 1,
-                    "rep": 0
-                }
-            }
+            checker(id);
 
             let embed = new discord.RichEmbed();
             embed.setColor(0x753FCF)
@@ -121,6 +145,36 @@ exports.help = (bots, msg, args) => {
 }
 
 //===============================FUNCTIONS====================================
+
+function checker(id) {
+    if (!userSettings.hasOwnProperty(id)) {
+        userSettings[id] = {
+            "botIgnore": false,
+            "dia": 25,
+            "daily": true,
+            "dailyRep": true,
+            "inv": {
+                "trash": 0,
+                "boots": 0,
+                "small": 0,
+                "med": 0,
+                "big": 0
+            },
+            "bio": "",
+            "title": "",
+            "twitter": "",
+            "tumblr": "",
+            "reddit": "",
+            "bg": "",
+            "style": 1,
+            "rep": 0,
+            "fontOne": "",
+            "fontTwo": "",
+            "fontThree": ""
+        }
+    }
+    updateUsers();
+}
 
 function updateUsers() {
     fs.writeFile(__dirname + '/../db/users-temp.json', JSON.stringify(userSettings, null, 4), error => {

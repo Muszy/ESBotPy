@@ -60,7 +60,10 @@ exports.run = (bot, msg, args) => {
                     "reddit": "",
                     "bg": "",
                     "style": 1,
-                    "rep": 0
+                    "rep": 0,
+                    "fontOne": "",
+                    "fontTwo": "",
+                    "fontThree": ""
                 }
             }
 

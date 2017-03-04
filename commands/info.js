@@ -1,5 +1,6 @@
 var request = require("superagent");
 const discord = require("discord.js");
+var package = require("../package.json")
 
 exports.run = (bot, msg, args) => {
 	if (msg.channel.type == "dm" || msg.channel.type == "group") {
@@ -41,6 +42,7 @@ exports.run = (bot, msg, args) => {
 		embed.setTitle(":feet: About Me!")
 			.setColor(0xB48CF0)
 			.setDescription("I'm **DaikichiBot**! I was created by <@108752547166031872> for use by the Ensemble Stars Discord! If you need any help, go ahead and use `!help` or `!help [command]`! You can find out more about me by clicking this and going to my site!\n\nSpecial thanks to Ke'ri for help with the cards data!")
+			.addField("Version", package.version)
 			.setThumbnail("http://i.imgur.com/7TL0t99.png")
 			.setURL("http://hanifish.github.io/enstars/bot.html");
 		msg.channel.sendEmbed(embed).catch(console.error);

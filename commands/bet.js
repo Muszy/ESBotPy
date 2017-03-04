@@ -21,6 +21,74 @@ exports.run = (bot, msg, args) => {
     }
 
     if (args.length > 0) {
+
+        if (args[0].toLowerCase() == "all") {
+
+            let rand = Math.floor(Math.random() * 100);
+
+            if (userSettings[msg.author.id].dia < 1) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("You have nothing to bet!");
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
+                return;
+            }
+
+            if (userSettings[msg.author.id].dia > 1000) {
+
+                let dia = 1000;
+
+                if (rand > 65) {
+                    let embed = new discord.RichEmbed();
+                    embed.setTitle("Gambling:")
+                        .setColor(0x753FCF)
+                        .setDescription("Daikichi rolled: " + rand + "!  " + msg.author.username + " gained " + (dia * 2) + " " + serverSettings[msg.channel.guild.id].diaType + ".");
+                    msg.channel.sendEmbed(embed).catch(console.error);
+
+                    userSettings[msg.author.id].dia += dia;
+                    updateUsers();
+                    return;
+                }
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Gambling:")
+                    .setColor(0x753FCF)
+                    .setDescription("Daikichi rolled: " + rand + "!  Sorry, " + msg.author.username + " lost " + dia + " " + serverSettings[msg.channel.guild.id].diaType + ".");
+                msg.channel.sendEmbed(embed).catch(console.error);
+
+                userSettings[msg.author.id].dia -= dia;
+                updateUsers();
+                return;
+            }
+
+            let dia = userSettings[msg.author.id].dia;
+
+            if (rand > 65) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Gambling:")
+                    .setColor(0x753FCF)
+                    .setDescription("Daikichi rolled: " + rand + "!  " + msg.author.username + " gained " + (dia * 2) + " " + serverSettings[msg.channel.guild.id].diaType + ".");
+                msg.channel.sendEmbed(embed).catch(console.error);
+
+                userSettings[msg.author.id].dia += dia;
+                updateUsers();
+                return;
+            }
+
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Gambling:")
+                .setColor(0x753FCF)
+                .setDescription("Daikichi rolled: " + rand + "!  Sorry, " + msg.author.username + " lost " + dia + " " + serverSettings[msg.channel.guild.id].diaType + ".");
+            msg.channel.sendEmbed(embed).catch(console.error);
+
+            userSettings[msg.author.id].dia -= dia;
+            updateUsers();
+            return;
+
+        }
+
         if (!isNaN(args[0])) {
             let dia = parseInt(args[0].trim());
 
@@ -102,7 +170,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bots, msg, args) => {
-    return "Use `!bet [amount]` to gamble away your savings!";
+    return "Use `!bet [amount]` to gamble away your savings!  You can bet everything (up to 1000) with `!bet all`.";
 }
 
 //===============================FUNCTIONS====================================

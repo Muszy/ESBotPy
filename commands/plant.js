@@ -20,6 +20,62 @@ exports.run = (bot, msg, args) => {
         return;
     }
 
+    if (args[0].toLowerCase() == "all") {
+        let dia = userSettings[msg.author.id].dia;
+        
+        if (userSettings[msg.author.id].dia < 1) {
+            let embed = new discord.RichEmbed();
+            embed.setTitle("Error:")
+                .setColor(0xFF0040)
+                .setDescription("You have nothing to plant!");
+            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.delete(1500);
+            return;
+        }
+
+        if (userSettings[msg.author.id].dia > 1000) {
+            dia = 1000;
+        }
+
+        console.log("planting " + dia + " from " + msg.author.username);
+
+        let embed = new discord.RichEmbed();
+        embed.setColor(0x753FCF)
+            .setDescription(msg.author.username + " has planted " + dia + " " + serverSettings[msg.channel.guild.id].diaType + "!  Use `!pick` to pick it up!");
+        msg.channel.sendEmbed(embed).then(function(m) {
+            if (serverSettings[msg.channel.guild.id].lastDiaMsg != "") {
+
+                msg.channel.fetchMessage(serverSettings[msg.channel.guild.id].lastDiaMsg).then(function(me) {
+                    me.delete(1500);
+                    serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
+                    serverSettings[msg.channel.guild.id].lastDia += dia;
+                    msg.delete(1500);
+                    setTimeout(() => {
+                        if (serverSettings[msg.channel.guild.id].lastDiaMsg = m.id) {
+                            m.delete(1000);
+                        }
+                    }, 10000);
+                    userSettings[msg.author.id].dia -= dia;
+                    updateUsers();
+                    updateServers();
+                    return;
+                }).catch(console.error);
+
+                return;
+
+            }
+            serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
+            serverSettings[msg.channel.guild.id].lastDia += dia;
+            m.delete(600000);
+            msg.delete(1500);
+            updateServers();
+        }).catch(console.error);
+
+        userSettings[msg.author.id].dia -= dia;
+        updateUsers();
+        return;
+    }
+
     if (!isNaN(args[0])) {
 
         let dia = parseInt(args[0].trim());
@@ -79,12 +135,18 @@ exports.run = (bot, msg, args) => {
                     serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
                     serverSettings[msg.channel.guild.id].lastDia += dia;
                     msg.delete(1500);
-                    m.delete(600000);
+                    setTimeout(() => {
+                        if (serverSettings[msg.channel.guild.id].lastDiaMsg = m.id) {
+                            m.delete(1000);
+                        }
+                    }, 10000);
                     userSettings[msg.author.id].dia -= dia;
                     updateUsers();
                     updateServers();
                     return;
                 }).catch(console.error);
+
+                return;
 
             }
             serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
