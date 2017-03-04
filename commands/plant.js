@@ -172,7 +172,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bots, msg, args) => {
-    return "Use `!plant [amount]` to plant or add currency for someone else to pick up!";
+    return "Use `!plant [amount/all]` to plant or add currency for someone else to pick up!";
 }
 
 //===============================FUNCTIONS====================================

@@ -141,7 +141,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bots, msg, args) => {
-    return "Use `!give <user> [amount]` to give someone currency!";
+    return "Use `!give <user> [amount/all]` to give someone currency!";
 }
 
 //===============================FUNCTIONS====================================

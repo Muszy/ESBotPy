@@ -64,7 +64,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bots, msg, args) => {
-    return "Use `!sell [type] [amount]` to sell your findings!";
+    return "Use `!sell [type] [amount/all]` to sell your findings!";
 }
 
 //===============================FUNCTIONS====================================

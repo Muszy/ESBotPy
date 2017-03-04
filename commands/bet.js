@@ -170,7 +170,7 @@ exports.run = (bot, msg, args) => {
 }
 
 exports.help = (bots, msg, args) => {
-    return "Use `!bet [amount]` to gamble away your savings!  You can bet everything (up to 1000) with `!bet all`.";
+    return "Use `!bet [amount/all]` to gamble away your savings!  You can bet everything (up to 1000) with `!bet all`.";
 }
 
 //===============================FUNCTIONS====================================
