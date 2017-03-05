@@ -1,6 +1,6 @@
 var request = require("superagent");
 const discord = require("discord.js");
-var package = require("../package.json")
+var package = require("../package.json");
 
 exports.run = (bot, msg, args) => {
 	if (msg.channel.type == "dm" || msg.channel.type == "group") {

@@ -158,7 +158,7 @@ exports.help = (bots, msg, args) => {
 //===============================FUNCTIONS====================================
 
 function pushList(bot, msg, list) {
-    console.log(list);
+    //console.log(list);
 
     userSettings[msg.author.id].inv.trash += parseInt(list.trash);
     userSettings[msg.author.id].inv.boots += parseInt(list.boots);
@@ -168,14 +168,13 @@ function pushList(bot, msg, list) {
 
     let sum = parseInt(list.trash) + parseInt(list.boots) + parseInt(list.big) + parseInt(list.small) + parseInt(list.med);
 
+    //updateUsers();
+
     let embed = new discord.RichEmbed();
     embed.setTitle("Digging:")
         .setColor(0x753FCF)
         .setDescription(msg.author.username + " paid " + (sum * 5) + " " + serverSettings[msg.channel.guild.id].diaType + " and found: **" + list.big + "** large, **" + list.med + "** medium, and **" + list.small + "** small jewels, and **" + list.boots + "** boot(s) and **" + list.trash + "** pieces of trash.");
     msg.channel.sendEmbed(embed).catch(console.error);
-
-    updateUsers();
-    return;
 }
 
 function digMulti(bot, msg, times, list) {
