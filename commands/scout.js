@@ -60,9 +60,6 @@ exports.run = (bot, msg, args) => {
                     return;
                 }
 
-                userSettings[msg.author.id].dia -= 135;
-                updateUsers();
-
                 let list = [];
                 let names = [];
                 let boy = args[1].toLowerCase().trim();

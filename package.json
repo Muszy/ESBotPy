@@ -37,6 +37,7 @@
     "twitter": "*",
     "youtube-node": "*",
     "valid-url": "*",
-    "http": "*"
+    "http": "*",
+    "pm2": "*"
   }
 }

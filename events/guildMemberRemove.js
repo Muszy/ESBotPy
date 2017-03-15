@@ -17,7 +17,7 @@ exports.run = (bot, member, guild) => {
 	if(serverSettings[member.guild.id].banAlerts) {
 		let embed = new discord.RichEmbed();
 
-		embed.setTitle("Goodbye...")
+		embed.setTitle("Goodbye " + member.user.username + "...")
 			.setColor(0xFFB6C1)
 			.setDescription("Goodbye, <@" + member.user.id + ">, we hope that you join us again someday!")
 			.setThumbnail("http://i.imgur.com/nRleyfl.png");

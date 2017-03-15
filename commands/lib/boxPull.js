@@ -4,6 +4,9 @@ var fs = require("fs");
 var boxPull = require("./boxPull.js");
 var scout = require("./../scout.js");
 
+var usersName = "../../db/users.json";
+var userSettings = require(usersName);
+
 const boyURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/Boys/";
 //https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/Boys/ [boy name] / box.json
 //const testURL = "https://raw.githubusercontent.com/Hanifish/Enstars/master/Data/testScout.json";
@@ -16,6 +19,8 @@ errorMsg.setTitle("Error:")
 
 exports.tenPull = function(boy, list, names, count, msg) {
     if (count == 10) {
+        userSettings[msg.author.id].dia -= 135;
+        updateUsers();
         scout.generatePull(list, names, 0, msg);
     } else if (count == 0) {
         let rand = Math.floor(Math.random() * 1000);
@@ -199,4 +204,21 @@ function download(url, callback) {
     }).on("error", function() {
         callback(null);
     });
+}
+
+function updateUsers() {
+    fs.writeFile(__dirname + '/../../db/users-temp.json', JSON.stringify(userSettings, null, 4), error => {
+        if (error) console.log(error)
+        else {
+            fs.stat(__dirname + '/../../db/users-temp.json', (err, stats) => {
+                if (err) console.log(err)
+                else if (stats["size"] < 2) console.log('Prevented users from being overwritten');
+                else {
+                    fs.rename(__dirname + '/../../db/users-temp.json', __dirname + '/../../db/users.json', e => {
+                        if (e) console.log(e)
+                    });
+                }
+            });
+        }
+    })
 }

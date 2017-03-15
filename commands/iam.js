@@ -28,7 +28,7 @@ exports.run = (bot, msg, args) => {
 		    .setColor(0xB48CF0)
 		    .setThumbnail("http://i.imgur.com/7TL0t99.png")
 		    .setDescription(file[msg.guild.id].roles);
-		msg.channel.sendEmbed(embed).then(m => m.delete(5000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	}
 
 	else {

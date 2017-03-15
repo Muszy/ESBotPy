@@ -52,6 +52,7 @@ exports.run = (bot, member, guild) => {
 
         let ch = serverSettings[member.guild.id].notifyChannel;
         bot.channels.get(ch).sendEmbed(embed).catch(console.error);
+        member.sendEmbed(embed).catch(console.error);
     }
 }
 

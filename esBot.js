@@ -274,7 +274,7 @@ function diaChecker(msg) {
     if (serverSettings[id].diaMade) {
 
         if (serverSettings[id].lastDiaMsg != "") {
-            if (serverSettings[id].lastDiaMsg == id) {
+            if (serverSettings[id].lastDiaMsg == msg.id) {
                 console.log("dia expired");
                 serverSettings[id].diaMade = false;
 
@@ -688,7 +688,7 @@ bot.on("message", msg => {
             let embed = new discord.RichEmbed();
             embed.setTitle("Daikichi says:")
                 .setColor(0xB48CF0)
-                .setDescription("The gacha is announced **24 hours after the new event** is announced!\n\nIt occurs at **10PM PST / 1AM EST / 6AM GMT / 3PM JST!**")
+                .setDescription("The gacha is announced **24 hours after the new event** is announced!\n\nIt occurs at **11PM PST / 2AM EST / 7AM GMT / 3PM JST!**")
                 .setThumbnail("http://i.imgur.com/nRleyfl.png");
             msg.channel.sendEmbed(embed).catch(console.error);
         }
@@ -698,7 +698,7 @@ bot.on("message", msg => {
             let embed = new discord.RichEmbed();
             embed.setTitle("Daikichi says:")
                 .setColor(0xB48CF0)
-                .setDescription("The next event is announced **24 hours after revivals open** / **the day after the previous event ends**!\n\nIt occurs at **10PM PST / 1AM EST / 6AM GMT / 3PM JST!**")
+                .setDescription("The next event is announced **24 hours after revivals open** / **the day after the previous event ends**!\n\nIt occurs at **11PM PST / 2AM EST / 7AM GMT / 3PM JST!**")
                 .setThumbnail("http://i.imgur.com/nRleyfl.png");
             msg.channel.sendEmbed(embed).catch(console.error);
         }
@@ -718,7 +718,7 @@ bot.on("message", msg => {
             let embed = new discord.RichEmbed();
             embed.setTitle("Daikichi says:")
                 .setColor(0xB48CF0)
-                .setDescription("It opens at **10PM PST / 1AM EST / 6AM GMT / 3PM JST** on the date announced!")
+                .setDescription("It opens at **11PM PST / 2AM EST / 7AM GMT / 3PM JST** on the date announced!")
                 .setThumbnail("http://i.imgur.com/nRleyfl.png");
             msg.channel.sendEmbed(embed).catch(console.error);
         }
@@ -748,7 +748,7 @@ bot.on("message", msg => {
             let embed = new discord.RichEmbed();
             embed.setTitle("Daikichi says:")
                 .setColor(0xB48CF0)
-                .setDescription("Revivals open **17 hours after** the current event ends at **10PM PST / 1AM EST / 6AM GMT / 3PM JST**!")
+                .setDescription("Revivals open **17 hours after** the current event ends at **11PM PST / 2AM EST / 7AM GMT / 3PM JST**!")
                 .setThumbnail("http://i.imgur.com/nRleyfl.png");
             msg.channel.sendEmbed(embed).catch(console.error);
         }
