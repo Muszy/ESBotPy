@@ -13,27 +13,27 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFFB6C1)
 			.setTitle("Punted!")
 			.setImage(img[Math.floor(Math.random() * (img.length))])
-			.setDescription("**" + msg.author + "** punts **" + msg.mentions.users.first() + "** " + punts[Math.floor(Math.random() * (punts.length))]);
+			.setDescription("**" + msg.author.username + "** punts **" + msg.mentions.users.first().username + "** " + punts[Math.floor(Math.random() * (punts.length))]);
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else if (args.length > 0) {
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("Punted!")
 			.setImage(img[Math.floor(Math.random() * (img.length))])
-			.setDescription("**" + msg.author + "** punts **" + args.join(" ").trim() + "** " + punts[Math.floor(Math.random() * (punts.length))]);
+			.setDescription("**" + msg.author.username + "** punts **" + args.join(" ").trim() + "** " + punts[Math.floor(Math.random() * (punts.length))]);
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("Punted!")
 			.setImage(img[Math.floor(Math.random() * (img.length))])
-			.setDescription("**" + msg.author + "** has punted themself " + punts[Math.floor(Math.random() * (punts.length))]);
+			.setDescription("**" + msg.author.username + "** has punted themself " + punts[Math.floor(Math.random() * (punts.length))]);
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	}
 
 	msg.delete(1500);

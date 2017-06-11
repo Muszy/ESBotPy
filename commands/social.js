@@ -62,6 +62,8 @@ exports.run = (bot, msg, args) => {
         .setDescription("*"+ title + "*" + "\n**Twitter:** " + userSettings[id].twitter + "\n**Tumblr:** " + userSettings[id].tumblr + "\n**Reddit:** " + userSettings[id].reddit);
     msg.channel.sendEmbed(embed).catch(console.error);
 
+    msg.delete(1500);
+
 }
 
 exports.help = (bots, msg, args) => {

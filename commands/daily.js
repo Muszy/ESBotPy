@@ -1,5 +1,8 @@
 var request = require("superagent");
 const discord = require("discord.js");
+const config = require("../config.json");
+var dreset = require("./daily.js");
+
 var fs = require("fs");
 
 var serversName = "../db/servers.json";
@@ -10,9 +13,16 @@ var userSettings = require(usersName);
 
 exports.run = (bot, msg, args) => {
 
+    if (args.length > 0 && args[0].toLowerCase() == "reset" && msg.author.id == config.admin_id) {
+        //console.log(file[msg.guild.id]);
+
+        dreset.reset(bot);
+        return;
+    }
+
     if (userSettings[msg.author.id].daily) {
-    	let dia = 10;
-    	console.log("daily " + dia + " to " + msg.author.username);
+        let dia = 10;
+        console.log("daily " + dia + " to " + msg.author.username);
 
         let embed = new discord.RichEmbed();
         embed.setColor(0x753FCF)
@@ -22,10 +32,10 @@ exports.run = (bot, msg, args) => {
             m.delete(2000);
         });
 
-    	userSettings[msg.author.id].dia += 10;
+        userSettings[msg.author.id].dia += 10;
         userSettings[msg.author.id].daily = false;
-    	updateUsers();
-    	return;
+        updateUsers();
+        return;
     }
 
     msg.channel.sendMessage("`You've already received your daily!`").then(m => m.delete(3000)).catch(console.error);

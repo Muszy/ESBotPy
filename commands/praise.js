@@ -19,9 +19,9 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFF69B4)
 			.setTitle("Praised!")
 			.setThumbnail("http://i.imgur.com/nRleyfl.png")
-			.setDescription("**Daikichi says:** " + msg.mentions.users.first() + praise[Math.floor(Math.random() * (praise.length))]);
+			.setDescription("**Daikichi says:** " + msg.mentions.users.first().username + praise[Math.floor(Math.random() * (praise.length))]);
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 
 	else if (args.length > 0) {
@@ -32,16 +32,16 @@ exports.run = (bot, msg, args) => {
 			.setThumbnail("http://i.imgur.com/nRleyfl.png")
 			.setDescription("**Daikichi says:** " + args.join(" ").trim() + praise[Math.floor(Math.random() * (praise.length))]);
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFF69B4)
 			.setTitle("Praised!")
 			.setThumbnail("http://i.imgur.com/nRleyfl.png")
-			.setDescription("**Daikichi says:** " + msg.author + praise[Math.floor(Math.random() * (praise.length))]);
+			.setDescription("**Daikichi says:** " + msg.author.username + praise[Math.floor(Math.random() * (praise.length))]);
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	}
 	msg.delete(1500);
 }

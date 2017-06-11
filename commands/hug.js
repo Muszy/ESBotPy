@@ -12,27 +12,27 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFFB6C1)
 			.setTitle("Hugs!")
 			.setImage(hugs[Math.floor(Math.random() * (hugs.length))])
-			.setDescription(msg.author+ " hugs **" + msg.mentions.users.first() + "!**");
+			.setDescription(msg.author.username + " hugs **" + msg.mentions.users.first().username + "!**");
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else if (args.length > 0) {
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("Hugs!")
 			.setImage(hugs[Math.floor(Math.random() * (hugs.length))])
-			.setDescription(msg.author+ " hugs **" + args.join(" ").trim() + "!**");
+			.setDescription(msg.author.username+ " hugs **" + args.join(" ").trim() + "!**");
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("Hugs!")
 			.setImage("http://i.imgur.com/P6tTJUm.gif")
-			.setDescription("**" + msg.author + " hugs Daikichi Bot!**");
+			.setDescription("**" + msg.author.username + " hugs Daikichi Bot!**");
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	}
 
 	msg.delete(1500);

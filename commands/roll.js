@@ -4,7 +4,7 @@ exports.run = (bot, msg, args) => {
     let roll = 100;
 
     if (args.length > 0 && !isNaN(args[0])) {
-        if (parseInt(args[0]) > 10) {
+        if (parseInt(args[0]) > 1) {
             roll = parseInt(args[0]);
         }
     }

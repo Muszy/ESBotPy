@@ -38,6 +38,16 @@ exports.run = (bot, msg, args) => {
                 return;
             }
 
+            if (dia < 0) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Can't award negative amount.")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+
             console.log("awarding " + msg.guild.member(id).displayName + " " + dia + " from " + msg.author.id);
 
             if (!userSettings.hasOwnProperty(id)) {

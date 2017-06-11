@@ -50,7 +50,7 @@ exports.run = (bot, member, guild) => {
             .setDescription(serverSettings[member.guild.id].welcome.replace(/\$USER\$/gi, '<@' + member.user.id + '>').replace(/\$SERVER\$/gi, member.guild.name.replace(/@/g, '@\u200b')))
             .setThumbnail("http://i.imgur.com/nRleyfl.png");
 
-        let ch = serverSettings[member.guild.id].notifyChannel;
+        let ch = serverSettings[member.guild.id].welcomeChannel;
         bot.channels.get(ch).sendEmbed(embed).catch(console.error);
         member.sendEmbed(embed).catch(console.error);
     }

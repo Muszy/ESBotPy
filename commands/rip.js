@@ -33,7 +33,7 @@ exports.run = (bot, msg, args) => {
 		.write(dir + 'ripTemp.png', function(err) {
 			if(!err) {
 				console.log("Written composite image.");
-				msg.channel.sendFile(dir + 'ripTemp.png', "rip.png").then(m => m.delete(20000)).catch(console.error);
+				msg.channel.sendFile(dir + 'ripTemp.png', "rip.png").catch(console.error);
 			}
 			else if(err) console.log(err);
 		});

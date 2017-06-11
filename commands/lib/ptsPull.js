@@ -15,9 +15,9 @@ errorMsg.setTitle("Error:")
     .setDescription("An error has occurred! Try again later.")
     .setThumbnail("http://i.imgur.com/7TL0t99.png");
 
-exports.tenPull = function(list, names, count, msg) {
+exports.tenPull = function(list, names, stars, count, msg) {
     if (count == 10) {
-        scout.generatePull(list, names, 0, msg);
+        scout.generatePull(list, names, stars, 0, msg);
     } else {
         let rand = Math.floor(Math.random() * 1000);
 
@@ -35,8 +35,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                     list.push(data.four[num].img);
                     names.push(data.four[num].name);
+                    stars.push(data.four[num].star);
 
-                    ptsPull.tenPull(list, names, count + 1, msg);
+                    ptsPull.tenPull(list, names, stars, count + 1, msg);
                 }
             });
         }
@@ -56,8 +57,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                     list.push(data.three[num].img);
                     names.push(data.three[num].name);
+                    stars.push(data.three[num].star);
 
-                    ptsPull.tenPull(list, names, count + 1, msg);
+                    ptsPull.tenPull(list, names, stars, count + 1, msg);
                 }
             });
         }
@@ -85,7 +87,7 @@ exports.solo = function(msg) {
                     .setURL("http://enstars.info/card/" + data.four[num].id)
                     .setColor(0x96F08C)
                     .setThumbnail(data.four[num].img)
-                    .setDescription(data.four[num].name);
+                    .setDescription("[" + data.four[num].star + "★] " + data.four[num].name);
                 msg.channel.sendEmbed(embed).catch(console.error);
                 msg.delete(1500);
             }
@@ -111,7 +113,7 @@ exports.solo = function(msg) {
                     .setURL("http://enstars.info/card/" + data.three[num].id)
                     .setColor(0x96F08C)
                     .setThumbnail(data.three[num].img)
-                    .setDescription(data.three[num].name);
+                    .setDescription("[" + data.three[num].star + "★] " + data.three[num].name);
                 msg.channel.sendEmbed(embed).catch(console.error);
                 msg.delete(1500);
             }

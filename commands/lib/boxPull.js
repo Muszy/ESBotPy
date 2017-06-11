@@ -17,11 +17,11 @@ errorMsg.setTitle("Error:")
     .setDescription("An error has occurred! Try again later.")
     .setThumbnail("http://i.imgur.com/7TL0t99.png");
 
-exports.tenPull = function(boy, list, names, count, msg) {
+exports.tenPull = function(boy, list, names, stars, count, msg) {
     if (count == 10) {
         userSettings[msg.author.id].dia -= 135;
         updateUsers();
-        scout.generatePull(list, names, 0, msg);
+        scout.generatePull(list, names, stars, 0, msg);
     } else if (count == 0) {
         let rand = Math.floor(Math.random() * 1000);
 
@@ -46,12 +46,13 @@ exports.tenPull = function(boy, list, names, count, msg) {
                 if (!error) {
                     data = JSON.parse(body);
 
-                    let num = Math.floor(Math.random() * data.four.length);
+                    let num = Math.floor(Math.random() * data.five.length);
 
-                    list.push(data.four[num].img);
-                    names.push(data.four[num].name);
+                    list.push(data.five[num].img);
+                    names.push(data.five[num].name);
+                    stars.push(data.five[num].star);
 
-                    boxPull.tenPull(boy, list, names, 1, msg);
+                    boxPull.tenPull(boy, list, names, stars, 1, msg);
                 }
             });
         }
@@ -82,8 +83,9 @@ exports.tenPull = function(boy, list, names, count, msg) {
 
                     list.push(data.four[num].img);
                     names.push(data.four[num].name);
+                    stars.push(data.four[num].star);
 
-                    boxPull.tenPull(boy, list, names, count + 1, msg);
+                    boxPull.tenPull(boy, list, names, stars, count + 1, msg);
                 }
 
             });
@@ -116,8 +118,9 @@ exports.tenPull = function(boy, list, names, count, msg) {
 
                     list.push(data.five[num].img);
                     names.push(data.five[num].name);
+                    stars.push(data.five[num].star);
 
-                    boxPull.tenPull(boy, list, names, count + 1, msg);
+                    boxPull.tenPull(boy, list, names, stars, count + 1, msg);
                 }
             });
         }
@@ -149,8 +152,9 @@ exports.tenPull = function(boy, list, names, count, msg) {
 
                     list.push(data.four[num].img);
                     names.push(data.four[num].name);
+                    stars.push(data.four[num].star);
 
-                    boxPull.tenPull(boy, list, names, count + 1, msg);
+                    boxPull.tenPull(boy, list, names, stars, count + 1, msg);
                 }
 
             });
@@ -183,8 +187,9 @@ exports.tenPull = function(boy, list, names, count, msg) {
 
                     list.push(data.three[num].img);
                     names.push(data.three[num].name);
+                    stars.push(data.three[num].star);
 
-                    boxPull.tenPull(boy, list, names, count + 1, msg);
+                    boxPull.tenPull(boy, list, names, stars, count + 1, msg);
                 }
 
             });

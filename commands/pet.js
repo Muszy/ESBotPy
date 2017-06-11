@@ -12,9 +12,9 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFFB6C1)
 			.setTitle("Petting")
 			.setImage(pets[Math.floor(Math.random() * (pets.length))])
-			.setDescription("**" + msg.mentions.users.first()+ "** was pet by **" + msg.author + "**");
+			.setDescription("**" + msg.mentions.users.first().username+ "** was pet by **" + msg.author.username + "**");
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else if (args.length>0) {
 
@@ -22,18 +22,18 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFFB6C1)
 			.setTitle("Petting")
 			.setImage(pets[Math.floor(Math.random() * (pets.length))])
-			.setDescription("**" + args.join(" ").trim()+ "** was pet by **" + msg.author + "**");
+			.setDescription("**" + args.join(" ").trim()+ "** was pet by **" + msg.author.username + "**");
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("Petting")
 			.setImage("http://i.imgur.com/P6tTJUm.gif")
-			.setDescription("**DaikichiBot** was pet by **" + msg.author + "**");
+			.setDescription("**DaikichiBot** was pet by **" + msg.author.username + "**");
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	}
 	msg.delete(1500);
 }

@@ -26,6 +26,8 @@ icons:
     treat daikichi - http://i.imgur.com/gUWJl0u.png
     reg daikichi - http://i.imgur.com/7TL0t99.png
     waving dai - http://i.imgur.com/nRleyfl.png
+    michelle - http://i.imgur.com/408QceQ.png
+    error kanon - http://i.imgur.com/XMVTWl9.png
 
 ==============================================*/
 
@@ -62,6 +64,9 @@ var event = null;
 var half = null;
 var last = null;
 
+var bEvent = null;
+var bLast = null;
+
 var recentComm = [];
 
 var commError = new discord.RichEmbed();
@@ -91,8 +96,8 @@ bot.login(config.token, function(err, token) {
 
 //this is some scheduling stuff, if you want to know how this works ask me l8r
 var ruleTreats = new schedule.RecurrenceRule();
-ruleTreats.hour = 0;
-ruleTreats.minute = 0;
+ruleTreats.hour = 16;
+ruleTreats.minute = 2;
 
 var treatReset = schedule.scheduleJob(ruleTreats, function() {
     let commandFile = require(`./commands/treat.js`);
@@ -168,7 +173,7 @@ function eventChecker() {
                 if (serverSettings[id].notify && serverSettings[id] != "") {
                     //console.log(id);
                     let ch = serverSettings[id].notifyChannel;
-                    bot.channels.get(ch).sendMessage('@here Event is now over!');
+                    bot.channels.get(ch).sendMessage('Event is now over!');
                     bot.channels.get(ch).sendEmbed(embed).catch(console.error);
                 }
             }
@@ -207,7 +212,7 @@ function eventChecker() {
                     if (serverSettings[id].notify && serverSettings[id] != "") {
                         //console.log(id);
                         let ch = serverSettings[id].notifyChannel;
-                        bot.channels.get(ch).sendMessage('@here Event halfway is here!');
+                        bot.channels.get(ch).sendMessage('Event halfway is here!');
                         bot.channels.get(ch).sendEmbed(embed).catch(console.error);
                     }
                 }
@@ -236,7 +241,7 @@ function eventChecker() {
                     if (serverSettings[id].notify && serverSettings[id] != "") {
                         //console.log(id);
                         let ch = serverSettings[id].notifyChannel;
-                        bot.channels.get(ch).sendMessage('@here Last day of event!');
+                        bot.channels.get(ch).sendMessage('Last day of event!');
                         bot.channels.get(ch).sendEmbed(embed).catch(console.error);
                     }
                 }
@@ -283,7 +288,7 @@ function diaChecker(msg) {
                 updateServers();
                 return;
             }
-            
+
             return;
         }
 
@@ -319,15 +324,136 @@ function diaExpire() {
     return;
 }
 
+function bEventChecker() {
+    let present = new Date(Date.now() + 1000);
+
+    let time = globals["bEvent"].end;
+
+    var joins = time.split(", ").join("-");
+
+    let end = parseDate(joins);
+    //console.log(end);
+
+    let count = end - present;
+    //console.log(count);
+
+    if (globals["bEvent"].end != "" && bEvent == null && count > 60000) {
+
+        console.log("new bandori event starting");
+
+        //let end = globals["bEvent"].end.toString();
+        let temp = globals["bEvent"].end;
+        //console.log(temp.toString());
+        var parts = temp.split(", ").join("-");
+        //console.log(parts);
+        let stop = parseDate(parts);
+        //console.log(end.toString());
+
+        var date = new Date(stop);
+        //console.log(date);
+
+        bEvent = schedule.scheduleJob(date, function() {
+            let embed = new discord.RichEmbed();
+
+            embed.setTitle("Event is Over!")
+                .setColor(0xFFB400)
+                .setDescription(globals["bEvent"].name + " is now over!")
+                .setImage(globals["bEvent"].img)
+                .setURL(globals["bEvent"].url);
+
+            for (var id in serverSettings) {
+                if (serverSettings[id].bNotify && serverSettings[id] != "") {
+                    //console.log(id);
+                    let ch = serverSettings[id].bNotifyChannel;
+                    bot.channels.get(ch).sendMessage('Event is now over!');
+                    bot.channels.get(ch).sendEmbed(embed).catch(console.error);
+                }
+            }
+
+            //console.log("test");
+
+            globals["bEvent"].end = "";
+
+            fs.writeFile(globalsName, JSON.stringify((globals)), function(err) {
+                if (err) return console.log(err);
+                //console.log(JSON.stringify(file));
+                console.log('resetting bandori event end in ' + globalsName);
+            });
+
+            bEvent.cancel();
+
+            bEvent = null;
+
+            updateGlobals();
+
+        });
+
+        //console.log(date-457200000);
+
+        //console.log(date-86400000);
+
+        if ((date - 86400000) > 60000) {
+
+            bLast = schedule.scheduleJob(date - 86400000, function() {
+                let embed = new discord.RichEmbed();
+
+                embed.setTitle("Last day of Event!")
+                    .setColor(0xFFB400)
+                    .setDescription(globals["bEvent"].name + " is now on it's last day!")
+                    .setImage(globals["bEvent"].img)
+                    .setURL(globals["bEvent"].url);
+
+                for (var id in serverSettings) {
+                    if (serverSettings[id].bNotify && serverSettings[id] != "") {
+                        //console.log(id);
+                        let ch = serverSettings[id].bNotifyChannel;
+                        bot.channels.get(ch).sendMessage('Last day of event!');
+                        bot.channels.get(ch).sendEmbed(embed).catch(console.error);
+                    }
+                }
+
+                bLast.cancel();
+
+                bLast = null;
+
+            });
+        }
+    } else if (globals["bEvent"].end != "" && bEvent != null) {
+
+        if (count < 1) {
+            bEvent = null;
+            bLast = null;
+            console.log("invalid bandori end date, resetting");
+
+            globals["bEvent"].end = "";
+
+            fs.writeFile(globalsName, JSON.stringify((globals)), function(err) {
+                if (err) return console.log(err);
+                //console.log(JSON.stringify(file));
+                console.log('resetting bandori event end in ' + globalsName);
+            });
+
+            updateGlobals();
+        }
+    }
+}
+
 exports.eventReset = function() {
     event = null;
     half = null;
     last = null;
-    console.log("event reset : " + event);
+    console.log("event reset : " + event + half + last);
+}
+
+exports.bEventReset = function() {
+    bEvent = null;
+    bLast = null;
+    console.log("bandori event reset : " + event + bEvent + bLast);
 }
 
 setInterval(() => {
     eventChecker();
+    bEventChecker();
 }, 30000);
 
 /*setInterval(() => {
@@ -355,7 +481,7 @@ bot.on("guildCreate", guild => {
         "banAlerts": false,
         "greet": false,
         "welcome": "Welcome $USER$ to $SERVER$!",
-        "notify": false,
+        "welcomeChannel": guild.defaultChannel.id,
         "notifyChannel": guild.defaultChannel.id,
         "treats": 0,
         "roles": [],
@@ -366,7 +492,19 @@ bot.on("guildCreate", guild => {
         "diaType": "Dia",
         "lastDia": 0,
         "diaMade": false,
-        "lastDiaMsg": ""
+        "lastDiaMsg": "",
+        "enstars": false,
+        "notify": false,
+        "eNotifyChannel": guild.defaultChannel.id,
+        "bandori": false,
+        "bNotify": false,
+        "bNotifyChannel": guild.defaultChannel.id,
+        "gbf": false,
+        "gNotify": false,
+        "gNotifyChannel": guild.defaultChannel.id,
+        "sino": false,
+        "sNotify": false,
+        "sNotifyChannel": guild.defaultChannel.id
     }
     quotes[guild.id] = {
         "quotes": []
@@ -529,8 +667,8 @@ function guildChecker(msg) {
         "banAlerts": false,
         "greet": false,
         "welcome": "Welcome $USER$ to $SERVER$!",
-        "notify": false,
-        "notifyChannel": msg.channel.guild.defaultChannel.id,
+        "welcomeChannel": guild.defaultChannel.id,
+        "notifyChannel": guild.defaultChannel.id,
         "treats": 0,
         "roles": [],
         "tags": false,
@@ -540,7 +678,19 @@ function guildChecker(msg) {
         "diaType": "Dia",
         "lastDia": 0,
         "diaMade": false,
-        "lastDiaMsg": ""
+        "lastDiaMsg": "",
+        "enstars": false,
+        "notify": false,
+        "eNotifyChannel": guild.defaultChannel.id,
+        "bandori": false,
+        "bNotify": false,
+        "bNotifyChannel": guild.defaultChannel.id,
+        "gbf": false,
+        "gNotify": false,
+        "gNotifyChannel": guild.defaultChannel.id,
+        "sino": false,
+        "sNotify": false,
+        "sNotifyChannel": guild.defaultChannel.id
     }
 
     console.log("Added server \'" + msg.channel.guild.name + "\' to the servers list.  ID: " + msg.channel.guild.id);
@@ -614,11 +764,12 @@ bot.on("message", msg => {
     //if the msg is a dm
     if (msg.channel.type == "dm" || msg.channel.type == "group") {
         //if doesn't start with a command prefix and mod prefix and eval
-        if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix)) {
+        if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix) && !msg.content.startsWith("b!")) {
             if (/^(help|how do I use this\??)$/i.test(msg.content)) {
                 let help = require('./commands/help.js');
                 let args = "";
                 help.run(bot, msg, args);
+                return;
                 //always put a return!!  this way it doesn't just go str8 to the bottom
 
             }
@@ -641,7 +792,7 @@ bot.on("message", msg => {
     }
 
     //iff the message is in a server and is not a command
-    if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix)) {
+    if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix) && !msg.content.startsWith("b!")) {
         //generate dia
         if (msg.channel.type != "dm" && msg.channel.type != "group") {
             if (!(serverSettings[msg.channel.guild.id].diaMade) && serverSettings[msg.channel.guild.id].diaGen) {
@@ -683,123 +834,181 @@ bot.on("message", msg => {
 
         //================chat listeners-==============================
 
-        if (msg.content.toLowerCase().indexOf("when") > -1 && (msg.content.toLowerCase().indexOf("gacha") > -1 || msg.content.toLowerCase().indexOf("scout") > -1) && msg.content.toLowerCase().indexOf("announc") > -1) {
+        //=================enstars specific============================
 
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Daikichi says:")
-                .setColor(0xB48CF0)
-                .setDescription("The gacha is announced **24 hours after the new event** is announced!\n\nIt occurs at **11PM PST / 2AM EST / 7AM GMT / 3PM JST!**")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+        if (serverSettings[msg.channel.guild.id].enstars) {
+
+            if (msg.content.toLowerCase().indexOf("when") > -1 && (msg.content.toLowerCase().indexOf("gacha") > -1 || msg.content.toLowerCase().indexOf("scout") > -1) && msg.content.toLowerCase().indexOf("announc") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Daikichi says:")
+                    .setColor(0xB48CF0)
+                    .setDescription("The gacha is announced **24 hours after the new event** is announced!\n\nIt occurs at **11PM PST / 2AM EST / 7AM GMT / 3PM JST!**")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("when") > -1 && msg.content.toLowerCase().indexOf("event") > -1 && msg.content.toLowerCase().indexOf("announc") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Daikichi says:")
+                    .setColor(0xB48CF0)
+                    .setDescription("The next event is announced **24 hours after revivals open** / **the day after the previous event ends**!\n\nIt occurs at **11PM PST / 2AM EST / 7AM GMT / 3PM JST!**")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("when") > -1 && msg.content.toLowerCase().indexOf("item") > -1 && msg.content.toLowerCase().indexOf("expire") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Daikichi says:")
+                    .setColor(0xB48CF0)
+                    .setDescription("Items in your giftbox expire 30 days upon entering the giftbox. Items on the events rewards page expire before the next event, according to whatever time is on the event rewards page. Items accepted from your giftbox expire either at the end of an event, or the beginning of the next event.")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("when") > -1 && (msg.content.toLowerCase().indexOf("gacha") > -1 || msg.content.toLowerCase().indexOf("scout") > -1 || msg.content.toLowerCase().indexOf("event") > -1) && msg.content.toLowerCase().indexOf("open") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Daikichi says:")
+                    .setColor(0xB48CF0)
+                    .setDescription("It opens at **11PM PST / 2AM EST / 7AM GMT / 3PM JST** on the date announced!")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("where is tsumugi?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Tsumugi is...")
+                    .setColor(0xB48CF0)
+                    .setDescription("Throwing eggs at people.")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("where is tetora?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Tetora is...")
+                    .setColor(0xB48CF0)
+                    .setDescription("Here he is!  (With his  new card!)")
+                    .setImage("https://pbs.twimg.com/media/C4gdyIBUMAEVhso.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("when") > -1 && msg.content.toLowerCase().indexOf("revival") > -1 && (msg.content.toLowerCase().indexOf("open") > -1 || msg.content.toLowerCase().indexOf("start") > -1) && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Daikichi says:")
+                    .setColor(0xB48CF0)
+                    .setDescription("Revivals open **17 hours after** the current event ends at **11PM PST / 2AM EST / 7AM GMT / 3PM JST**!")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+            if (((msg.content.toLowerCase().indexOf("what") > -1) || (msg.content.toLowerCase().indexOf("schedule") > -1)) && msg.content.toLowerCase().indexOf("daily") > -1 && msg.content.toLowerCase().indexOf("course") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Daikichi says:")
+                    .setColor(0xB48CF0)
+                    .setDescription("In JST:\n\n**Monday:** Trickstar (Yellow)\n**Tuesday:** Ryuseitai (Red)\n**Wednesday:** UNDEAD (Blue)\n**Thursday:** Knights (Yellow)\n**Friday:** Akatsuki/2wink (Red)\n**Saturday:** Ra*bits/Valkyrie (Blue)\n**Sunday:** fine/Switch (Double EXP)")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("announc") > -1 && msg.content.toLowerCase().indexOf("schedule") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Daikichi says:")
+                    .setColor(0xB48CF0)
+                    .setDescription("**Revivals / Possible Story Scout:** 17 hrs after event end\n**Event Announcement:** 24 hrs after Revivals open\n**Gacha Announcement:** 24 hrs after Event Announcement")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (((msg.content.toLowerCase().indexOf("jewel") > -1) || (msg.content.toLowerCase().indexOf("gem") > -1) || (msg.content.toLowerCase().indexOf("card") > -1)) && msg.content.toLowerCase().indexOf("skill") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("trans") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Click here for the full Jewel Skill Guide:")
+                    .setColor(0xB48CF0)
+                    .setURL("https://docs.google.com/document/d/1SPnw-AE9MapcyAwm1VkriS1VgExTRyZ7n9nN070Ew3A/pub")
+                    .setDescription("赤 = Red\n青 = Blue\n黄 = Yellow\n全 = All\n小 = Small\n中 = Medium\n大 = Large\nジュエル = Jewel\nフィーバー上昇割合が = Fever Up\n全員の信頼度上昇率が = Trust Up")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("luck") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("do") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Click here for the Master Guide!")
+                    .setColor(0xB48CF0)
+                    .setURL("http://ensemble-stars.wikia.com/wiki/Ensemble_Stars!_Master_Guide")
+                    .setDescription("The higher your luck, the more Trust increases. There is also a chance that more mini-events will appear.")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("master") > -1 && msg.content.toLowerCase().indexOf("guide") > -1 && msg.content.toLowerCase().indexOf("link") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Click here for the Master Guide!")
+                    .setColor(0xB48CF0)
+                    .setURL("http://ensemble-stars.wikia.com/wiki/Ensemble_Stars!_Master_Guide")
+                    .setDescription("Click here to check out a lot of info!.")
+                    .setThumbnail("http://i.imgur.com/nRleyfl.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
         }
 
-        if (msg.content.toLowerCase().indexOf("when") > -1 && msg.content.toLowerCase().indexOf("event") > -1 && msg.content.toLowerCase().indexOf("announc") > -1) {
+        //======================bandori===============================
 
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Daikichi says:")
-                .setColor(0xB48CF0)
-                .setDescription("The next event is announced **24 hours after revivals open** / **the day after the previous event ends**!\n\nIt occurs at **11PM PST / 2AM EST / 7AM GMT / 3PM JST!**")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+        if (serverSettings[msg.channel.guild.id].bandori) {
+
+            if ((msg.content.toLowerCase().indexOf("what") > -1 || msg.content.toLowerCase().indexOf("which") > -1 ) > -1 && msg.content.toLowerCase().indexOf("item") > -1 && (msg.content.toLowerCase().indexOf("attribute") > -1 || msg.content.toLowerCase().indexOf("boost")) > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Attribute Items")
+                    .setColor(0xB48CF0)
+                    .setDescription("Pure = Fountain / Fruit Tart\nCool = Pool / Fruit Bowl\nHappy = Michelle Statue / Macaron Tower\nPowerful = Coconut Palm Tree / Spaghetti")
+                    .setThumbnail("http://i.imgur.com/408QceQ.png")
+                    .setURL("http://bangdreaming.tumblr.com/band");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("master") > -1 && (msg.content.toLowerCase().indexOf("guide") > -1 || msg.content.toLowerCase().indexOf("post") > -1) && msg.content.toLowerCase().indexOf("link") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Bandori Help Masterpost:")
+                    .setColor(0xB48CF0)
+                    .setDescription("Click here to go to the Bandori help masterpost!")
+                    .setThumbnail("http://i.imgur.com/408QceQ.png")
+                    .setURL("http://bangdreaming.tumblr.com/start");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
+            if (msg.content.toLowerCase().indexOf("event") > -1 && msg.content.toLowerCase().indexOf("guide") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Bandori Event Guide:")
+                    .setColor(0xB48CF0)
+                    .setDescription("Click here to go to the Bandori event guide!")
+                    .setThumbnail("http://i.imgur.com/408QceQ.png")
+                    .setURL("http://bangdreaming.tumblr.com/eventguide");
+                msg.channel.sendEmbed(embed).catch(console.error);
+            }
+
         }
 
-        if (msg.content.toLowerCase().indexOf("when") > -1 && msg.content.toLowerCase().indexOf("item") > -1 && msg.content.toLowerCase().indexOf("expire") > -1) {
+        //=====================non specific===========================
 
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Daikichi says:")
-                .setColor(0xB48CF0)
-                .setDescription("Items in your giftbox expire 30 days upon entering the giftbox. Items on the events rewards page expire before the next event, according to whatever time is on the event rewards page. Items accepted from your giftbox expire either at the end of an event, or the beginning of the next event.")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
-        }
-
-        if (msg.content.toLowerCase().indexOf("when") > -1 && (msg.content.toLowerCase().indexOf("gacha") > -1 || msg.content.toLowerCase().indexOf("scout") > -1 || msg.content.toLowerCase().indexOf("event") > -1) && msg.content.toLowerCase().indexOf("open") > -1) {
-
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Daikichi says:")
-                .setColor(0xB48CF0)
-                .setDescription("It opens at **11PM PST / 2AM EST / 7AM GMT / 3PM JST** on the date announced!")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
-        }
-
-        if (msg.content.toLowerCase().indexOf("where") > -1 && msg.content.toLowerCase().indexOf("tsumugi") > -1) {
-
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Tsumugi is...")
-                .setColor(0xB48CF0)
-                .setDescription("In Miami, making some fucking noise.")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
-        }
-
-        if (msg.content.toLowerCase().indexOf("where") > -1 && msg.content.toLowerCase().indexOf("tetora") > -1) {
-
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Tetora is...")
-                .setColor(0xB48CF0)
-                .setDescription("Here he is!  (With his  new card!)")
-                .setImage("https://pbs.twimg.com/media/C4gdyIBUMAEVhso.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
-        }
-
-        if (msg.content.toLowerCase().indexOf("when") > -1 && msg.content.toLowerCase().indexOf("revival") > -1 && (msg.content.toLowerCase().indexOf("open") > -1 || msg.content.toLowerCase().indexOf("start") > -1)) {
-
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Daikichi says:")
-                .setColor(0xB48CF0)
-                .setDescription("Revivals open **17 hours after** the current event ends at **11PM PST / 2AM EST / 7AM GMT / 3PM JST**!")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
-        }
-        if (((msg.content.toLowerCase().indexOf("what") > -1) || (msg.content.toLowerCase().indexOf("schedule") > -1)) && msg.content.toLowerCase().indexOf("daily") > -1 && msg.content.toLowerCase().indexOf("course") > -1) {
-
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Daikichi says:")
-                .setColor(0xB48CF0)
-                .setDescription("In JST:\n\n**Monday:** Trickstar (Yellow)\n**Tuesday:** Ryuseitai (Red)\n**Wednesday:** UNDEAD (Blue)\n**Thursday:** Knights (Yellow)\n**Friday:** Akatsuki/2wink (Red)\n**Saturday:** Ra*bits/Valkyrie (Blue)\n**Sunday:** fine/Switch (Double EXP)")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
-        }
-
-        if (msg.content.toLowerCase().indexOf("announc") > -1 && msg.content.toLowerCase().indexOf("schedule") > -1) {
-
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Daikichi says:")
-                .setColor(0xB48CF0)
-                .setDescription("**Revivals / Possible Story Scout:** 17 hrs after event end\n**Event Announcement:** 24 hrs after Revivals open\n**Gacha Announcement:** 24 hrs after Event Announcement")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
-        }
-
-        if (((msg.content.toLowerCase().indexOf("jewel") > -1) || (msg.content.toLowerCase().indexOf("gem") > -1) || (msg.content.toLowerCase().indexOf("card") > -1)) && msg.content.toLowerCase().indexOf("skill") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("trans") > -1) {
-
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Click here for the full Jewel Skill Guide:")
-                .setColor(0xB48CF0)
-                .setURL("https://docs.google.com/document/d/1SPnw-AE9MapcyAwm1VkriS1VgExTRyZ7n9nN070Ew3A/pub")
-                .setDescription("赤 = Red\n青 = Blue\n黄 = Yellow\n全 = All\n小 = Small\n中 = Medium\n大 = Large\nジュエル = Jewel\nフィーバー上昇割合が = Fever Up\n全員の信頼度上昇率が = Trust Up")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
-        }
-
-        if (msg.content.toLowerCase().indexOf("luck") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("do") > -1) {
-
-            let embed = new discord.RichEmbed();
-            embed.setTitle("Click here for the Master Guide!")
-                .setColor(0xB48CF0)
-                .setURL("http://ensemble-stars.wikia.com/wiki/Ensemble_Stars!_Master_Guide")
-                .setDescription("The higher your luck, the more Trust increases. There is also a chance that more mini-events will appear.")
-                .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
-        }
-
-        if (msg.content.toLowerCase().indexOf("faggot") > -1) {
+        if (msg.content.toLowerCase().indexOf("faggot") > -1 || msg.content.toLowerCase().indexOf("retard") > -1) {
 
             let embed = new discord.RichEmbed();
             embed.setTitle("Daikichi says:")
                 .setColor(0x3399FF)
-                .setDescription("Please don't use slurs like that~!")
+                .setDescription("Please don't use offensive language in this server.")
                 .setThumbnail("http://i.imgur.com/nRleyfl.png");
             msg.channel.sendEmbed(embed).catch(console.error);
             msg.delete()
@@ -927,6 +1136,39 @@ bot.on("message", msg => {
         msg.channel.sendEmbed(embed).then(m => m.delete(2000)).catch(console.error);
         msg.delete(1000);
         return;
+    }
+
+    if (msg.content.startsWith("b!")) {
+
+        let bCommand = msg.content.split(" ")[0];
+        bCommand = bCommand.slice(2);
+        bCommand = bCommand.toLowerCase();
+
+        let bArgs = msg.content.split(" ").slice(1);
+
+        console.log(msg.author + " : " + msg);
+
+        try {
+            let bCommandFile = require(`./bandori/${bCommand}.js`)
+            bCommandFile.run(bot, msg, bArgs)
+
+            recentComm.push(msg.author.id);
+            setTimeout(() => {
+                let index = recentComm.indexOf(msg.author.id);
+                // Removes the user from the array after 2.5 seconds
+                recentComm.splice(index, 1);
+            }, 2000);
+            return;
+        } catch (e) {
+            //console.log(e);
+            console.log("COMMAND NOT FOUND : " + bCommand);
+            console.log(e);
+
+            //msg.channel.sendEmbed(commError).catch(console.error);
+            return;
+        }
+        return;
+
     }
 
     let command = msg.content.split(" ")[0];

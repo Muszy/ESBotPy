@@ -11,25 +11,25 @@ exports.run = (bot, msg, args) => {
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("SMITED!")
-			.setDescription(msg.author+ " has smited **" + msg.mentions.users.first() + "** " + smites[Math.floor(Math.random()*smites.length)]);
+			.setDescription(msg.author.username+ " has smited **" + msg.mentions.users.first().username + "** " + smites[Math.floor(Math.random()*smites.length)]);
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else if (args.length > 0) {
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("SMITED!")
-			.setDescription("**" + msg.author+ "** has smited **" + args.join(" ").trim() + "** " + smites[Math.floor(Math.random()*smites.length)]);
+			.setDescription("**" + msg.author.username+ "** has smited **" + args.join(" ").trim() + "** " + smites[Math.floor(Math.random()*smites.length)]);
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("SMITED!")
-			.setDescription("**" + msg.author + "** has smited themself " + smites[Math.floor(Math.random() * (smites.length))] );
+			.setDescription("**" + msg.author.username + "** has smited themself " + smites[Math.floor(Math.random() * (smites.length))] );
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	}
 	msg.delete(1500);
 }

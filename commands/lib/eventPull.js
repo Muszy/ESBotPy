@@ -15,9 +15,9 @@ errorMsg.setTitle("Error:")
     .setDescription("An error has occurred! Try again later.")
     .setThumbnail("http://i.imgur.com/7TL0t99.png");
 
-exports.tenPull = function(list, names, count, msg) {
+exports.tenPull = function(list, names, stars, count, msg) {
     if (count == 10) {
-        scout.generatePull(list, names, 0, msg);
+        scout.generatePull(list, names, stars, 0, msg);
     } else if (count == 0) {
         let rand = Math.floor(Math.random() * 1000);
         let flip;
@@ -35,8 +35,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                     list.push(data.five[0].img);
                     names.push(data.five[0].name);
+                    stars.push(data.five[0].star);
 
-                    eventPull.tenPull(list, names, 1, msg);
+                    eventPull.tenPull(list, names, stars, 1, msg);
                 }
             });
         }
@@ -59,8 +60,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                         list.push(data.eventFour[num].img);
                         names.push(data.eventFour[num].name);
+                        stars.push(data.eventFour[num].star);
 
-                        eventPull.tenPull(list, names, count + 1, msg);
+                        eventPull.tenPull(list, names, stars, count + 1, msg);
                     }
 
                 });
@@ -80,8 +82,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                         list.push(data.four[num].img);
                         names.push(data.four[num].name);
+                        stars.push(data.four[num].star);
 
-                        eventPull.tenPull(list, names, count + 1, msg);
+                        eventPull.tenPull(list, names, stars, count + 1, msg);
                     }
 
                 });
@@ -104,8 +107,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                     list.push(data.five[0].img);
                     names.push(data.five[0].name);
+                    stars.push(data.five[0].star);
 
-                    eventPull.tenPull(list, names, count + 1, msg);
+                    eventPull.tenPull(list, names, stars, count + 1, msg);
                 }
             });
         }
@@ -128,8 +132,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                         list.push(data.eventFour[num].img);
                         names.push(data.eventFour[num].name);
+                        stars.push(data.eventFour[num].star);
 
-                        eventPull.tenPull(list, names, count + 1, msg);
+                        eventPull.tenPull(list, names, stars, count + 1, msg);
                     }
 
                 });
@@ -149,8 +154,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                         list.push(data.four[num].img);
                         names.push(data.four[num].name);
+                        stars.push(data.four[num].star);
 
-                        eventPull.tenPull(list, names, count + 1, msg);
+                        eventPull.tenPull(list, names, stars, count + 1, msg);
                     }
 
                 });
@@ -175,8 +181,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                         list.push(data.eventThree[num].img);
                         names.push(data.eventThree[num].name);
+                        stars.push(data.eventThree[num].star);
 
-                        eventPull.tenPull(list, names, count + 1, msg);
+                        eventPull.tenPull(list, names, stars, count + 1, msg);
                     }
 
                 });
@@ -196,8 +203,9 @@ exports.tenPull = function(list, names, count, msg) {
 
                         list.push(data.three[num].img);
                         names.push(data.three[num].name);
+                        stars.push(data.three[num].star);
 
-                        eventPull.tenPull(list, names, count + 1, msg);
+                        eventPull.tenPull(list, names, stars, count + 1, msg);
                     }
 
                 });
@@ -226,7 +234,7 @@ exports.solo = function(msg) {
                     .setURL("http://enstars.info/card/" + data.five[0].id)
                     .setColor(0x96F08C)
                     .setThumbnail(data.five[0].img)
-                    .setDescription(data.five[0].name);
+                    .setDescription("[" + data.five[0].star + "★] " + data.five[0].name);
                 msg.channel.sendEmbed(embed).catch(console.error);
                 msg.delete(1500);
             }
@@ -259,7 +267,7 @@ exports.solo = function(msg) {
                             .setURL("http://enstars.info/card/" + data.eventFour[num].id)
                             .setColor(0x96F08C)
                             .setThumbnail(data.eventFour[num].img)
-                            .setDescription(data.eventFour[num].name);
+                            .setDescription("[" + data.eventFour[num].star + "★] " + data.eventFour[num].name);
                         msg.channel.sendEmbed(embed).catch(console.error);
                         msg.delete(1500);
                     }
@@ -285,7 +293,7 @@ exports.solo = function(msg) {
                             .setURL("http://enstars.info/card/" + data.four[num].id)
                             .setColor(0x96F08C)
                             .setThumbnail(data.four[num].img)
-                            .setDescription(data.four[num].name);
+                            .setDescription("[" + data.four[num].star + "★] " + data.four[num].name);
                         msg.channel.sendEmbed(embed).catch(console.error);
                         msg.delete(1500);
                     }
@@ -318,7 +326,7 @@ exports.solo = function(msg) {
                         .setURL("http://enstars.info/card/" + data.eventThree[num].id)
                         .setColor(0x96F08C)
                         .setThumbnail(data.eventThree[num].img)
-                        .setDescription(data.eventThree[num].name);
+                        .setDescription("[" + data.eventThree[num].star + "★] " + data.eventThree[num].name);
                     msg.channel.sendEmbed(embed).catch(console.error);
                     msg.delete(1500);
                 }
@@ -344,7 +352,7 @@ exports.solo = function(msg) {
                         .setURL("http://enstars.info/card/" + data.three[num].id)
                         .setColor(0x96F08C)
                         .setThumbnail(data.three[num].img)
-                        .setDescription(data.three[num].name);
+                        .setDescription("[" + data.three[num].star + "★] " + data.three[num].name);
                     msg.channel.sendEmbed(embed).catch(console.error);
                     msg.delete(1500);
                 }

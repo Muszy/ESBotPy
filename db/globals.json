@@ -1,15 +1,28 @@
 {
     "event": {
-        "end": "2017, 3, 10, 8, 00, 00",
-        "name": "Baton Pass! Repayment Festival of Tears and Bonds",
-        "desc": "\"Repayment Festival\" in which juniors take the main role. Ryuseitai is leaving it up to the discretion of the juniors, but it seems it isn't going well..\n\n5★: Chiaki (Rank) | Midori (Points)\n4★: Tetora (Rank) | Shinobu (Points)\n3★: Kanata (Rank) | Kaoru | Eichi | Subaru",
-        "img": "http://vignette4.wikia.nocookie.net/ensemble-stars/images/6/66/Baton_Pass%21_Repayment_Festival_of_Tears_and_Bonds_Banner.png/revision/latest/scale-to-width-down/420?cb=20170228061715",
-        "url": "http://stars.happyelements.co.jp/sp/events/44/index.html"
+        "end": "",
+        "name": "Recollection * Monochrome Checkmate",
+        "desc": "Leo meets Eichi and begins builds a relationship as friends. On the other hand, Eichi has begun his plan for a revolution.\n\n5★: Leo (Rank) | Izumi\n4★: Arashi (Rank) | Eichi\n3★: Ritsu | Tsumugi | Mao | Madara (Rank)",
+        "img": "https://cdn.discordapp.com/attachments/275115692615794688/317919890269011969/Screenshot_20170527-025657.jpg",
+        "url": "http://stars.happyelements.co.jp/app_help/events/50/index.html"
     },
     "gacha": {
-        "name": "Bouquet of Desire!",
-        "desc": "Mika was working part time at a flower shop. Although he had Arashi's help, in the White Day season, the shop is really busy!\n\n5★: Arashi Narukami | 4★: Tsumugi Aoba | 3★: Mitsuru Tenma, Mika Kagehira",
-        "img": "https://cdn.discordapp.com/attachments/275538338109194242/285652674521595905/Screenshot_20170227-010032.jpg",
-        "url": "http://stars.happyelements.co.jp/sp/gachas/65/"
+        "name": "Scout! Ukiyo Air Ride",
+        "desc": "Mitsuru and company, who are interested in Shinobu's ninja training, participate in it but, as they are climbing over a wall, they are seen by Keito and...\n\n 5★: Shinobu | 4★: Mitsuru | 3★: Sora, Hinata",
+        "img": "https://vignette3.wikia.nocookie.net/ensemble-stars/images/d/db/Ukiyo_Air_Ride_Banner.png/revision/latest/scale-to-width-down/410?cb=20170530063413",
+        "url": "http://stars.happyelements.co.jp/app_help/gachas/74/index.html"
+    },
+    "bEvent": {
+        "end": "2017, 6, 18, 8, 00, 00",
+        "name": "The Sudden Wedding Dress",
+        "img": "https://68.media.tumblr.com/a8abdda5b4de3a44c267fd605cf8e2a2/tumblr_orbb6cGWtH1w8d8svo1_1280.png",
+        "url": "https://bangdreaming.tumblr.com/post/161648517044/the-sudden-wedding-dress-event-start-the-new",
+        "desc": "3★: Saaya | 2★: Ako"
+    },
+    "bGacha": {
+        "name": "1 Day Wedding",
+        "img": "https://68.media.tumblr.com/4b8d0ba2f83ed01aebaf49cde3db1aef/tumblr_orbba6sMvk1w8d8svo1_1280.png",
+        "url": "https://bangdreaming.tumblr.com/post/161648390609/1-day-wedding-limited-gacha-update-0610-the-new",
+        "desc": "(Limited Gacha)\n\n4★: Rimi | 3★: Tomoe | 2★: Kaoru"
     }
 }

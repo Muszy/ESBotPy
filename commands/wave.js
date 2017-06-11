@@ -12,27 +12,27 @@ exports.run = (bot, msg, args) => {
 		embed.setColor(0xFFB6C1)
 			.setTitle("Waves!")
 			.setImage(waves[Math.floor(Math.random() * (waves.length))])
-			.setDescription(msg.author + " waves at **" + msg.mentions.users.first() + "!**");
+			.setDescription(msg.author.username + " waves at **" + msg.mentions.users.first().username + "!**");
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else if (args.length > 0) {
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("Waves!")
 			.setImage(waves[Math.floor(Math.random() * (waves.length))])
-			.setDescription(msg.author + " waves at **" + args.join(" ").trim() + "!**");
+			.setDescription(msg.author.username + " waves at **" + args.join(" ").trim() + "!**");
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	} 
 	else { 
 		let embed = new discord.RichEmbed();
 		embed.setColor(0xFFB6C1)
 			.setTitle("Waves!")
 			.setImage(waves[Math.floor(Math.random() * (waves.length))])
-			.setDescription("**" + msg.author + " waves at Daikichi Bot!**");
+			.setDescription("**" + msg.author.username + " waves at Daikichi Bot!**");
 
-		msg.channel.sendEmbed(embed).then(m => m.delete(10000)).catch(console.error);
+		msg.channel.sendEmbed(embed).catch(console.error);
 	}
 	msg.delete(1500);
 }

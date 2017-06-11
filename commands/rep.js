@@ -2,10 +2,20 @@ var request = require("superagent");
 const discord = require("discord.js");
 var fs = require("fs");
 
+const config = require("../config.json");
+var rreset = require("./rep.js");
+
 var usersName = "../db/users.json";
 var userSettings = require(usersName);
 
 exports.run = (bot, msg, args) => {
+
+    if (args.length > 0 && args[0].toLowerCase() == "reset" && msg.author.id == config.admin_id) {
+        //console.log(file[msg.guild.id]);
+
+        rreset.reset(bot);
+        return;
+    }
 
     if (msg.channel.type == "dm" || msg.channel.type == "group") {
         let embed = new discord.RichEmbed();

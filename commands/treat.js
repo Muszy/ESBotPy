@@ -1,9 +1,18 @@
 const discord = require("discord.js");
+const config = require("../config.json");
+var treset = require("./treat.js");
 var fs = require('fs');
 var fileName = "./../db/servers.json";
 var file = require(fileName);
 
 exports.run = (bot, msg, args) => {
+
+	if (args.length > 0 && args[0].toLowerCase() == "reset" && msg.author.id == config.admin_id) {
+		//console.log(file[msg.guild.id]);
+
+		treset.reset(bot);
+		return;
+	}
 
 	if (args.length > 0 && args[0].toLowerCase() == "check") {
 		//console.log(file[msg.guild.id]);

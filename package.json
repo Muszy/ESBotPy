@@ -1,6 +1,6 @@
 {
   "name": "DaikichiBot",
-  "version": "2.8.0",
+  "version": "3.0.0",
   "description": "A bot for the /r/EnsembleStars subreddit!",
   "author": "Hani!",
   "main": "esBot.js",

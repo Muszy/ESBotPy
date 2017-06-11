@@ -5,10 +5,6 @@ var gm = require("gm");
 
 var scout = require("./scout.js");
 var eventPull = require("./lib/eventPull.js");
-var normPull = require("./lib/normPull.js");
-var ptsPull = require("./lib/ptsPull.js");
-var boxPull = require("./lib/boxPull.js");
-var specialPull = require("./lib/specialPull.js");
 
 var usersName = "../db/users.json";
 var userSettings = require(usersName);
@@ -16,13 +12,13 @@ var userSettings = require(usersName);
 var scoutError = new discord.RichEmbed();
 scoutError.setTitle("You're going too fast!")
     .setColor(0x96F08C)
-    .setDescription("The Adoarmy arrives..");
+    .setDescription("Slow down, please!");
 
 var errorMsg = new discord.RichEmbed();
 errorMsg.setTitle("Error:")
     .setColor(0xFF0040)
     .setDescription("Something went wrong!")
-    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+    .setThumbnail("http://i.imgur.com/XMVTWl9.png");
 
 var dir = './img/';
 var download = function(msg, uri, filename, callback) {
@@ -45,118 +41,47 @@ exports.run = (bot, msg, args) => {
 
     if (args.length > 0) {
 
-        if (args.length > 1) {
-
-            if (args[0].toLowerCase() == "special") {
-
-                if (userSettings[msg.author.id].dia < 135) {
-                    let embed = new discord.RichEmbed();
-                    embed.setTitle("Error:")
-                        .setColor(0xFF0040)
-                        .setDescription("You don't have enough to scout!  You need 135 cash! 🐾")
-                        .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
-                    msg.delete(1500);
-                    return;
-                }
-
-                let list = [];
-                let names = [];
-                let stars = [];
-                let boy = args[1].toLowerCase().trim();
-                boxPull.tenPull(boy, list, names, stars, 0, msg);
-                return;
-            }
-
-            if (args[0].toLowerCase() == "event") {
-
-                if (args[1] == "10") {
-
-                    let list = [];
-                    let names = [];
-                    let stars = [];
-                    eventPull.tenPull(list, names, stars, 0, msg);
-                    return;
-                } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
-                    eventPull.solo(msg);
-                    return;
-                }
-            }
-
-            if (args[0].toLowerCase() == "normal" || args[0].toLowerCase() == "norm" || args[0].toLowerCase() == "dia") {
-
-                if (args[1] == "10") {
-
-                    let list = [];
-                    let names = [];
-                    let stars = [];
-                    normPull.tenPull(list, names, stars, 0, msg);
-                    return;
-                } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
-                    normPull.solo(msg);
-                    return;
-                }
-            }
-
-            if (args[0].toLowerCase() == "points" || args[0].toLowerCase() == "pts" || args[0].toLowerCase() == "point" || args[0].toLowerCase() == "pt") {
-
-                if (args[1] == "10") {
-
-                    let list = [];
-                    let names = [];
-                    let stars = [];
-                    ptsPull.tenPull(list, names, stars, 0, msg);
-                    return;
-                } else if (args[1] == "1" || args[1].toLowerCase() == "solo") {
-                    ptsPull.solo(msg);
-                    return;
-                }
-            }
-        }
-
-        if (args[0].toLowerCase() == "special" && args.length === 1) {
-
-            if (userSettings[msg.author.id].dia < 135) {
-                let embed = new discord.RichEmbed();
-                embed.setTitle("Error:")
-                    .setColor(0xFF0040)
-                    .setDescription("You don't have enough to scout!  You need 135 cash! 🐾")
-                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
-                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
-                msg.delete(1500);
-                return;
-            }
-
-            userSettings[msg.author.id].dia -= 135;
-            updateUsers();
+        if (args[0] == "10") {
 
             let list = [];
             let names = [];
             let stars = [];
-            specialPull.tenPull(list, names, stars, 0, msg);
+            eventPull.tenPull(list, names, stars, 0, msg);
+            return;
+        } else if (args[0] == "1") {
+            eventPull.solo(msg);
             return;
         }
+
+        let embed = new discord.RichEmbed();
+        embed.setTitle("Error:")
+            .setColor(0xFF0040)
+            .setDescription("Scout not found!")
+            .setThumbnail("http://i.imgur.com/XMVTWl9.png");
+        msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+        msg.delete(1500);
+        return;
     }
 
     let embed = new discord.RichEmbed();
     embed.setTitle("Error:")
         .setColor(0xFF0040)
-        .setDescription("Scout not found! Woof! 🐾")
-        .setThumbnail("http://i.imgur.com/7TL0t99.png");
+        .setDescription("Scout not found!")
+        .setThumbnail("http://i.imgur.com/XMVTWl9.png");
     msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
     msg.delete(1500);
 }
 
 exports.help = (bot, msg, args) => {
-    return "To pull from the gacha, please use the format of `!scout [event/normal/points] [1/10]` or `!scout special (optional)[boy]`.";
+    return "To pull from the gacha, please use the format of `b!scout [1/10]`.";
 }
 
 exports.generatePull = function(list, names, stars, count, msg) {
     if (count == 0) {
-        download(msg, list[0], dir + 'base' + msg.author.id + '.png', function() {
+        download(msg, list[0], dir + 'bbase' + msg.author.id + '.png', function() {
 
-            gm(dir + 'base' + msg.author.id + '.png').resize(null, 156)
-                .write(dir + 'base' + msg.author.id + '.png', function(err) {
+            gm(dir + 'bbase' + msg.author.id + '.png')
+                .write(dir + 'bbase' + msg.author.id + '.png', function(err) {
                     if (!err) {
                         console.log("Written composite image.");
                         scout.generatePull(list, names, stars, count + 1, msg);
@@ -169,10 +94,10 @@ exports.generatePull = function(list, names, stars, count, msg) {
                 });
         });
     } else if (count == 5) {
-        download(msg, list[count], dir + 'row' + msg.author.id + '.png', function() {
+        download(msg, list[count], dir + 'brow' + msg.author.id + '.png', function() {
 
-            gm(dir + 'row' + msg.author.id + '.png').resize(null, 156)
-                .write(dir + 'row' + msg.author.id + '.png', function(err) {
+            gm(dir + 'brow' + msg.author.id + '.png')
+                .write(dir + 'brow' + msg.author.id + '.png', function(err) {
                     if (!err) {
 
                         scout.generatePull(list, names, stars, count + 1, msg);
@@ -185,14 +110,14 @@ exports.generatePull = function(list, names, stars, count, msg) {
                 });
         });
     } else if (count > 5 && count < 10) {
-        download(msg, list[count], dir + 'temp' + msg.author.id + '.png', function() {
+        download(msg, list[count], dir + 'btemp' + msg.author.id + '.png', function() {
 
-            gm(dir + 'temp' + msg.author.id + '.png').resize(null, 156)
-                .write(dir + 'temp' + msg.author.id + '.png', function(err) {
+            gm(dir + 'btemp' + msg.author.id + '.png')
+                .write(dir + 'btemp' + msg.author.id + '.png', function(err) {
                     if (!err) {
 
-                        gm(dir + 'row' + msg.author.id + '.png').append(dir + 'temp' + msg.author.id + '.png', true)
-                            .write(dir + 'row' + msg.author.id + '.png', function(err) {
+                        gm(dir + 'brow' + msg.author.id + '.png').append(dir + 'btemp' + msg.author.id + '.png', true)
+                            .write(dir + 'brow' + msg.author.id + '.png', function(err) {
                                 if (!err) {
 
                                     scout.generatePull(list, names, stars, count + 1, msg);
@@ -213,8 +138,8 @@ exports.generatePull = function(list, names, stars, count, msg) {
         });
     } else if (count == 10) {
 
-        gm(dir + 'base' + msg.author.id + '.png').append(dir + 'row' + msg.author.id + '.png')
-            .write(dir + 'scout' + msg.author.id + '.png', function(err) {
+        gm(dir + 'bbase' + msg.author.id + '.png').append(dir + 'brow' + msg.author.id + '.png')
+            .write(dir + 'bscout' + msg.author.id + '.png', function(err) {
                 if (!err) {
                     let id = msg.author.id;
 
@@ -225,12 +150,12 @@ exports.generatePull = function(list, names, stars, count, msg) {
                     //.setDescription("•" + names.join("\n•"));
                     msg.author.sendEmbed(embed).catch(console.error);
 
-                    msg.author.sendFile(dir + 'scout' + msg.author.id + '.png', "scout.png").then(
+                    msg.author.sendFile(dir + 'bscout' + msg.author.id + '.png', "scout.png").then(
                         function() {
-                            fs.unlink(dir + 'temp' + msg.author.id + '.png', function() {
-                                fs.unlink(dir + 'base' + msg.author.id + '.png', function() {
-                                    fs.unlink(dir + 'row' + msg.author.id + '.png', function() {
-                                        fs.unlink(dir + 'scout' + msg.author.id + '.png', function() {
+                            fs.unlink(dir + 'btemp' + msg.author.id + '.png', function() {
+                                fs.unlink(dir + 'bbase' + msg.author.id + '.png', function() {
+                                    fs.unlink(dir + 'brow' + msg.author.id + '.png', function() {
+                                        fs.unlink(dir + 'bscout' + msg.author.id + '.png', function() {
                                             return;
                                         });
                                     });
@@ -254,13 +179,13 @@ exports.generatePull = function(list, names, stars, count, msg) {
             });
 
     } else {
-        download(msg, list[count], dir + 'temp' + msg.author.id + '.png', function() {
-            gm(dir + 'temp' + msg.author.id + '.png').resize(null, 156)
-                .write(dir + 'temp' + msg.author.id + '.png', function(err) {
+        download(msg, list[count], dir + 'btemp' + msg.author.id + '.png', function() {
+            gm(dir + 'btemp' + msg.author.id + '.png')
+                .write(dir + 'btemp' + msg.author.id + '.png', function(err) {
                     if (!err) {
 
-                        gm(dir + 'base' + msg.author.id + '.png').append(dir + 'temp' + msg.author.id + '.png', true)
-                            .write(dir + 'base' + msg.author.id + '.png', function(err) {
+                        gm(dir + 'bbase' + msg.author.id + '.png').append(dir + 'btemp' + msg.author.id + '.png', true)
+                            .write(dir + 'bbase' + msg.author.id + '.png', function(err) {
                                 if (!err) {
                                     scout.generatePull(list, names, stars, count + 1, msg);
                                 } else if (err) {

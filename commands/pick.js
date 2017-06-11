@@ -27,7 +27,7 @@ exports.run = (bot, msg, args) => {
         let embed = new discord.RichEmbed();
         embed.setColor(0x753FCF)
             .setDescription(dia + " " + serverSettings[msg.channel.guild.id].diaType + " has been added to " + msg.author.username + "'s inventory.");
-        msg.channel.sendEmbed(embed).then(m => m.delete(3000)).catch(console.error);
+        msg.channel.sendEmbed(embed).then(m => m.delete(3000));
 
         userSettings[msg.author.id].dia += serverSettings[msg.channel.guild.id].lastDia;
         serverSettings[msg.channel.guild.id].lastDia = 0;
@@ -37,7 +37,7 @@ exports.run = (bot, msg, args) => {
                 serverSettings[msg.channel.guild.id].lastDiaMsg = "";
 
                 updateServers();
-            }).catch(console.error);
+            });
         }).catch(console.error);
         msg.delete(1000);
         updateUsers();

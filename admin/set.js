@@ -382,6 +382,301 @@ exports.run = (bot, msg, args) => {
 	}
 
 //=========================================================================
+	if (args[0].toLowerCase() == "enstars") {
+		let value = args.slice(1);
+
+		if (value[0].toLowerCase() == "false" || value[0].toLowerCase() == "off") {
+			file[msg.guild.id].enstars = false;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating enstars in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**Enstars** set to off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
+			file[msg.guild.id].enstars = true;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating enstars in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**Enstars** set to on.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else {
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Error:")
+				.setColor(0xFF0040)
+				.setDescription("Enstars can only be set to on/off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+	}
+
+//=========================================================================
+	if (args[0].toLowerCase() == "bandori") {
+		let value = args.slice(1);
+
+		if (value[0].toLowerCase() == "false" || value[0].toLowerCase() == "off") {
+			file[msg.guild.id].bandori = false;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating bandori in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**bandori** set to off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
+			file[msg.guild.id].bandori = true;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating bandori in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**bandori** set to on.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else {
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Error:")
+				.setColor(0xFF0040)
+				.setDescription("bandori can only be set to on/off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+	}
+
+//=========================================================================
+	if (args[0].toLowerCase() == "bnotify") {
+		let value = args.slice(1);
+
+		if (value[0].toLowerCase() == "false" || value[0].toLowerCase() == "off") {
+			file[msg.guild.id].bNotify = false;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating bNotify in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**bNotify** set to off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
+			file[msg.guild.id].bNotify = true;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating bNotify in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**bNotify** set to on.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else {
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Error:")
+				.setColor(0xFF0040)
+				.setDescription("bNotify can only be set to on/off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+	}
+
+//=========================================================================
+	if (args[0].toLowerCase() == "gbf") {
+		let value = args.slice(1);
+
+		if (value[0].toLowerCase() == "false" || value[0].toLowerCase() == "off") {
+			file[msg.guild.id].gbf = false;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating gbf in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**gbf** set to off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
+			file[msg.guild.id].gbf = true;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating gbf in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**gbf** set to on.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else {
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Error:")
+				.setColor(0xFF0040)
+				.setDescription("gbf can only be set to on/off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+	}
+
+//=========================================================================
+	if (args[0].toLowerCase() == "sino") {
+		let value = args.slice(1);
+
+		if (value[0].toLowerCase() == "false" || value[0].toLowerCase() == "off") {
+			file[msg.guild.id].sino = false;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating sino in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**sino** set to off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
+			file[msg.guild.id].sino = true;
+
+			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
+		 		if (err) return console.log(err);
+				//console.log(JSON.stringify(file));
+				console.log('updating sino in ' + fileName);
+			});
+
+			updateSettings();
+
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Confirmation:")
+				.setColor(0x3399FF)
+				.setDescription("**sino** set to on.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+		else {
+			let embed = new discord.RichEmbed();
+
+			embed.setTitle("Error:")
+				.setColor(0xFF0040)
+				.setDescription("sino can only be set to on/off.")
+				.setThumbnail("http://i.imgur.com/7TL0t99.png");
+			msg.channel.sendEmbed(embed).catch(console.error);
+			return;
+		}
+
+	}
+
+//=========================================================================
 
 if (args[0].toLowerCase() == "check") {
 	let embed = new discord.RichEmbed();
@@ -390,12 +685,17 @@ if (args[0].toLowerCase() == "check") {
 		.setColor(0x3399FF)
 		.addField("Notifications", file[msg.guild.id].notify)
 		.addField("Notifications Channel", bot.channels.get(file[msg.guild.id].notifyChannel).name)
+		.addField("Welcome Channel", bot.channels.get(file[msg.guild.id].welcomeChannel).name)
 		.addField("Greetings", file[msg.guild.id].greet)
 		.addField("Ban Alerts", file[msg.guild.id].banAlerts)
 		.addField("Tagging", file[msg.guild.id].tags)
 		.addField("Dia Generation", file[msg.guild.id].diaGen)
 		.addField("Dia Chance", file[msg.guild.id].diaChance)
 		.addField("Dia Type", file[msg.guild.id].diaType)
+		.addField("Enstars", file[msg.guild.id].enstars)
+		.addField("Bandori", file[msg.guild.id].bandori)
+		.addField("BNotifications", file[msg.guild.id].bNotify)
+		.addField("Bandori Channel", bot.channels.get(file[msg.guild.id].bNotifyChannel).name)
 		.setThumbnail("http://i.imgur.com/7TL0t99.png");
 		if (file[msg.guild.id].welcome != "") {
 			embed.addField("Welcome Msg", file[msg.guild.id].welcome);
@@ -403,7 +703,7 @@ if (args[0].toLowerCase() == "check") {
 		else {
 			embed.addField("Welcome Msg", "None");
 		}
-	msg.channel.sendEmbed(embed).catch(console.error);
+	msg.author.sendEmbed(embed).catch(console.error);
 	return;
 }
 
@@ -413,7 +713,7 @@ if (args[0].toLowerCase() == "check") {
 
 		embed.setTitle("Error:")
 			.setColor(0xFF0040)
-			.setDescription("Only `banAlerts, notify, greet, tags, diaGen, diaChance, diaType` are allowed.")
+			.setDescription("Only `banAlerts, notify, greet, tags, diaGen, diaChance, diaType, enstars, bnotify, gbf, sino` are allowed.")
 			.setThumbnail("http://i.imgur.com/7TL0t99.png");
 		msg.channel.sendEmbed(embed).catch(console.error);
 
