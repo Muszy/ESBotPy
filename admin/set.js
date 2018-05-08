@@ -559,124 +559,6 @@ exports.run = (bot, msg, args) => {
 	}
 
 //=========================================================================
-	if (args[0].toLowerCase() == "gbf") {
-		let value = args.slice(1);
-
-		if (value[0].toLowerCase() == "false" || value[0].toLowerCase() == "off") {
-			file[msg.guild.id].gbf = false;
-
-			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
-		 		if (err) return console.log(err);
-				//console.log(JSON.stringify(file));
-				console.log('updating gbf in ' + fileName);
-			});
-
-			updateSettings();
-
-			let embed = new discord.RichEmbed();
-
-			embed.setTitle("Confirmation:")
-				.setColor(0x3399FF)
-				.setDescription("**gbf** set to off.")
-				.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			msg.channel.sendEmbed(embed).catch(console.error);
-			return;
-		}
-
-		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
-			file[msg.guild.id].gbf = true;
-
-			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
-		 		if (err) return console.log(err);
-				//console.log(JSON.stringify(file));
-				console.log('updating gbf in ' + fileName);
-			});
-
-			updateSettings();
-
-			let embed = new discord.RichEmbed();
-
-			embed.setTitle("Confirmation:")
-				.setColor(0x3399FF)
-				.setDescription("**gbf** set to on.")
-				.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			msg.channel.sendEmbed(embed).catch(console.error);
-			return;
-		}
-
-		else {
-			let embed = new discord.RichEmbed();
-
-			embed.setTitle("Error:")
-				.setColor(0xFF0040)
-				.setDescription("gbf can only be set to on/off.")
-				.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			msg.channel.sendEmbed(embed).catch(console.error);
-			return;
-		}
-
-	}
-
-//=========================================================================
-	if (args[0].toLowerCase() == "sino") {
-		let value = args.slice(1);
-
-		if (value[0].toLowerCase() == "false" || value[0].toLowerCase() == "off") {
-			file[msg.guild.id].sino = false;
-
-			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
-		 		if (err) return console.log(err);
-				//console.log(JSON.stringify(file));
-				console.log('updating sino in ' + fileName);
-			});
-
-			updateSettings();
-
-			let embed = new discord.RichEmbed();
-
-			embed.setTitle("Confirmation:")
-				.setColor(0x3399FF)
-				.setDescription("**sino** set to off.")
-				.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			msg.channel.sendEmbed(embed).catch(console.error);
-			return;
-		}
-
-		else if (value[0].toLowerCase() == "true" || value[0].toLowerCase() == "on") {
-			file[msg.guild.id].sino = true;
-
-			fs.writeFile(fileName, JSON.stringify((file)), function (err) {
-		 		if (err) return console.log(err);
-				//console.log(JSON.stringify(file));
-				console.log('updating sino in ' + fileName);
-			});
-
-			updateSettings();
-
-			let embed = new discord.RichEmbed();
-
-			embed.setTitle("Confirmation:")
-				.setColor(0x3399FF)
-				.setDescription("**sino** set to on.")
-				.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			msg.channel.sendEmbed(embed).catch(console.error);
-			return;
-		}
-
-		else {
-			let embed = new discord.RichEmbed();
-
-			embed.setTitle("Error:")
-				.setColor(0xFF0040)
-				.setDescription("sino can only be set to on/off.")
-				.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			msg.channel.sendEmbed(embed).catch(console.error);
-			return;
-		}
-
-	}
-
-//=========================================================================
 
 if (args[0].toLowerCase() == "check") {
 	let embed = new discord.RichEmbed();
@@ -713,7 +595,7 @@ if (args[0].toLowerCase() == "check") {
 
 		embed.setTitle("Error:")
 			.setColor(0xFF0040)
-			.setDescription("Only `banAlerts, notify, greet, tags, diaGen, diaChance, diaType, enstars, bnotify, gbf, sino` are allowed.")
+			.setDescription("Only `banAlerts, notify, greet, tags, diaGen, diaChance, diaType, enstars, bnotify` are allowed.")
 			.setThumbnail("http://i.imgur.com/7TL0t99.png");
 		msg.channel.sendEmbed(embed).catch(console.error);
 

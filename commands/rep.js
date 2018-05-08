@@ -38,7 +38,7 @@ exports.run = (bot, msg, args) => {
         return;
     }
 
-    if (msg.mentions.users.size === 1) {
+    /*if (msg.mentions.users.size === 1) {
         let id = msg.mentions.users.first().id;
 
         if (msg.author.id == id) {
@@ -77,9 +77,9 @@ exports.run = (bot, msg, args) => {
             updateUsers();
             return;
         }
-    }
+    }*/
 
-    msg.channel.sendMessage("`You've already increased someone's reputation this week!`").then(m => m.delete(3000)).catch(console.error);
+    msg.channel.sendMessage("`Rep currently disabled.`").then(m => m.delete(3000)).catch(console.error);
     msg.delete(1000);
 
 }

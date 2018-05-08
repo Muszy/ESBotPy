@@ -23,7 +23,7 @@ exports.run = (bot, member, guild) => {
 			.setThumbnail("http://i.imgur.com/nRleyfl.png");
 
 		let ch = serverSettings[member.guild.id].welcomeChannel;
-		bot.channels.get(ch).sendEmbed(embed).catch(console.error);
+		bot.channels.get(ch).send({embed}).catch(console.error);
 	}
 }
 

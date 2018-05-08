@@ -1,7 +1,7 @@
 var request = require("superagent");
 const discord = require("discord.js");
 
-var fite = ["(ง ͠° ͟ل͜ ͡°)ง", "ʕง•ᴥ•ʔง", "(ง’̀-‘́)ง", "(งಠ_ಠ)ง", "(งಠل͜ಠ)ง", "(ง ° ͜ ʖ °)ง"]
+var fite = ["(ง ͠° ͟ل͜ ͡°)ง", "(ง ͠° ͟ل ͡°)ง", "ʕง•ᴥ•ʔง", "(ง’̀-‘́)ง", "(งಠ_ಠ)ง", "(งಠل͜ಠ)ง", "(ง ° ͜ ʖ °)ง"]
 
 exports.run = (bot, msg, args) => {
 

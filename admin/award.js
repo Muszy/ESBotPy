@@ -48,6 +48,17 @@ exports.run = (bot, msg, args) => {
                 return;
             }
 
+            if (bot.user.id == id) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("That's sweet, but please don't do that!")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
+                return;
+            }
+
             console.log("awarding " + msg.guild.member(id).displayName + " " + dia + " from " + msg.author.id);
 
             if (!userSettings.hasOwnProperty(id)) {

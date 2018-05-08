@@ -22,6 +22,19 @@ exports.run = (bot, msg, args) => {
 
     if (msg.mentions.users.size === 1) {
 
+        let testID = msg.mentions.users.first().id;
+
+        if (bot.user.id == testID) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("That's sweet, but please don't do that!")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
+                return;
+            }
+
         if (args[1].toLowerCase() == "all") {
 
             if (userSettings[msg.author.id].dia < 1) {
@@ -41,6 +54,17 @@ exports.run = (bot, msg, args) => {
 
                 checker(id);
 
+                if (bot.user.id == id) {
+                    let embed = new discord.RichEmbed();
+                    embed.setTitle("Error:")
+                        .setColor(0xFF0040)
+                        .setDescription("That's sweet, but please don't do that!")
+                        .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                    msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                    msg.delete(1500);
+                    return;
+                }
+
                 let embed = new discord.RichEmbed();
                 embed.setColor(0x753FCF)
                     .setDescription(msg.author.username + " has given " + dia + " " + serverSettings[msg.channel.guild.id].diaType + " to " + msg.guild.member(id).displayName + "!");
@@ -56,6 +80,17 @@ exports.run = (bot, msg, args) => {
             let id = msg.mentions.users.first().id;
 
             checker(id);
+
+            if (bot.user.id == id) {
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("That's sweet, but please don't do that!")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
+                return;
+            }
 
             let embed = new discord.RichEmbed();
             embed.setColor(0x753FCF)

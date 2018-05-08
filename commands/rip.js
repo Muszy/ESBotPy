@@ -4,7 +4,7 @@ var fs = require('fs')
   , gm = require('gm');
 
 var dir = './img/';
-var curYear = '2017';
+var curYear = '2018';
 
 exports.run = (bot, msg, args) => {
 

@@ -1,6 +1,6 @@
 {
   "name": "DaikichiBot",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A bot for the /r/EnsembleStars subreddit!",
   "author": "Hani!",
   "main": "esBot.js",
@@ -19,6 +19,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "superagent": "*",
     "addressparser": ">=1.0.1",
     "async": "*",
     "cheerio": "*",

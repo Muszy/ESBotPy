@@ -10,7 +10,7 @@ exports.run = (bot, msg, args) => {
 	        	.setColor(0xFF0040)
 	        	.setDescription("Please use this command in a server, not a DM!")
 	        	.setThumbnail("http://i.imgur.com/7TL0t99.png");
-	        msg.channel.sendEmbed(embed).catch(console.error);
+	        msg.channel.send({embed}).catch(console.error);
 	        return;
 	}
 
@@ -21,7 +21,7 @@ exports.run = (bot, msg, args) => {
 		    .setColor(0xFF0040)
 		    .setThumbnail("http://i.imgur.com/7TL0t99.png")
 		    .setDescription("Please specify a role!");
-		msg.channel.sendEmbed(embed).catch(console.error);
+		msg.channel.send({embed}).catch(console.error);
 	}
 
 	else {
@@ -49,7 +49,7 @@ exports.run = (bot, msg, args) => {
 						.setColor(0xFF0040)
 						.setDescription("Role already exists on list.")
 						.setThumbnail("http://i.imgur.com/7TL0t99.png");
-					msg.channel.sendEmbed(embed).catch(console.error);
+					msg.channel.send({embed}).catch(console.error);
 				}
 
 				else {
@@ -67,7 +67,7 @@ exports.run = (bot, msg, args) => {
 						.setColor(0x3399FF)
 						.setDescription("Role `" + role + "` added to tag list.")
 						.setThumbnail("http://i.imgur.com/7TL0t99.png");
-					msg.channel.sendEmbed(embed).catch(console.error);
+					msg.channel.send({embed}).catch(console.error);
 
 					updateRoles();
 				}
@@ -79,7 +79,7 @@ exports.run = (bot, msg, args) => {
 					.setColor(0xFF0040)
 					.setDescription("Role does not exist.")
 					.setThumbnail("http://i.imgur.com/7TL0t99.png");
-				msg.channel.sendEmbed(embed).catch(console.error);
+				msg.channel.send({embed}).catch(console.error);
 			}
 		}
 
@@ -90,7 +90,7 @@ exports.run = (bot, msg, args) => {
 				.setColor(0xFF0040)
 				.setDescription("Role does not exist.")
 				.setThumbnail("http://i.imgur.com/7TL0t99.png");
-			msg.channel.sendEmbed(embed).catch(console.error);
+			msg.channel.send({embed}).catch(console.error);
 		}
 	}
 }

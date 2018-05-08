@@ -23,7 +23,7 @@ exports.tenPull = function(list, names, stars, count, msg) {
         let rand = Math.floor(Math.random() * 1000);
         let flip;
 
-        if (rand < 15) {
+        if (rand < 30) {
             flip = Math.floor(Math.random() * 15);
             if (flip < 5) {
                 request(eventURL, function(error, response, body) {
@@ -70,7 +70,7 @@ exports.tenPull = function(list, names, stars, count, msg) {
                 });
             }
         }
-        if (rand > 14) {
+        if (rand > 29) {
             //3star
             flip = Math.floor(Math.random() * 85);
             if (flip < 12) { //event 3star
@@ -84,14 +84,40 @@ exports.tenPull = function(list, names, stars, count, msg) {
                     if (!error) {
                         data = JSON.parse(body);
 
+                        if (data.eventThree.length == 0) {
+                            request(threeURL, function(error, response, body) {
+                                if (error) {
+                                    console.log(error);
+                                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                    msg.delete(1500);
+                                    return;
+                                }
+                                if (!error) {
+                                    data = JSON.parse(body);
 
-                        let num = Math.floor(Math.random() * data.eventThree.length);
 
-                        list.push(data.eventThree[num].icon);
-                        names.push(data.eventThree[num].name);
-                        stars.push(data.eventThree[num].star);
+                                    let num = Math.floor(Math.random() * data.three.length);
 
-                        eventPull.tenPull(list, names, stars, count + 1, msg);
+                                    list.push(data.three[num].icon);
+                                    names.push(data.three[num].name);
+                                    stars.push(data.three[num].star);
+
+                                    eventPull.tenPull(list, names, stars, count + 1, msg);
+                                }
+
+                            });
+                        }
+
+                        else if (data.eventThree.length > 0) {
+
+                            let num = Math.floor(Math.random() * data.eventThree.length);
+
+                            list.push(data.eventThree[num].icon);
+                            names.push(data.eventThree[num].name);
+                            stars.push(data.eventThree[num].star);
+
+                            eventPull.tenPull(list, names, stars, count + 1, msg);
+                        }
                     }
 
                 });
@@ -123,7 +149,7 @@ exports.tenPull = function(list, names, stars, count, msg) {
         let rand = Math.floor(Math.random() * 1000);
         let flip;
 
-        if (rand < 15) {
+        if (rand < 30) {
             flip = Math.floor(Math.random() * 15);
             if (flip < 5) {
                 request(eventURL, function(error, response, body) {
@@ -170,7 +196,7 @@ exports.tenPull = function(list, names, stars, count, msg) {
                 });
             }
         }
-        if (rand > 14 && rand < 86) {
+        if (rand > 29 && rand < 115) {
             //3star
             flip = Math.floor(Math.random() * 85);
             if (flip < 12) { //event 3star
@@ -184,14 +210,40 @@ exports.tenPull = function(list, names, stars, count, msg) {
                     if (!error) {
                         data = JSON.parse(body);
 
+                        if (data.eventThree.length == 0) {
+                            request(threeURL, function(error, response, body) {
+                                if (error) {
+                                    console.log(error);
+                                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                    msg.delete(1500);
+                                    return;
+                                }
+                                if (!error) {
+                                    data = JSON.parse(body);
 
-                        let num = Math.floor(Math.random() * data.eventThree.length);
 
-                        list.push(data.eventThree[num].icon);
-                        names.push(data.eventThree[num].name);
-                        stars.push(data.eventThree[num].star);
+                                    let num = Math.floor(Math.random() * data.three.length);
 
-                        eventPull.tenPull(list, names, stars, count + 1, msg);
+                                    list.push(data.three[num].icon);
+                                    names.push(data.three[num].name);
+                                    stars.push(data.three[num].star);
+
+                                    eventPull.tenPull(list, names, stars, count + 1, msg);
+                                }
+
+                            });
+                        }
+
+                        else if (data.eventThree.length > 0) {
+                            
+                            let num = Math.floor(Math.random() * data.eventThree.length);
+
+                            list.push(data.eventThree[num].icon);
+                            names.push(data.eventThree[num].name);
+                            stars.push(data.eventThree[num].star);
+
+                            eventPull.tenPull(list, names, stars, count + 1, msg);
+                        }
                     }
 
                 });
@@ -219,7 +271,7 @@ exports.tenPull = function(list, names, stars, count, msg) {
                 });
             }
         }
-        if (rand > 85) {
+        if (rand > 114) {
             //2star
             flip = Math.floor(Math.random() * 90);
             if (flip < 11) { //event 2star
@@ -233,14 +285,41 @@ exports.tenPull = function(list, names, stars, count, msg) {
                     if (!error) {
                         data = JSON.parse(body);
 
+                        if (data.eventTwo.length == 0) {
 
-                        let num = Math.floor(Math.random() * data.eventTwo.length);
+                            request(twoURL, function(error, response, body) {
+                                if (error) {
+                                    console.log(error);
+                                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                    msg.delete(1500);
+                                    return;
+                                }
+                                if (!error) {
+                                    data = JSON.parse(body);
+                                    
+                                    let num = Math.floor(Math.random() * data.two.length);
 
-                        list.push(data.eventTwo[num].icon);
-                        names.push(data.eventTwo[num].name);
-                        stars.push(data.eventTwo[num].star);
+                                    list.push(data.two[num].icon);
+                                    names.push(data.two[num].name);
+                                    stars.push(data.two[num].star);
 
-                        eventPull.tenPull(list, names, stars, count + 1, msg);
+                                    eventPull.tenPull(list, names, stars, count + 1, msg);
+                                }
+
+                            });
+
+                        }
+
+                        else if (data.eventTwo.length > 0) {
+
+                            let num = Math.floor(Math.random() * data.eventTwo.length);
+
+                            list.push(data.eventTwo[num].icon);
+                            names.push(data.eventTwo[num].name);
+                            stars.push(data.eventTwo[num].star);
+
+                            eventPull.tenPull(list, names, stars, count + 1, msg);
+                        }
                     }
 
                 });
@@ -274,7 +353,7 @@ exports.tenPull = function(list, names, stars, count, msg) {
 exports.solo = function(msg) {
     let rand = Math.floor(Math.random() * 1000);
 
-    if (rand < 15) {
+    if (rand < 30) {
         let flip = Math.floor(Math.random() * 15);
 
         if (flip < 5) {
@@ -329,7 +408,7 @@ exports.solo = function(msg) {
         }
     }
 
-    if (rand > 14 && rand < 86) {
+    if (rand > 29 && rand < 115) {
         let flip = Math.floor(Math.random() * 85);
             //4star
             if (flip < 12) { //event 4star
@@ -343,18 +422,49 @@ exports.solo = function(msg) {
                     if (!error) {
                         data = JSON.parse(body);
 
+                        if (data.eventThree.length == 0) {
+                            request(threeURL, function(error, response, body) {
+                                if (error) {
+                                    console.log(error);
+                                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                    msg.delete(1500);
+                                    return;
+                                }
+                                if (!error) {
+                                    data = JSON.parse(body);
 
-                        let num = Math.floor(Math.random() * data.eventThree.length);
 
-                        let id = msg.author.id;
-                        let embed = new discord.RichEmbed();
-                        embed.setTitle(msg.author.username + "'s Scouting Results")
-                            .setURL("http://enstars.info/card/" + data.eventThree[num].id)
-                            .setColor(0x96F08C)
-                            .setThumbnail(data.eventThree[num].icon)
-                            .setDescription("[" + data.eventThree[num].star + "★] " + data.eventThree[num].name);
-                        msg.channel.sendEmbed(embed).catch(console.error);
-                        msg.delete(1500);
+                                    let num = Math.floor(Math.random() * data.three.length);
+
+                                    let id = msg.author.id;
+                                    let embed = new discord.RichEmbed();
+                                    embed.setTitle(msg.author.username + "'s Scouting Results")
+                                        .setURL("http://bandori.party/card/" + data.three[num].id)
+                                        .setColor(0x96F08C)
+                                        .setThumbnail(data.three[num].icon)
+                                        .setDescription("[" + data.three[num].star + "★] " + data.three[num].name);
+                                    msg.channel.sendEmbed(embed).catch(console.error);
+                                    msg.delete(1500);
+                                }
+
+                            });
+                        }
+
+                        else if (data.eventThree.length > 0) {
+                            
+                            let num = Math.floor(Math.random() * data.eventThree.length);
+
+                            let id = msg.author.id;
+                            let embed = new discord.RichEmbed();
+                            embed.setTitle(msg.author.username + "'s Scouting Results")
+                                .setURL("http://bandori.party/card/" + data.eventThree[num].id)
+                                .setColor(0x96F08C)
+                                .setThumbnail(data.eventThree[num].icon)
+                                .setDescription("[" + data.eventThree[num].star + "★] " + data.eventThree[num].name);
+                            msg.channel.sendEmbed(embed).catch(console.error);
+                            msg.delete(1500);
+                        }
+
                     }
 
                 });
@@ -375,7 +485,7 @@ exports.solo = function(msg) {
                         let id = msg.author.id;
                         let embed = new discord.RichEmbed();
                         embed.setTitle(msg.author.username + "'s Scouting Results")
-                            .setURL("http://enstars.info/card/" + data.three[num].id)
+                            .setURL("http://bandori.party/card/" + data.three[num].id)
                             .setColor(0x96F08C)
                             .setThumbnail(data.three[num].icon)
                             .setDescription("[" + data.three[num].star + "★] " + data.three[num].name);
@@ -388,7 +498,7 @@ exports.solo = function(msg) {
         
     }
 
-    if (rand > 85) {
+    if (rand > 114) {
         //4star
         flip = Math.floor(Math.random() * 90);
         if (flip < 10) { //event 3star
@@ -402,22 +512,55 @@ exports.solo = function(msg) {
                 if (!error) {
                     data = JSON.parse(body);
 
+                        if (data.eventTwo.length == 0) {
+                            //no event 2star
+                            console.log("null");
+                            request(twoURL, function(error, response, body) {
+                                if (error) {
+                                    console.log(error);
+                                    msg.channel.sendEmbed(errorMsg).then(m => m.delete(4000)).catch(console.error);
+                                    msg.delete(1500);
+                                    return;
+                                }
+                                if (!error) {
+                                    data = JSON.parse(body);
+                                    
+                                    let num = Math.floor(Math.random() * data.two.length);
 
-                    let num = Math.floor(Math.random() * data.eventTwo.length);
+                                    let id = msg.author.id;
+                                    let embed = new discord.RichEmbed();
+                                    embed.setTitle(msg.author.username + "'s Scouting Results")
+                                        .setURL("http://bandori.party/card/" + data.two[num].id)
+                                        .setColor(0x96F08C)
+                                        .setThumbnail(data.two[num].icon)
+                                        .setDescription("[" + data.two[num].star + "★] " + data.two[num].name);
+                                    msg.channel.sendEmbed(embed).catch(console.error);
+                                    msg.delete(1500);
+                                }
 
-                    let id = msg.author.id;
-                    let embed = new discord.RichEmbed();
-                    embed.setTitle(msg.author.username + "'s Scouting Results")
-                        .setURL("http://enstars.info/card/" + data.eventTwo[num].id)
-                        .setColor(0x96F08C)
-                        .setThumbnail(data.eventTwo[num].icon)
-                        .setDescription("[" + data.eventTwo[num].star + "★] " + data.eventTwo[num].name);
-                    msg.channel.sendEmbed(embed).catch(console.error);
-                    msg.delete(1500);
+                            });
+                        }
+
+                        else if (data.eventTwo.length > 0) {
+
+                            let num = Math.floor(Math.random() * data.eventTwo.length);
+
+                            let id = msg.author.id;
+                            let embed = new discord.RichEmbed();
+                            embed.setTitle(msg.author.username + "'s Scouting Results")
+                                .setURL("http://bandori.party/card/" + data.eventTwo[num].id)
+                                .setColor(0x96F08C)
+                                .setThumbnail(data.eventTwo[num].icon)
+                                .setDescription("[" + data.eventTwo[num].star + "★] " + data.eventTwo[num].name);
+                            msg.channel.sendEmbed(embed).catch(console.error);
+                            msg.delete(1500);
+                        }
+
                 }
 
             });
-        } else {
+        } 
+        else {
             request(twoURL, function(error, response, body) {
                 if (error) {
                     console.log(error);
@@ -434,7 +577,7 @@ exports.solo = function(msg) {
                     let id = msg.author.id;
                     let embed = new discord.RichEmbed();
                     embed.setTitle(msg.author.username + "'s Scouting Results")
-                        .setURL("http://enstars.info/card/" + data.two[num].id)
+                        .setURL("http://bandori.party/card/" + data.two[num].id)
                         .setColor(0x96F08C)
                         .setThumbnail(data.two[num].icon)
                         .setDescription("[" + data.two[num].star + "★] " + data.two[num].name);

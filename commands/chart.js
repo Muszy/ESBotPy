@@ -28,13 +28,14 @@ exports.run = (bot, msg, args) => {
             return;
         }
         if (!error) {
+            //console.log(tweets);
             let count = -1;
 
             if (args.length > 0) {
                 if (args[0].toLowerCase() == "t1" || args[0].toLowerCase() == "tier1" || args.join(" ").toLowerCase() == "tier 1") {
 
                     for (var i = 0; i < tweets.length; i++) {
-                        if (tweets[i].text.indexOf("【完凸】") > -1) {
+                        if (tweets[i].text.indexOf("あんスタ☆5【完凸】ボーダー表") > -1) {
                             //console.log(tweets[i]);
                             if (count < 0) {
                                 count = i;
@@ -57,7 +58,7 @@ exports.run = (bot, msg, args) => {
             }
 
             for (var i = 0; i < tweets.length; i++) {
-                if (tweets[i].text.indexOf("【1枚】") > -1) {
+                if (tweets[i].text.indexOf("あんスタ☆5【1枚】ボーダー表") > -1) {
                     //console.log(tweets[i]);
                     if (count < 0) {
                         count = i;

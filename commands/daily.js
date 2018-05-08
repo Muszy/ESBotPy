@@ -20,7 +20,7 @@ exports.run = (bot, msg, args) => {
         return;
     }
 
-    if (userSettings[msg.author.id].daily) {
+    /*if (userSettings[msg.author.id].daily) {
         let dia = 10;
         console.log("daily " + dia + " to " + msg.author.username);
 
@@ -36,9 +36,9 @@ exports.run = (bot, msg, args) => {
         userSettings[msg.author.id].daily = false;
         updateUsers();
         return;
-    }
+    }*/
 
-    msg.channel.sendMessage("`You've already received your daily!`").then(m => m.delete(3000)).catch(console.error);
+    msg.channel.sendMessage("`Dailies currently disabled.`").then(m => m.delete(3000)).catch(console.error);
     msg.delete(1000);
 
 }

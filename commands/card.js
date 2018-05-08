@@ -71,13 +71,15 @@ function searchBoy(boy, list, count, msg) {
                 return;
             }
             if (!(response.statusCode === 200)) {
-                let embed = new discord.RichEmbed();
+                /*let embed = new discord.RichEmbed();
                 embed.setTitle("Error:")
                     .setColor(0xFF0040)
                     .setDescription("Boy was not found.")
                     .setThumbnail("http://i.imgur.com/7TL0t99.png");
                 msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
-                msg.delete(1500);
+                msg.delete(1500);*/
+                list.push(0);
+                searchBoy(boy, list, count + 1, msg);
                 return;
             }
             if (!error) {
@@ -90,7 +92,92 @@ function searchBoy(boy, list, count, msg) {
         });
     } else {
 
-        request(url + boy + "/five.json", function(error, response, body) {
+        request(url + boy + "/three.json", function(error, response, body) {
+            if (error) {
+                console.log(error);
+                msg.channel.sendEmbed(oops).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
+                return;
+            }
+            if (!(response.statusCode === 200)) {
+                /*let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Boy was not found.")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
+                return;*/
+                tryFour(boy, list, count + 1, msg);
+                return;
+            }
+            if (!error) {
+                data = JSON.parse(body);
+                //console.log(data);
+
+                let name = data.cards[0].name.split(")");
+
+                let temp = name[1];
+                if (boy == "cn") temp = "CN/TW Enstars";
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Results for " + temp + ":")
+                    .setColor(0x96F08C)
+                    .setDescription("Number of 3★: " + list[0] + "\nNumber of 4★: " + list[1] + "\nNumber of 5★: " + list[2])
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+        });
+    }
+
+}
+//====================================================================================================
+
+function tryFour(boy, list, count, msg) {
+    request(url + boy + "/four.json", function(error, response, body) {
+            if (error) {
+                console.log(error);
+                msg.channel.sendEmbed(oops).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
+                return;
+            }
+            if (!(response.statusCode === 200)) {
+                /*let embed = new discord.RichEmbed();
+                embed.setTitle("Error:")
+                    .setColor(0xFF0040)
+                    .setDescription("Boy was not found.")
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+                msg.delete(1500);
+                return;*/
+                tryFive(boy, list, count + 1, msg);
+                return;
+            }
+            if (!error) {
+                data = JSON.parse(body);
+                //console.log(data);
+
+                let name = data.cards[0].name.split(")");
+
+                let temp = name[1];
+                if (boy == "cn") temp = "CN/TW Enstars";
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Results for " + temp + ":")
+                    .setColor(0x96F08C)
+                    .setDescription("Number of 3★: " + list[0] + "\nNumber of 4★: " + list[1] + "\nNumber of 5★: " + list[2])
+                    .setThumbnail("http://i.imgur.com/7TL0t99.png");
+                msg.channel.sendEmbed(embed).catch(console.error);
+                return;
+            }
+        });
+}
+
+//====================================================================================================
+
+function tryFive(boy, list, count, msg) {
+    request(url + boy + "/five.json", function(error, response, body) {
             if (error) {
                 console.log(error);
                 msg.channel.sendEmbed(oops).then(m => m.delete(4000)).catch(console.error);
@@ -125,8 +212,6 @@ function searchBoy(boy, list, count, msg) {
                 return;
             }
         });
-    }
-
 }
 
 //====================================================================================================

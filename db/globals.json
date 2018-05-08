@@ -1,28 +1,59 @@
 {
     "event": {
         "end": "",
-        "name": "Recollection * Monochrome Checkmate",
-        "desc": "Leo meets Eichi and begins builds a relationship as friends. On the other hand, Eichi has begun his plan for a revolution.\n\n5★: Leo (Rank) | Izumi\n4★: Arashi (Rank) | Eichi\n3★: Ritsu | Tsumugi | Mao | Madara (Rank)",
-        "img": "https://cdn.discordapp.com/attachments/275115692615794688/317919890269011969/Screenshot_20170527-025657.jpg",
-        "url": "http://stars.happyelements.co.jp/app_help/events/50/index.html"
+        "name": "Spring Breeze * Iconic Book Fair",
+        "desc": "Tsumugi seeks Knights' cooperation in order to increase the number of people who use the library room. Knights are also searching for a way to better their image after the DDD incident, and...\n\n5★: Izumi | Tsumugi\n4★: Makoto | Tsukasa\n3★: Arashi | Sora | Ritsu | Mitsuru",
+        "img": "http://stars.happyelements.co.jp/app_help/events/71/images/banner_event_hkylgiba.png",
+        "url": "http://stars.happyelements.co.jp/app_help/events/71/index.html"
     },
     "gacha": {
-        "name": "Scout! Ukiyo Air Ride",
-        "desc": "Mitsuru and company, who are interested in Shinobu's ninja training, participate in it but, as they are climbing over a wall, they are seen by Keito and...\n\n 5★: Shinobu | 4★: Mitsuru | 3★: Sora, Hinata",
-        "img": "https://vignette3.wikia.nocookie.net/ensemble-stars/images/d/db/Ukiyo_Air_Ride_Banner.png/revision/latest/scale-to-width-down/410?cb=20170530063413",
-        "url": "http://stars.happyelements.co.jp/app_help/gachas/74/index.html"
+        "name": "Scout! Gang",
+        "desc": "Yuzuru hears that lately something like terrorist threats were being made recently at the school.  In that time, as he went to the school to get something that Tori forgot, he senses the presence of someone...\n\n5★: Yuzuru | 4★: Kuro | 3★: Mika, Chiaki\n\nEND: 4/29 @ 15PM JST",
+        "img": "http://stars.happyelements.co.jp/app_help/gachas/103/images/banner_gacha_fyteawpc.png",
+        "url": "http://stars.happyelements.co.jp/app_help/gachas/103/index.html"
     },
     "bEvent": {
-        "end": "2017, 6, 18, 8, 00, 00",
-        "name": "The Sudden Wedding Dress",
-        "img": "https://68.media.tumblr.com/a8abdda5b4de3a44c267fd605cf8e2a2/tumblr_orbb6cGWtH1w8d8svo1_1280.png",
-        "url": "https://bangdreaming.tumblr.com/post/161648517044/the-sudden-wedding-dress-event-start-the-new",
-        "desc": "3★: Saaya | 2★: Ako"
+        "end": "2018, 05, 08, 8, 00, 00",
+        "name": "Double Rainbow",
+        "img": "https://78.media.tumblr.com/f3bf96d59dfefee2cfae8bf9a3659e3d/tumblr_p7zj9xjOSr1w8d8svo3_1280.png",
+        "url": "https://bangdreaming.tumblr.com/post/173441904059/double-rainbow-event-start-end-0508-2100pm",
+        "desc": "Happy / Orange Normal Event\n\nPoints (36,000) - Ushigome Rimi Multi Live Emote (“Everything will definitely work out”)\nPoints (100,000) - 3★ [Heartfelt Note] Ichigaya Arisa (Pure) - Healer\nPoints (120,000) - 3★ [Afternoon Hamburger] Hanazono Tae (Powerful) - Perfect Lock"
     },
     "bGacha": {
-        "name": "1 Day Wedding",
-        "img": "https://68.media.tumblr.com/4b8d0ba2f83ed01aebaf49cde3db1aef/tumblr_orbba6sMvk1w8d8svo1_1280.png",
-        "url": "https://bangdreaming.tumblr.com/post/161648390609/1-day-wedding-limited-gacha-update-0610-the-new",
-        "desc": "(Limited Gacha)\n\n4★: Rimi | 3★: Tomoe | 2★: Kaoru"
+        "name": "Glistening Bridge",
+        "img": "https://78.media.tumblr.com/5e59312e8718d6f9046a04f93a3e0e37/tumblr_p7zjkk5YBN1w8d8svo1_1280.png",
+        "url": "https://bangdreaming.tumblr.com/post/173442030114/glistening-bridge-gacha-update-430-the-event",
+        "desc": "Happy / Orange Gacha\n\n4★ [Look Up At the Starry Sky] Toyama Kasumi (0.501%) - Life Dependent Score Up\n4★ [Problems Getting Motivated?] Ushigome Rimi (0.501%) - Score Up\n3★ [Saaya’s Confession] Yamabuki Saaya (1.200%) - Life Dependent Score Up\n\nEND: 05/10 @ 15:00PM JST"
+    },
+    "enEvent": {
+        "end": "2018, 05, 05, 3, 00, 00",
+        "name": "Rimi's Gift of Song",
+        "img": "https://78.media.tumblr.com/d7594443f6de46f004f9f7d494a24ee7/tumblr_p7wp8rvO2E1x66p0co1_1280.png",
+        "url": "https://bandori-en.tumblr.com/post/173400614226/rimis-gift-of-song-event-start-the-event-song",
+        "desc": "decs here lmao"
+    },
+    "enGacha": {
+        "name": "Presents for You",
+        "img": "https://78.media.tumblr.com/fb56d6dd0b32c806a88c2bd3bcb4a94d/tumblr_p7wpkoPqJq1x66p0co1_1280.png",
+        "url": "https://bandori-en.tumblr.com/post/173400615120/presents-for-you-gacha-update-429-the-new-event",
+        "desc": "desc here lmao"
+    },
+    "gEvent": {
+        "end": "",
+        "name": "What Makes the Sky Blue (Part 1)",
+        "img": "hhttps://gbf.wiki/images/2/20/Banner_What_Makes_the_Sky_Blue.png",
+        "url": "https://gbf.wiki/What_Makes_the_Sky_Blue",
+        "desc": "What Makes the Sky Blue is a story event which also commemorated the 3rd Birthday of Granblue Fantasy."
+    },
+    "gList": {
+        "desc": "April 2018",
+        "event1": "New Scenario Event",
+        "event1D": "3/31 - 4/8",
+        "event2": "Detective Conan Collab",
+        "event2D": "4/8 - 4/20",
+        "event3": "Guild War (Light Advantage)",
+        "event3D": "4/22 - 4/29",
+        "event4": "New Scenario Event",
+        "event4D": "4/30 - 5/8"
     }
 }

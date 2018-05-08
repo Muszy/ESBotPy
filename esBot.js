@@ -67,6 +67,12 @@ var last = null;
 var bEvent = null;
 var bLast = null;
 
+var enEvent = null;
+var enLast = null;
+
+var gEvent = null;
+var gLast = null;
+
 var recentComm = [];
 
 var commError = new discord.RichEmbed();
@@ -96,16 +102,16 @@ bot.login(config.token, function(err, token) {
 
 //this is some scheduling stuff, if you want to know how this works ask me l8r
 var ruleTreats = new schedule.RecurrenceRule();
-ruleTreats.hour = 16;
-ruleTreats.minute = 2;
+ruleTreats.hour = 0;
+ruleTreats.minute = 0;
 
 var treatReset = schedule.scheduleJob(ruleTreats, function() {
     let commandFile = require(`./commands/treat.js`);
     commandFile.reset(bot);
     console.log("Daily Treats Reset");
 
-    let dailyFile = require(`./commands/daily.js`);
-    dailyFile.reset(bot);
+    //let dailyFile = require(`./commands/daily.js`);
+    //dailyFile.reset(bot);
     console.log("Daily Cash Reset");
 
     let rateFile = require(`./commands/rate.js`);
@@ -119,9 +125,55 @@ ruleRep.minute = 0;
 ruleRep.dayOfWeek = 0;
 
 var repReset = schedule.scheduleJob(ruleRep, function() {
-    let commandFile = require(`./commands/rep.js`);
-    commandFile.reset(bot);
+    //let commandFile = require(`./commands/rep.js`);
+    //commandFile.reset(bot);
     console.log("Weekly Rep Reset");
+})
+
+/*var stOne = new schedule.RecurrenceRule();
+stOne.hour = 18;
+stOne.minute = 0;
+
+var strikeOne = schedule.scheduleJob(stOne, function() {
+    for (var id in serverSettings) {
+        if (serverSettings[id].gNotify && serverSettings[id] != "") {
+            //console.log(id);
+            let ch = serverSettings[id].gNotifyChannel;
+            let gu = bot.channels.get(ch);
+
+            let myRole = gu.guild.roles.find("name", "Strike");
+            if (myRole != null) {
+                bot.channels.get(ch).send(myRole + ' : ***STRIKE TIME!***');    
+            }
+
+            else {
+                bot.channels.get(ch).send("no strike role defined");     
+            }
+        }
+    }
+})*/
+
+var stTwo = new schedule.RecurrenceRule();
+stTwo.hour = 22;
+stTwo.minute = 0;
+
+var strikeTwo = schedule.scheduleJob(stTwo, function() {
+    for (var id in serverSettings) {
+        if (serverSettings[id].gNotify && serverSettings[id] != "") {
+            //console.log(id);
+            let ch = serverSettings[id].gNotifyChannel;
+            let gu = bot.channels.get(ch);
+
+            let myRole = gu.guild.roles.find("name", "Strike");
+            if (myRole != null) {
+                bot.channels.get(ch).send(myRole + ' : ***STRIKE TIME!***');    
+            }
+
+            else {
+                bot.channels.get(ch).send("no strike role defined");     
+            }
+        }
+    }
 })
 
 /*============ENSTARS EVENT CHECKERS======*/
@@ -173,8 +225,18 @@ function eventChecker() {
                 if (serverSettings[id].notify && serverSettings[id] != "") {
                     //console.log(id);
                     let ch = serverSettings[id].notifyChannel;
-                    bot.channels.get(ch).sendMessage('Event is now over!');
-                    bot.channels.get(ch).sendEmbed(embed).catch(console.error);
+                    let gu = bot.channels.get(ch);
+
+                    let myRole = gu.guild.roles.find("name", "event");
+                    if (myRole != null) {
+                        bot.channels.get(ch).send(myRole + ' Event is now over!');
+                        bot.channels.get(ch).send({embed}).catch(console.error);   
+                    }
+
+                    else {
+                        bot.channels.get(ch).send('Event is now over!');
+                        bot.channels.get(ch).send({embed}).catch(console.error);
+                    }
                 }
             }
 
@@ -212,8 +274,18 @@ function eventChecker() {
                     if (serverSettings[id].notify && serverSettings[id] != "") {
                         //console.log(id);
                         let ch = serverSettings[id].notifyChannel;
-                        bot.channels.get(ch).sendMessage('Event halfway is here!');
-                        bot.channels.get(ch).sendEmbed(embed).catch(console.error);
+                        let gu = bot.channels.get(ch);
+
+                        let myRole = gu.guild.roles.find("name", "event");
+                        if (myRole != null) {
+                            bot.channels.get(ch).send(myRole + ' Event halfway is here!');
+                            bot.channels.get(ch).send({embed}).catch(console.error);   
+                        }
+
+                        else {
+                            bot.channels.get(ch).send('Event halfway is here!');
+                            bot.channels.get(ch).send({embed}).catch(console.error);
+                        }
                     }
                 }
 
@@ -241,8 +313,18 @@ function eventChecker() {
                     if (serverSettings[id].notify && serverSettings[id] != "") {
                         //console.log(id);
                         let ch = serverSettings[id].notifyChannel;
-                        bot.channels.get(ch).sendMessage('Last day of event!');
-                        bot.channels.get(ch).sendEmbed(embed).catch(console.error);
+                        let gu = bot.channels.get(ch);
+
+                        let myRole = gu.guild.roles.find("name", "event");
+                        if (myRole != null) {
+                            bot.channels.get(ch).send(myRole + ' Last day of Event!');
+                            bot.channels.get(ch).send({embed}).catch(console.error);   
+                        }
+
+                        else {
+                            bot.channels.get(ch).send('Last day of Event!');
+                            bot.channels.get(ch).send({embed}).catch(console.error);
+                        }
                     }
                 }
 
@@ -258,6 +340,7 @@ function eventChecker() {
             event = null;
             half = null;
             last = null;
+            event.cancel();
             console.log("invalid end date, resetting");
 
             globals["event"].end = "";
@@ -365,8 +448,7 @@ function bEventChecker() {
                 if (serverSettings[id].bNotify && serverSettings[id] != "") {
                     //console.log(id);
                     let ch = serverSettings[id].bNotifyChannel;
-                    bot.channels.get(ch).sendMessage('Event is now over!');
-                    bot.channels.get(ch).sendEmbed(embed).catch(console.error);
+                    bot.channels.get(ch).send({embed}).catch(console.error);
                 }
             }
 
@@ -407,8 +489,7 @@ function bEventChecker() {
                     if (serverSettings[id].bNotify && serverSettings[id] != "") {
                         //console.log(id);
                         let ch = serverSettings[id].bNotifyChannel;
-                        bot.channels.get(ch).sendMessage('Last day of event!');
-                        bot.channels.get(ch).sendEmbed(embed).catch(console.error);
+                        bot.channels.get(ch).send({embed}).catch(console.error);
                     }
                 }
 
@@ -438,6 +519,230 @@ function bEventChecker() {
     }
 }
 
+function enEventChecker() {
+    let present = new Date(Date.now() + 1000);
+
+    let time = globals["enEvent"].end;
+
+    var joins = time.split(", ").join("-");
+
+    let end = parseDate(joins);
+    //console.log(end);
+
+    let count = end - present;
+    //console.log(count);
+
+    if (globals["enEvent"].end != "" && enEvent == null && count > 60000) {
+
+        console.log("new bandori en event starting");
+
+        //let end = globals["enEvent"].end.toString();
+        let temp = globals["enEvent"].end;
+        //console.log(temp.toString());
+        var parts = temp.split(", ").join("-");
+        //console.log(parts);
+        let stop = parseDate(parts);
+        //console.log(end.toString());
+
+        var date = new Date(stop);
+        //console.log(date);
+
+        enEvent = schedule.scheduleJob(date, function() {
+            let embed = new discord.RichEmbed();
+
+            embed.setTitle("Event is Over!")
+                .setColor(0xFFB400)
+                .setDescription(globals["enEvent"].name + " is now over!")
+                .setImage(globals["enEvent"].img)
+                .setURL(globals["enEvent"].url);
+
+            for (var id in serverSettings) {
+                if (serverSettings[id].enNotify && serverSettings[id] != "") {
+                    //console.log(id);
+                    let ch = serverSettings[id].enNotifyChannel;
+                    bot.channels.get(ch).send({embed}).catch(console.error);
+                }
+            }
+
+            //console.log("test");
+
+            globals["enEvent"].end = "";
+
+            fs.writeFile(globalsName, JSON.stringify((globals)), function(err) {
+                if (err) return console.log(err);
+                //console.log(JSON.stringify(file));
+                console.log('resetting bandori event end in ' + globalsName);
+            });
+
+            enEvent.cancel();
+
+            enEvent = null;
+
+            updateGlobals();
+
+        });
+
+        //console.log(date-457200000);
+
+        //console.log(date-86400000);
+
+        if ((date - 86400000) > 60000) {
+
+            enLast = schedule.scheduleJob(date - 86400000, function() {
+                let embed = new discord.RichEmbed();
+
+                embed.setTitle("Last day of Event!")
+                    .setColor(0xFFB400)
+                    .setDescription(globals["enEvent"].name + " is now on it's last day!")
+                    .setImage(globals["enEvent"].img)
+                    .setURL(globals["enEvent"].url);
+
+                for (var id in serverSettings) {
+                    if (serverSettings[id].enNotify && serverSettings[id] != "") {
+                        //console.log(id);
+                        let ch = serverSettings[id].enNotifyChannel;
+                        bot.channels.get(ch).send({embed}).catch(console.error);
+                    }
+                }
+
+                enLast.cancel();
+
+                enLast = null;
+
+            });
+        }
+    } else if (globals["enEvent"].end != "" && enEvent != null) {
+
+        if (count < 1) {
+            enEvent = null;
+            enLast = null;
+            console.log("invalid bandori end date, resetting");
+
+            globals["enEvent"].end = "";
+
+            fs.writeFile(globalsName, JSON.stringify((globals)), function(err) {
+                if (err) return console.log(err);
+                //console.log(JSON.stringify(file));
+                console.log('resetting bandori event end in ' + globalsName);
+            });
+
+            updateGlobals();
+        }
+    }
+}
+
+function gEventChecker() {
+    let present = new Date(Date.now() + 1000);
+
+    let time = globals["gEvent"].end;
+
+    var joins = time.split(", ").join("-");
+
+    let end = parseDate(joins);
+    //console.log(end);
+
+    let count = end - present;
+    //console.log(count);
+
+    if (globals["gEvent"].end != "" && gEvent == null && count > 60000) {
+
+        console.log("new gbf event starting");
+
+        //let end = globals["bEvent"].end.toString();
+        let temp = globals["gEvent"].end;
+        //console.log(temp.toString());
+        var parts = temp.split(", ").join("-");
+        //console.log(parts);
+        let stop = parseDate(parts);
+        //console.log(end.toString());
+
+        var date = new Date(stop);
+        //console.log(date);
+
+        gEvent = schedule.scheduleJob(date, function() {
+            let embed = new discord.RichEmbed();
+
+            embed.setTitle("Event is Over!")
+                .setColor(0xFFB400)
+                .setDescription(globals["gEvent"].name + " is now over!")
+                .setImage(globals["gEvent"].img)
+                .setURL(globals["gEvent"].url);
+
+            for (var id in serverSettings) {
+                if (serverSettings[id].gNotify && serverSettings[id] != "") {
+                    //console.log(id);
+                    let ch = serverSettings[id].gNotifyChannel;
+                    bot.channels.get(ch).send({embed}).catch(console.error);
+                }
+            }
+
+            //console.log("test");
+
+            globals["gEvent"].end = "";
+
+            fs.writeFile(globalsName, JSON.stringify((globals)), function(err) {
+                if (err) return console.log(err);
+                //console.log(JSON.stringify(file));
+                console.log('resetting gbf event end in ' + globalsName);
+            });
+
+            gEvent.cancel();
+
+            gEvent = null;
+
+            updateGlobals();
+
+        });
+
+        //console.log(date-457200000);
+
+        //console.log(date-86400000);
+
+        if ((date - 86400000) > 60000) {
+
+            gLast = schedule.scheduleJob(date - 86400000, function() {
+                let embed = new discord.RichEmbed();
+
+                embed.setTitle("Last day of Event!")
+                    .setColor(0xFFB400)
+                    .setDescription(globals["gEvent"].name + " is now on it's last day!")
+                    .setImage(globals["gEvent"].img)
+                    .setURL(globals["gEvent"].url);
+
+                for (var id in serverSettings) {
+                    if (serverSettings[id].gNotify && serverSettings[id] != "") {
+                        //console.log(id);
+                        let ch = serverSettings[id].gNotifyChannel;
+                        bot.channels.get(ch).send({embed}).catch(console.error);
+                    }
+                }
+
+                gLast.cancel();
+
+                gLast = null;
+
+            });
+        }
+    } else if (globals["gEvent"].end != "" && gEvent != null) {
+
+        if (count < 1) {
+            gEvent = null;
+            gLast = null;
+            console.log("invalid gbf end date, resetting");
+
+            globals["gEvent"].end = "";
+
+            fs.writeFile(globalsName, JSON.stringify((globals)), function(err) {
+                if (err) return console.log(err);
+                //console.log(JSON.stringify(file));
+                console.log('resetting gbf event end in ' + globalsName);
+            });
+
+            updateGlobals();
+        }
+    }
+}
+
 exports.eventReset = function() {
     event = null;
     half = null;
@@ -448,12 +753,25 @@ exports.eventReset = function() {
 exports.bEventReset = function() {
     bEvent = null;
     bLast = null;
-    console.log("bandori event reset : " + event + bEvent + bLast);
+    console.log("bandori event reset : " + bEvent + bLast);
+}
+
+exports.enEventReset = function() {
+    enEvent = null;
+    enLast = null;
+    console.log("bandori event reset : " + enEvent + enLast);
+}
+
+exports.gEventReset = function() {
+    gEvent = null;
+    gLast = null;
+    console.log("gbf event reset : " + gEvent + gLast);
 }
 
 setInterval(() => {
     eventChecker();
     bEventChecker();
+    gEventChecker();
 }, 30000);
 
 /*setInterval(() => {
@@ -476,41 +794,48 @@ fs.readdir("./events/", (err, files) => {
 
 //when we first join a server
 bot.on("guildCreate", guild => {
-    serverSettings[guild.id] = {
-        "ignore": [],
-        "banAlerts": false,
-        "greet": false,
-        "welcome": "Welcome $USER$ to $SERVER$!",
-        "welcomeChannel": guild.defaultChannel.id,
-        "notifyChannel": guild.defaultChannel.id,
-        "treats": 0,
-        "roles": [],
-        "tags": false,
-        "diaGen": false,
-        "ignoreDiaCh": [],
-        "diaChance": 3,
-        "diaType": "Dia",
-        "lastDia": 0,
-        "diaMade": false,
-        "lastDiaMsg": "",
-        "enstars": false,
-        "notify": false,
-        "eNotifyChannel": guild.defaultChannel.id,
-        "bandori": false,
-        "bNotify": false,
-        "bNotifyChannel": guild.defaultChannel.id,
-        "gbf": false,
-        "gNotify": false,
-        "gNotifyChannel": guild.defaultChannel.id,
-        "sino": false,
-        "sNotify": false,
-        "sNotifyChannel": guild.defaultChannel.id
-    }
-    quotes[guild.id] = {
-        "quotes": []
-    }
-    weeb[guild.id] = {
-        "weeb": []
+
+    if (!serverSettings[guild.id]) {
+
+        serverSettings[guild.id] = {
+            "ignore": [],
+            "banAlerts": false,
+            "greet": false,
+            "welcome": "Welcome $USER$ to $SERVER$!",
+            "welcomeChannel": guild.defaultChannel.id,
+            "notifyChannel": guild.defaultChannel.id,
+            "treats": 0,
+            "roles": [],
+            "tags": false,
+            "diaGen": false,
+            "ignoreDiaCh": [],
+            "diaChance": 3,
+            "diaType": "Dia",
+            "lastDia": 0,
+            "diaMade": false,
+            "lastDiaMsg": "",
+            "enstars": false,
+            "notify": false,
+            "eNotifyChannel": guild.defaultChannel.id,
+            "bandori": false,
+            "bNotify": false,
+            "bNotifyChannel": guild.defaultChannel.id,
+            "enNotify": false,
+            "enNotifyChannel": guild.defaultChannel.id,
+            "gbf": false,
+            "gNotify": false,
+            "gNotifyChannel": guild.defaultChannel.id,
+            "sino": false,
+            "sNotify": false,
+            "sNotifyChannel": guild.defaultChannel.id
+        }
+        quotes[guild.id] = {
+            "quotes": []
+        }
+        weeb[guild.id] = {
+            "weeb": []
+        }
+
     }
     console.log("Added server \'" + guild.name + "\' to the servers and quotes/weeb list.  ID: " + guild.id);
     updateServers();
@@ -522,20 +847,20 @@ bot.on("guildCreate", guild => {
         .setColor(0xFFB6C1)
         .setDescription("I'm a custom bot created by <@108752547166031872> for use by the /r/EnsembleStars discord! Feel free to pet me and give me lots of love! 💕")
         .setThumbnail("http://i.imgur.com/nRleyfl.png");
-    guild.defaultChannel.sendEmbed(embed).catch(console.error);
+    guild.defaultChannel.send({embed}).catch(console.error);
 });
 
 //when we leave a server
 bot.on("guildDelete", guild => {
 
-    delete serverSettings[guild.id];
-    delete quotes[guild.id];
-    delete weeb[guild.id];
+    //delete serverSettings[guild.id];
+    //delete quotes[guild.id];
+    //delete weeb[guild.id];
     console.log("Deleted server \'" + guild.name + "\' from the servers list.  ID: " + guild.id);
 
-    updateServers();
-    updateQuotes();
-    updateWeeb();
+    //updateServers();
+    //updateQuotes();
+    //updateWeeb();
 });
 
 function updateServers() {
@@ -685,6 +1010,8 @@ function guildChecker(msg) {
         "bandori": false,
         "bNotify": false,
         "bNotifyChannel": guild.defaultChannel.id,
+        "enNotify": false,
+        "enNotifyChannel": guild.defaultChannel.id,
         "gbf": false,
         "gNotify": false,
         "gNotifyChannel": guild.defaultChannel.id,
@@ -764,7 +1091,7 @@ bot.on("message", msg => {
     //if the msg is a dm
     if (msg.channel.type == "dm" || msg.channel.type == "group") {
         //if doesn't start with a command prefix and mod prefix and eval
-        if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix) && !msg.content.startsWith("b!")) {
+        if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix) && !msg.content.toLowerCase().startsWith("b!") && !msg.content.toLowerCase().startsWith("e!") && !msg.content.toLowerCase().startsWith("g!")) {
             if (/^(help|how do I use this\??)$/i.test(msg.content)) {
                 let help = require('./commands/help.js');
                 let args = "";
@@ -785,14 +1112,14 @@ bot.on("message", msg => {
             //also for Description, i've set it to randomize a number and then use that number to generate what the bot says in return
             //this is b/c there's no cleverbot for dogs
             //bork
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.send({embed}).catch(console.error);
             //catch the error in case something goes wrong!
             return;
         }
     }
 
     //iff the message is in a server and is not a command
-    if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix) && !msg.content.startsWith("b!")) {
+    if (!msg.content.startsWith(config.prefix) && !msg.content.startsWith(config.mod_prefix) && !msg.content.toLowerCase().startsWith("b!") && !msg.content.toLowerCase().startsWith("e!") && !msg.content.toLowerCase().startsWith("g!")) {
         //generate dia
         if (msg.channel.type != "dm" && msg.channel.type != "group") {
             if (!(serverSettings[msg.channel.guild.id].diaMade) && serverSettings[msg.channel.guild.id].diaGen) {
@@ -808,7 +1135,7 @@ bot.on("message", msg => {
                         let embed = new discord.RichEmbed();
                         embed.setColor(0x753FCF)
                             .setDescription(serverSettings[msg.channel.guild.id].lastDia + " " + serverSettings[msg.channel.guild.id].diaType + " has appeared!  Type `!pick` to pick it up!");
-                        msg.channel.sendEmbed(embed).then(function(m) {
+                        msg.channel.send({embed}).then(function(m) {
                             serverSettings[msg.channel.guild.id].lastDiaMsg = m.id;
                             updateServers();
                             setTimeout(() => {
@@ -829,7 +1156,7 @@ bot.on("message", msg => {
                 .setColor(0xFFB6C1)
                 .setDescription(boofs[Math.floor(Math.random() * (boofs.length))])
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.send({embed}).catch(console.error);
         }
 
         //================chat listeners-==============================
@@ -845,7 +1172,7 @@ bot.on("message", msg => {
                     .setColor(0xB48CF0)
                     .setDescription("The gacha is announced **24 hours after the new event** is announced!\n\nIt occurs at **11PM PST / 2AM EST / 7AM GMT / 3PM JST!**")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("when") > -1 && msg.content.toLowerCase().indexOf("event") > -1 && msg.content.toLowerCase().indexOf("announc") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
@@ -855,7 +1182,7 @@ bot.on("message", msg => {
                     .setColor(0xB48CF0)
                     .setDescription("The next event is announced **24 hours after revivals open** / **the day after the previous event ends**!\n\nIt occurs at **11PM PST / 2AM EST / 7AM GMT / 3PM JST!**")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("when") > -1 && msg.content.toLowerCase().indexOf("item") > -1 && msg.content.toLowerCase().indexOf("expire") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
@@ -865,7 +1192,7 @@ bot.on("message", msg => {
                     .setColor(0xB48CF0)
                     .setDescription("Items in your giftbox expire 30 days upon entering the giftbox. Items on the events rewards page expire before the next event, according to whatever time is on the event rewards page. Items accepted from your giftbox expire either at the end of an event, or the beginning of the next event.")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("when") > -1 && (msg.content.toLowerCase().indexOf("gacha") > -1 || msg.content.toLowerCase().indexOf("scout") > -1 || msg.content.toLowerCase().indexOf("event") > -1) && msg.content.toLowerCase().indexOf("open") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
@@ -875,7 +1202,7 @@ bot.on("message", msg => {
                     .setColor(0xB48CF0)
                     .setDescription("It opens at **11PM PST / 2AM EST / 7AM GMT / 3PM JST** on the date announced!")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("where is tsumugi?") > -1) {
@@ -885,7 +1212,7 @@ bot.on("message", msg => {
                     .setColor(0xB48CF0)
                     .setDescription("Throwing eggs at people.")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("where is tetora?") > -1) {
@@ -895,7 +1222,7 @@ bot.on("message", msg => {
                     .setColor(0xB48CF0)
                     .setDescription("Here he is!  (With his  new card!)")
                     .setImage("https://pbs.twimg.com/media/C4gdyIBUMAEVhso.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("when") > -1 && msg.content.toLowerCase().indexOf("revival") > -1 && (msg.content.toLowerCase().indexOf("open") > -1 || msg.content.toLowerCase().indexOf("start") > -1) && msg.content.toLowerCase().indexOf("?") > -1) {
@@ -905,7 +1232,7 @@ bot.on("message", msg => {
                     .setColor(0xB48CF0)
                     .setDescription("Revivals open **17 hours after** the current event ends at **11PM PST / 2AM EST / 7AM GMT / 3PM JST**!")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
             if (((msg.content.toLowerCase().indexOf("what") > -1) || (msg.content.toLowerCase().indexOf("schedule") > -1)) && msg.content.toLowerCase().indexOf("daily") > -1 && msg.content.toLowerCase().indexOf("course") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
 
@@ -914,7 +1241,7 @@ bot.on("message", msg => {
                     .setColor(0xB48CF0)
                     .setDescription("In JST:\n\n**Monday:** Trickstar (Yellow)\n**Tuesday:** Ryuseitai (Red)\n**Wednesday:** UNDEAD (Blue)\n**Thursday:** Knights (Yellow)\n**Friday:** Akatsuki/2wink (Red)\n**Saturday:** Ra*bits/Valkyrie (Blue)\n**Sunday:** fine/Switch (Double EXP)")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("announc") > -1 && msg.content.toLowerCase().indexOf("schedule") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
@@ -924,7 +1251,7 @@ bot.on("message", msg => {
                     .setColor(0xB48CF0)
                     .setDescription("**Revivals / Possible Story Scout:** 17 hrs after event end\n**Event Announcement:** 24 hrs after Revivals open\n**Gacha Announcement:** 24 hrs after Event Announcement")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (((msg.content.toLowerCase().indexOf("jewel") > -1) || (msg.content.toLowerCase().indexOf("gem") > -1) || (msg.content.toLowerCase().indexOf("card") > -1)) && msg.content.toLowerCase().indexOf("skill") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("trans") > -1) {
@@ -935,7 +1262,7 @@ bot.on("message", msg => {
                     .setURL("https://docs.google.com/document/d/1SPnw-AE9MapcyAwm1VkriS1VgExTRyZ7n9nN070Ew3A/pub")
                     .setDescription("赤 = Red\n青 = Blue\n黄 = Yellow\n全 = All\n小 = Small\n中 = Medium\n大 = Large\nジュエル = Jewel\nフィーバー上昇割合が = Fever Up\n全員の信頼度上昇率が = Trust Up")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("luck") > -1 && msg.content.toLowerCase().indexOf("what") > -1 && msg.content.toLowerCase().indexOf("do") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
@@ -946,7 +1273,7 @@ bot.on("message", msg => {
                     .setURL("http://ensemble-stars.wikia.com/wiki/Ensemble_Stars!_Master_Guide")
                     .setDescription("The higher your luck, the more Trust increases. There is also a chance that more mini-events will appear.")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("master") > -1 && msg.content.toLowerCase().indexOf("guide") > -1 && msg.content.toLowerCase().indexOf("link") > -1) {
@@ -957,7 +1284,7 @@ bot.on("message", msg => {
                     .setURL("http://ensemble-stars.wikia.com/wiki/Ensemble_Stars!_Master_Guide")
                     .setDescription("Click here to check out a lot of info!.")
                     .setThumbnail("http://i.imgur.com/nRleyfl.png");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
         }
@@ -974,7 +1301,18 @@ bot.on("message", msg => {
                     .setDescription("Pure = Fountain / Fruit Tart\nCool = Pool / Fruit Bowl\nHappy = Michelle Statue / Macaron Tower\nPowerful = Coconut Palm Tree / Spaghetti")
                     .setThumbnail("http://i.imgur.com/408QceQ.png")
                     .setURL("http://bangdreaming.tumblr.com/band");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
+            }
+
+            if ((msg.content.toLowerCase().indexOf("what") > -1 || msg.content.toLowerCase().indexOf("which") > -1 ) > -1 && msg.content.toLowerCase().indexOf("daily") > -1 && (msg.content.toLowerCase().indexOf("room") > -1 || msg.content.toLowerCase().indexOf("schedule")) > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
+
+                let embed = new discord.RichEmbed();
+                embed.setTitle("Daily Room Schedule")
+                    .setColor(0xB48CF0)
+                    .setDescription("Sun/Mon: Training Tickets\nTues: Powerful Drops\nWed: Cool Drops\nThurs: Pure Drops\nFri: Happy Drops\nSat: Coins")
+                    .setThumbnail("http://i.imgur.com/408QceQ.png")
+                    .setURL("http://bangdreaming.tumblr.com/band");
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("master") > -1 && (msg.content.toLowerCase().indexOf("guide") > -1 || msg.content.toLowerCase().indexOf("post") > -1) && msg.content.toLowerCase().indexOf("link") > -1) {
@@ -985,7 +1323,7 @@ bot.on("message", msg => {
                     .setDescription("Click here to go to the Bandori help masterpost!")
                     .setThumbnail("http://i.imgur.com/408QceQ.png")
                     .setURL("http://bangdreaming.tumblr.com/start");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
             if (msg.content.toLowerCase().indexOf("event") > -1 && msg.content.toLowerCase().indexOf("guide") > -1 && msg.content.toLowerCase().indexOf("?") > -1) {
@@ -996,21 +1334,21 @@ bot.on("message", msg => {
                     .setDescription("Click here to go to the Bandori event guide!")
                     .setThumbnail("http://i.imgur.com/408QceQ.png")
                     .setURL("http://bangdreaming.tumblr.com/eventguide");
-                msg.channel.sendEmbed(embed).catch(console.error);
+                msg.channel.send({embed}).catch(console.error);
             }
 
         }
 
         //=====================non specific===========================
 
-        if (msg.content.toLowerCase().indexOf("faggot") > -1 || msg.content.toLowerCase().indexOf("retard") > -1) {
+        if (msg.content.toLowerCase().indexOf("faggot") > -1 || msg.content.toLowerCase().indexOf("retard") > -1 || msg.content.toLowerCase().indexOf("nigger") > -1 || msg.content.toLowerCase().indexOf("tranny") > -1) {
 
             let embed = new discord.RichEmbed();
             embed.setTitle("Daikichi says:")
                 .setColor(0x3399FF)
                 .setDescription("Please don't use offensive language in this server.")
                 .setThumbnail("http://i.imgur.com/nRleyfl.png");
-            msg.channel.sendEmbed(embed).catch(console.error);
+            msg.channel.send({embed}).catch(console.error);
             msg.delete()
                 .then(msg => console.log(`Deleted message from ${msg.author} for slurs`))
                 .catch(console.error);
@@ -1018,12 +1356,12 @@ bot.on("message", msg => {
 
         if (msg.content.toLowerCase() == "/o/") {
 
-            msg.channel.sendMessage("\\o\\");
+            msg.channel.send("\\o\\");
         }
 
         if (msg.content.toLowerCase() == "\\o\\") {
 
-            msg.channel.sendMessage("/o/");
+            msg.channel.send("/o/");
         }
 
 
@@ -1031,7 +1369,7 @@ bot.on("message", msg => {
             //let id;
             //let embed = new discord.RichEmbed();
             //embed.setDescription("tester");
-            //msg.channel.sendEmbed(embed).catch(console.error);
+            //msg.channel.send({embed}).catch(console.error);
 
             //msg.channel.fetchMessages({ limit: 4 })
             //    .catch(console.error);
@@ -1060,7 +1398,7 @@ bot.on("message", msg => {
                 .setColor(0xFF0040)
                 .setDescription("Please set a role to `" + config.mod_role + "` in order to use mod commands!")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).then(m => m.delete(5000)).catch(console.error);
+            msg.channel.send({embed}).then(m => m.delete(5000)).catch(console.error);
             msg.delete(1500);
             return;
         }
@@ -1079,7 +1417,7 @@ bot.on("message", msg => {
             } catch (e) {
                 console.log("command not found");
 
-                msg.channel.sendEmbed(commError).then(m => m.delete(4000)).catch(console.error);
+                //msg.channel.send({commError}).then(m => m.delete(4000)).catch(console.error);
                 msg.delete(1500);
             }
             return;
@@ -1092,7 +1430,7 @@ bot.on("message", msg => {
                 .setColor(0xFF0040)
                 .setDescription("You do not have the proper rank to access this! Grrr... 🐾")
                 .setThumbnail("http://i.imgur.com/7TL0t99.png");
-            msg.channel.sendEmbed(embed).then(m => m.delete(4000)).catch(console.error);
+            msg.channel.send({embed}).then(m => m.delete(4000)).catch(console.error);
             msg.delete(1500);
             return;
         }
@@ -1109,7 +1447,7 @@ bot.on("message", msg => {
         } catch (e) {
             console.log("command not found");
 
-            msg.channel.sendEmbed(commError).then(m => m.delete(4000)).catch(console.error);
+            //msg.channel.send({commError}).then(m => m.delete(4000)).catch(console.error);
             msg.delete(1500);
         }
         return;
@@ -1119,7 +1457,7 @@ bot.on("message", msg => {
             .setColor(0xFF0040)
             .setDescription("Please use this command in a server, not a DM!")
             .setThumbnail("http://i.imgur.com/7TL0t99.png");
-        msg.channel.sendEmbed(embed).catch(console.error);
+        msg.channel.send({embed}).catch(console.error);
         return;
     }
 
@@ -1133,12 +1471,12 @@ bot.on("message", msg => {
         let embed = new discord.RichEmbed();
         embed.setColor(0xFF0040)
             .setDescription("Please wait!  The command cooldown is 2 seconds!");
-        msg.channel.sendEmbed(embed).then(m => m.delete(2000)).catch(console.error);
+        msg.channel.send({embed}).then(m => m.delete(2000)).catch(console.error);
         msg.delete(1000);
         return;
     }
 
-    if (msg.content.startsWith("b!")) {
+    if (msg.content.toLowerCase().startsWith("b!")) {
 
         let bCommand = msg.content.split(" ")[0];
         bCommand = bCommand.slice(2);
@@ -1164,7 +1502,73 @@ bot.on("message", msg => {
             console.log("COMMAND NOT FOUND : " + bCommand);
             console.log(e);
 
-            //msg.channel.sendEmbed(commError).catch(console.error);
+            //msg.channel.send({commError}).catch(console.error);
+            return;
+        }
+        return;
+
+    }
+
+    if (msg.content.toLowerCase().startsWith("e!")) {
+
+        let enCommand = msg.content.split(" ")[0];
+        enCommand = enCommand.slice(2);
+        enCommand = enCommand.toLowerCase();
+
+        let enArgs = msg.content.split(" ").slice(1);
+
+        console.log(msg.author + " : " + msg);
+
+        try {
+            let enCommandFile = require(`./endori/${enCommand}.js`)
+            enCommandFile.run(bot, msg, enArgs)
+
+            recentComm.push(msg.author.id);
+            setTimeout(() => {
+                let index = recentComm.indexOf(msg.author.id);
+                // Removes the user from the array after 2.5 seconds
+                recentComm.splice(index, 1);
+            }, 2000);
+            return;
+        } catch (e) {
+            //console.log(e);
+            console.log("COMMAND NOT FOUND : " + enCommand);
+            console.log(e);
+
+            //msg.channel.send({commError}).catch(console.error);
+            return;
+        }
+        return;
+
+    }
+
+    if (msg.content.toLowerCase().startsWith("g!")) {
+
+        let gCommand = msg.content.split(" ")[0];
+        gCommand = gCommand.slice(2);
+        gCommand = gCommand.toLowerCase();
+
+        let gArgs = msg.content.split(" ").slice(1);
+
+        console.log(msg.author + " : " + msg);
+
+        try {
+            let gCommandFile = require(`./gbf/${gCommand}.js`)
+            gCommandFile.run(bot, msg, gArgs)
+
+            recentComm.push(msg.author.id);
+            setTimeout(() => {
+                let index = recentComm.indexOf(msg.author.id);
+                // Removes the user from the array after 2.5 seconds
+                recentComm.splice(index, 1);
+            }, 2000);
+            return;
+        } catch (e) {
+            //console.log(e);
+            console.log("COMMAND NOT FOUND : " + gCommand);
+            console.log(e);
+
+            //msg.channel.send({commError}).catch(console.error);
             return;
         }
         return;
@@ -1198,7 +1602,7 @@ bot.on("message", msg => {
         console.log("COMMAND NOT FOUND : " + command);
         console.log(e);
 
-        //msg.channel.sendEmbed(commError).catch(console.error);
+        //msg.channel.send({commError}).catch(console.error);
     }
 
 });
