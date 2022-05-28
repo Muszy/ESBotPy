@@ -6,7 +6,7 @@ from ..models.quote import QuoteEntity
 class QuoteCRUD:
     @db_session
     def create(guild_id: int, text: str) -> QuoteEntity:
-        quote_id = QuoteEntity.select(guild_id=guild_id).max() + 1
+        quote_id = QuoteEntity.select(guild_id=guild_id).count() + 1
         return QuoteEntity(guild_id=guild_id, quote_id=quote_id, text=text)
 
     @db_session

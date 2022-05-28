@@ -31,9 +31,7 @@ class QuoteCog(Cog):
                 description='You need a quote to add!',
             )
             embed.set_thumbnail(url='http://i.imgur.com/7TL0t99.png')
-            message = await ctx.send(embed=embed)
-            await message.delete(4000)
-            await ctx.message.delete(1500)
+            await ctx.send(embed=embed)
 
     @command(help='To call a quote, just use `!call` or `!call [number]`.')
     async def call(self, ctx: Context, *, number: int = None) -> None:
